@@ -1,0 +1,53 @@
+{
+  "name": "bionode-ncbi",
+  "description": "Node.js module for working with the NCBI API (aka e-utils) using Streams.",
+  "version": "0.0.1",
+  "homepage": "http://github.com/bionode/bionode-ncbi",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bmpvieira/bionode-ncbi.git"
+  },
+  "author": {
+    "name": "Bruno Vieira",
+    "email": "mail@bmpvieira.com"
+  },
+  "dependencies": {
+    "JSONStream": "^0.8.3",
+    "async": "^0.9.0",
+    "dld": "0.0.2",
+    "docco": "^0.6.3",
+    "mkdirp": "^0.5.0",
+    "nested-property": "0.0.2",
+    "request": "^2.36.0",
+    "through2": "^0.4.2",
+    "tool-stream": "0.0.1",
+    "xml2js": "^0.4.3"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.0",
+    "mocha-lcov-reporter": "0.0.1",
+    "should": "~3.0.1",
+    "istanbul": "~0.2.4",
+    "coveralls": "~2.6.1",
+    "docco": "~0.6.2"
+  },
+  "keywords": [
+    "ncbi",
+    "api",
+    "streams",
+    "client",
+    "server",
+    "cli"
+  ],
+  "main": "index.js",
+  "bin": {
+    "bionode-ncbi": "cli.js"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec && rm -rf ./503988",
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
+    "coveralls": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage",
+    "build-docs": "docco ./lib/bionode-ncbi.js"
+  },
+  "license": "MIT"
+}
