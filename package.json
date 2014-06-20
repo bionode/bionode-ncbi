@@ -24,12 +24,13 @@
     "xml2js": "^0.4.3"
   },
   "devDependencies": {
+    "coveralls": "~2.6.1",
+    "debug": "^1.0.2",
+    "docco": "~0.6.2",
+    "istanbul": "~0.2.4",
     "mocha": "~1.17.0",
     "mocha-lcov-reporter": "0.0.1",
-    "should": "~3.0.1",
-    "istanbul": "~0.2.4",
-    "coveralls": "~2.6.1",
-    "docco": "~0.6.2"
+    "should": "~3.0.1"
   },
   "keywords": [
     "ncbi",
