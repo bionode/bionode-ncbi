@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var JSONStream = require('JSONStream')
 var ncbi = require('./')
 
