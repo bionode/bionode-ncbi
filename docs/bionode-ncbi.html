@@ -24,9 +24,9 @@
               <h1 id="bionode-ncbi">bionode-ncbi</h1>
 <blockquote>
 <p>Node.js module for working with the NCBI API (aka e-utils) using Streams.</p>
-<p>doi: <a href="http://doi.org/">?</a>
+<p>doi: <a href="http://dx.doi.org/10.5281/zenodo.10610">10.5281/zenodo.10610</a>
 author: <a href="http://bmpvieira.com">Bruno Vieira</a>
-email: <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#109;&#97;&#x69;&#108;&#x40;&#x62;&#109;&#x70;&#x76;&#x69;&#101;&#x69;&#114;&#x61;&#46;&#x63;&#111;&#x6d;">&#109;&#97;&#x69;&#108;&#x40;&#x62;&#109;&#x70;&#x76;&#x69;&#101;&#x69;&#114;&#x61;&#46;&#x63;&#111;&#x6d;</a>
+email: <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#109;&#97;&#x69;&#108;&#64;&#x62;&#x6d;&#x70;&#118;&#x69;&#x65;&#105;&#114;&#x61;&#46;&#99;&#x6f;&#x6d;">&#109;&#97;&#x69;&#108;&#64;&#x62;&#x6d;&#x70;&#118;&#x69;&#x65;&#105;&#114;&#x61;&#46;&#99;&#x6f;&#x6d;</a>
 license: <a href="https://raw.githubusercontent.com/bionode/bionode-ncbi/master/LICENSE">MIT</a></p>
 </blockquote>
 <hr>
@@ -67,6 +67,7 @@ $ bionode-ncbi search gds solenopsis | dat import --json
 <span class="hljs-keyword">var</span> xml2js = <span class="hljs-built_in">require</span>(<span class="hljs-string">'xml2js'</span>).parseString
 <span class="hljs-keyword">var</span> dld = <span class="hljs-built_in">require</span>(<span class="hljs-string">'dld'</span>)
 <span class="hljs-keyword">var</span> tool = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tool-stream'</span>)
+<span class="hljs-keyword">var</span> debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'bionode-ncbi'</span>)
 
 
 module.exports = exports = ncbi = <span class="hljs-keyword">new</span> NCBI()
@@ -74,7 +75,7 @@ module.exports = exports = ncbi = <span class="hljs-keyword">new</span> NCBI()
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">NCBI</span><span class="hljs-params">()</span> {</span>
   <span class="hljs-keyword">this</span>.APIROOT = <span class="hljs-string">'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/'</span>
   <span class="hljs-keyword">this</span>.DEFAULTS = <span class="hljs-string">'retmode=json&amp;version=2.0'</span>
-  <span class="hljs-keyword">this</span>.RETURNMAX = <span class="hljs-number">1000</span>
+  <span class="hljs-keyword">this</span>.RETURNMAX = <span class="hljs-number">250</span>
   <span class="hljs-keyword">this</span>.XMLPROPERTIES = {
     <span class="hljs-string">'sra'</span>: [<span class="hljs-string">'expxml'</span>, <span class="hljs-string">'runs'</span>],
     <span class="hljs-string">'biosample'</span>: [<span class="hljs-string">'sampledata'</span>],
@@ -135,11 +136,22 @@ NCBI.prototype.search = <span class="hljs-function"><span class="hljs-keyword">f
       <span class="hljs-string">'term='</span> + <span class="hljs-built_in">encodeURI</span>(obj),
       <span class="hljs-string">'usehistory=y'</span>
     ].join(<span class="hljs-string">'&amp;'</span>)
+
     <span class="hljs-keyword">var</span> getUIDs = _requestData(db)
-    request({ uri: query, json: <span class="hljs-literal">true</span> })
+
+    debug(<span class="hljs-string">'esearch request'</span>, query)
+
+    <span class="hljs-keyword">var</span> req = request({ uri: query, json: <span class="hljs-literal">true</span> })
+
+    req.on(<span class="hljs-string">'response'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(resp)</span> {</span>
+      debug(<span class="hljs-string">'esearch response'</span>, resp.statusCode)
+    })
+
+    req
     .pipe(JSONStream.parse())
     .pipe(_requestsSplit(db))
     .pipe(getUIDs)
+
     _attachStandardEvents(getUIDs, self, next)
   }
 }
@@ -147,6 +159,7 @@ NCBI.prototype.search = <span class="hljs-function"><span class="hljs-keyword">f
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_requestsSplit</span><span class="hljs-params">(db)</span> {</span>
   <span class="hljs-keyword">return</span> through.obj(transform)
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span><span class="hljs-params">(obj, enc, next)</span> {</span>
+    debug(<span class="hljs-string">'esearch results'</span>, obj)
     <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
     <span class="hljs-keyword">var</span> webenv = obj.esearchresult.webenv
     <span class="hljs-keyword">var</span> count = obj.esearchresult.count
@@ -187,7 +200,15 @@ NCBI.prototype.search = <span class="hljs-function"><span class="hljs-keyword">f
       _attachStandardEvents(finish, self, next)
     }
 
-    request({uri: query, json: <span class="hljs-literal">true</span>})
+    debug(<span class="hljs-string">'esummary request'</span>, query)
+
+    <span class="hljs-keyword">var</span> req = request({uri: query, json: <span class="hljs-literal">true</span>})
+
+    req.on(<span class="hljs-string">'response'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(resp)</span> {</span>
+      debug(<span class="hljs-string">'esummary response'</span>, resp.statusCode)
+    })
+
+    req
     .pipe(JSONStream.parse())
     .pipe(tool.extractProperty(<span class="hljs-string">'result'</span>))
     .pipe(tool.deleteProperty(<span class="hljs-string">'uids'</span>))
@@ -248,6 +269,8 @@ NCBI.prototype.link = <span class="hljs-function"><span class="hljs-keyword">fun
     <span class="hljs-keyword">var</span> linkName = srcDB+<span class="hljs-string">'_'</span>+destDB
 
     <span class="hljs-keyword">var</span> getLink = tool.attachToObject(link, <span class="hljs-string">'destUID'</span>)
+
+    debug(<span class="hljs-string">'elink request'</span>, query)
 
     request({ uri: query, json: <span class="hljs-literal">true</span> })
     .pipe(_wait(<span class="hljs-number">500</span>))
@@ -387,6 +410,7 @@ NCBI.prototype.urls = <span class="hljs-function"><span class="hljs-keyword">fun
 
     mkdirp.sync(obj.uid)
     <span class="hljs-keyword">if</span> (!fs.existsSync(path)) {
+      debug(<span class="hljs-string">'downloading'</span>, obj.url)
       dld(obj.url, folder, chunkSize)
       .on(<span class="hljs-string">'data'</span>, log)
       .on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>

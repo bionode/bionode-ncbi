@@ -5,7 +5,8 @@
   <br/>
   <a href="http://bionode.io/">bionode.io</a>
 </p>
-# bionode-ncbi [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Dependency Status][depstat-image]][depstat-url]
+# bionode-ncbi [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Dependency Status][depstat-image]][depstat-url] [![DOI][doi-image]][doi-url]
+
 
 > Node.js module for working with the NCBI API (aka e-utils).
 
@@ -90,4 +91,7 @@ Check [ChooseALicense.com](http://choosealicense.com/licenses/mit) for details.
 [coveralls-image]: http://coveralls.io/repos/bionode/bionode-ncbi/badge.png
 [depstat-url]: http://david-dm.org/bionode/bionode-ncbi
 [depstat-image]: http://david-dm.org/bionode/bionode-ncbi.png
+[doi-url]: http://dx.doi.org/10.5281/zenodo.10610
+[doi-image]: https://zenodo.org/badge/3959/bionode/bionode-ncbi.png
+
 [![Bitdeli Badge](http://d2weczhvl823v0.cloudfront.net/bionode/bionode-ncbi/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
