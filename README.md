@@ -71,6 +71,9 @@ $ npm run build-docs
 ```
 Check the [issues](http://github.com/bionode/bionode-ncbi/issues) for ways to contribute.
 
+### Contributors
+Please see the file [contributors.md](contributors.md) for a list.
+
 Contacts
 --------
 Bruno Vieira <[mail@bmpvieira.com](mailto:mail@bmpvieira.com)> [@bmpvieira](//twitter.com/bmpvieira)

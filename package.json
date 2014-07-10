@@ -5,7 +5,7 @@
   "homepage": "http://github.com/bionode/bionode-ncbi",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bmpvieira/bionode-ncbi.git"
+    "url": "http://github.com/bionode/bionode-ncbi.git"
   },
   "author": {
     "name": "Bruno Vieira",
@@ -30,7 +30,8 @@
     "istanbul": "~0.2.4",
     "mocha": "~1.17.0",
     "mocha-lcov-reporter": "0.0.1",
-    "should": "~3.0.1"
+    "should": "~3.0.1",
+    "contributor": "~0.1.16"
   },
   "keywords": [
     "ncbi",
@@ -50,5 +51,21 @@
     "coveralls": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage",
     "build-docs": "docco ./lib/bionode-ncbi.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Bruno Vieira",
+      "email": "mail@bmpvieira.com",
+      "url": "https://github.com/bmpvieira",
+      "contributions": 10,
+      "hireable": false
+    },
+    {
+      "name": "Max Ogden",
+      "email": "max+ogden@maxogden.com",
+      "url": "https://github.com/maxogden",
+      "contributions": 1,
+      "hireable": false
+    }
+  ]
 }
