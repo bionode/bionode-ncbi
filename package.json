@@ -12,25 +12,25 @@
     "email": "mail@bmpvieira.com"
   },
   "dependencies": {
-    "JSONStream": "^0.8.3",
+    "JSONStream": "^0.8.4",
     "async": "^0.9.0",
     "dld": "0.0.2",
     "docco": "^0.6.3",
     "mkdirp": "^0.5.0",
     "nested-property": "0.0.2",
-    "request": "^2.36.0",
-    "through2": "^0.4.2",
+    "request": "^2.37.0",
+    "through2": "^0.5.1",
     "tool-stream": "0.0.1",
-    "debug": "^1.0.2",
-    "xml2js": "^0.4.3"
+    "debug": "^1.0.3",
+    "xml2js": "^0.4.4"
   },
   "devDependencies": {
-    "coveralls": "~2.6.1",
-    "docco": "~0.6.2",
-    "istanbul": "~0.2.4",
-    "mocha": "~1.17.0",
+    "coveralls": "~2.11.1",
+    "docco": "~0.6.3",
+    "istanbul": "~0.3.0",
+    "mocha": "~1.20.1",
     "mocha-lcov-reporter": "0.0.1",
-    "should": "~3.0.1",
+    "should": "~4.0.4",
     "contributor": "~0.1.16"
   },
   "keywords": [
