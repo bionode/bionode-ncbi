@@ -26,7 +26,7 @@
 <p>Node.js module for working with the NCBI API (aka e-utils) using Streams.</p>
 <p>doi: <a href="http://dx.doi.org/10.5281/zenodo.10610">10.5281/zenodo.10610</a>
 author: <a href="http://bmpvieira.com">Bruno Vieira</a>
-email: <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#x3a;&#109;&#x61;&#x69;&#108;&#64;&#x62;&#109;&#x70;&#118;&#x69;&#x65;&#105;&#x72;&#97;&#x2e;&#99;&#x6f;&#x6d;">&#109;&#x61;&#x69;&#108;&#64;&#x62;&#109;&#x70;&#118;&#x69;&#x65;&#105;&#x72;&#97;&#x2e;&#99;&#x6f;&#x6d;</a>
+email: <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#109;&#x61;&#105;&#108;&#x40;&#98;&#109;&#112;&#x76;&#x69;&#x65;&#105;&#114;&#97;&#46;&#99;&#x6f;&#109;">&#109;&#x61;&#105;&#108;&#x40;&#98;&#109;&#112;&#x76;&#x69;&#x65;&#105;&#114;&#97;&#46;&#99;&#x6f;&#109;</a>
 license: <a href="https://raw.githubusercontent.com/bionode/bionode-ncbi/master/LICENSE">MIT</a></p>
 </blockquote>
 <hr>
@@ -373,7 +373,7 @@ NCBI.prototype.urls = <span class="hljs-function"><span class="hljs-keyword">fun
     <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
     <span class="hljs-keyword">var</span> parseURL = {
       sra: sraURL,
-      assembly: assemblyURL,
+      assembly: assemblyURLFromEBI,
       gff: gffURL
     }
 
@@ -394,12 +394,53 @@ NCBI.prototype.urls = <span class="hljs-function"><span class="hljs-keyword">fun
         self.push({url: runURL, uid: obj.uid})
         cb()
       }
-    }
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>NCBI API started returning wrong FTP URLs
+See: <a href="https://medium.com/@bmpvieira/when-bioinformatics-apis-break-821ae9919492">https://medium.com/@bmpvieira/when-bioinformatics-apis-break-821ae9919492</a></p>
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">assemblyURL</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">var</span> rootURL = obj.meta.FtpSites.FtpPath._.replace(<span class="hljs-string">'ftp://'</span>, <span class="hljs-string">'http://'</span>)
-      <span class="hljs-keyword">var</span> assemblyURL = rootURL + <span class="hljs-string">'Primary_Assembly/unplaced_scaffolds/FASTA/unplaced.scaf.fa.gz'</span>
-      self.push({url: assemblyURL, uid: obj.uid})
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">assemblyURL</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">if</span> (obj.meta.FtpSites) {
+        <span class="hljs-keyword">var</span> ftpPath = obj.meta.FtpSites.FtpPath
+        <span class="hljs-keyword">var</span> ftpArray = <span class="hljs-built_in">Array</span>.isArray(ftpPath) ? ftpPath : [ ftpPath ]
+        ftpArray.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(ftp)</span> </span>{
+          <span class="hljs-keyword">var</span> assemblyURL = ftp._.replace(<span class="hljs-string">'ftp://'</span>, <span class="hljs-string">'http://'</span>) + <span class="hljs-string">'/Primary_Assembly/unplaced_scaffolds/FASTA/unplaced.scaf.fa.gz'</span>
+          self.push({url: assemblyURL, uid: obj.uid})
+        })
+      }
+      next()
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>HACK: Get assembly fasta URLs from EBI. Should be moved to bionode-ebi.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">assemblyURLFromEBI</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">if</span> (obj.wgs) {
+        <span class="hljs-keyword">var</span> accession = obj.wgs.slice(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>).toLowerCase()
+        <span class="hljs-keyword">var</span> assemblyURL = <span class="hljs-string">'http://ftp.ebi.ac.uk/pub/databases/fastafiles/embl_genomes/wgs/'</span> + accession + <span class="hljs-string">'.wgs.gz'</span>
+        self.push({url: assemblyURL, uid: obj.uid})
+      }
       next()
     }
 
