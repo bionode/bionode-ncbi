@@ -48,7 +48,7 @@ describe("Download", function() {
       file.on('data', function(d) { shasum.update(d) })
       file.on('end', function() {
         var sha1 = shasum.digest('hex');
-        sha1.should.eql('273876e05dea78b2fbafee3713ad2d88e991f97c')
+        sha1.should.eql('3f9fc7e9698596ca6ba8eb85fed1f2d7a1070995')
         cb()
       })
     })
