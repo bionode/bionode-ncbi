@@ -22,7 +22,8 @@
     "through2": "^0.5.1",
     "tool-stream": "0.0.1",
     "debug": "^1.0.3",
-    "xml2js": "^0.4.4"
+    "xml2js": "^0.4.4",
+    "concat-stream": "~1.4.6"
   },
   "devDependencies": {
     "coveralls": "~2.11.1",
