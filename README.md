@@ -5,11 +5,15 @@
   <br/>
   <a href="http://bionode.io/">bionode.io</a>
 </p>
-# bionode-ncbi [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Dependency Status][depstat-image]][depstat-url] [![DOI][doi-image]][doi-url]
-
-
+# bionode-ncbi
 > Node.js module for working with the NCBI API (aka e-utils).
 
+[![NPM version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Coveralls Status][coveralls-image]][coveralls-url]
+[![Dependency Status][depstat-image]][depstat-url]
+[![Gitter chat][gitter-image]][gitter-url]
+[![DOI][doi-image]][doi-url]
 
 Install
 -------
@@ -87,14 +91,16 @@ bionode-ncbi is licensed under the [MIT](https://raw.github.com/bionode/bionode-
 Check [ChooseALicense.com](http://choosealicense.com/licenses/mit) for details.
 
 [npm-url]: http://npmjs.org/package/bionode-ncbi
-[npm-image]: http://badge.fury.io/js/bionode-ncbi.png
-[travis-url]: http://travis-ci.org/bionode/bionode-ncbi
-[travis-image]: http://travis-ci.org/bionode/bionode-ncbi.png?branch=master
-[coveralls-url]: http://coveralls.io/r/bionode/bionode-ncbi
-[coveralls-image]: http://coveralls.io/repos/bionode/bionode-ncbi/badge.png
+[npm-image]: http://img.shields.io/npm/v/bionode-ncbi.svg?style=flat
+[travis-url]: http:////travis-ci.org/bionode/bionode-ncbi
+[travis-image]: http://img.shields.io/travis/bionode/bionode-ncbi.svg?style=flat
+[coveralls-url]: http:////coveralls.io/r/bionode/bionode-ncbi
+[coveralls-image]: http://img.shields.io/coveralls/bionode/bionode-ncbi.svg?style=flat
 [depstat-url]: http://david-dm.org/bionode/bionode-ncbi
-[depstat-image]: http://david-dm.org/bionode/bionode-ncbi.png
+[depstat-image]: http://img.shields.io/david/bionode/bionode-ncbi.svg?style=flat
+[gitter-image]: http://img.shields.io/badge/gitter-bionode/bionode--ncbi-brightgreen.svg?style=flat
+[gitter-url]: https://gitter.im/bionode/bionode-ncbi
 [doi-url]: http://dx.doi.org/10.5281/zenodo.10610
-[doi-image]: https://zenodo.org/badge/3959/bionode/bionode-ncbi.png
+[doi-image]: http://img.shields.io/badge/doi-10.5281/zenodo.10610-blue.svg?style=flat
 
 [![Bitdeli Badge](http://d2weczhvl823v0.cloudfront.net/bionode/bionode-ncbi/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
