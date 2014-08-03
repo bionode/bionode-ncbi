@@ -100,7 +100,7 @@ Check [ChooseALicense.com](http://choosealicense.com/licenses/mit) for details.
 [depstat-image]: http://img.shields.io/david/bionode/bionode-ncbi.svg?style=flat
 [gitter-image]: http://img.shields.io/badge/gitter-bionode/bionode--ncbi-brightgreen.svg?style=flat
 [gitter-url]: https://gitter.im/bionode/bionode-ncbi
-[doi-url]: http://dx.doi.org/10.5281/zenodo.10610
-[doi-image]: http://img.shields.io/badge/doi-10.5281/zenodo.10610-blue.svg?style=flat
+[doi-url]: http://dx.doi.org/10.5281/zenodo.11129
+[doi-image]: http://img.shields.io/badge/doi-10.5281/zenodo.11129-blue.svg?style=flat
 
 [![Bitdeli Badge](http://d2weczhvl823v0.cloudfront.net/bionode/bionode-ncbi/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
