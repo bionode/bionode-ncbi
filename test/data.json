@@ -32,12 +32,6 @@
         {
           "srcDB" : "sra",
           "srcUID" : "35533",
-          "destUID" : "5357",
-          "destDB" : "bioproject"
-        },
-        {
-          "srcDB" : "sra",
-          "srcUID" : "35533",
           "destUID" : "53577",
           "destDB" : "bioproject"
         }
