@@ -1,44 +1,39 @@
 var fs = require('fs')
 var crypto = require('crypto')
+var test = require('tape')
 
 var ncbi = require('../')
+
 var testData = require('./data')
 var guillardiaThetaSRAData = require('./guillardia-theta.sra')
-var should = require('should')
-
-require('mocha')
 
 
-describe("Download list", function() {
-  this.timeout(60000)
-  it("should take a database name (assembly) and search term (Guillardia theta), and list datasets URLs", function(done) {
-    ncbi.urls('assembly', 'Guillardia theta').on('data', function(data) {
-      data.should.eql(testData.assembly['guillardia-theta']['download-list'][0])
-      done()
+test('Download list', function(t) {
+  t.plan(2)
+
+    ncbi.urls('assembly', 'Guillardia theta')
+    .on('data', function(data) {
+      var msg = 'should take a database name (assembly) and search term (Guillardia theta), and list datasets URLs'
+      t.deepEqual(data, testData.assembly['guillardia-theta']['download-list'][0], msg)
     })
-  })
-  it("should take a database name (sra) and search term (Guillardia theta), and list datasets URLs", function(done) {
+
     var results = []
     ncbi.urls('sra', 'Guillardia theta')
-    .on('data', function(data) {
-      results.push(data)
-    })
+    .on('data', function(data) { results.push(data) })
     .on('end', function(data) {
-      results.should.eql(testData.sra['guillardia-theta']['download-list'])
-      done()
+      var msg = 'should take a database name (sra) and search term (Guillardia theta), and list datasets URLs'
+      t.deepEqual(results, testData.sra['guillardia-theta']['download-list'], msg)
     })
-  })
 })
 
-describe("Download", function() {
-  this.timeout(600000)
-  it("should take a database name and search term, and download datasets", function(done) {
-    download(done)
-  })
-  it("repeat same download to cover already downloaded branch", function(done) {
-    download(done)
-  })
-  function download(cb) {
+
+test('Download', function(t) {
+  t.plan(2)
+
+  testDownload('should take a database name and search term, and download datasets')
+  testDownload('repeat same download to cover already downloaded branch')
+  
+  function testDownload(msg) {
     var path
     ncbi.download('assembly', 'Guillardia theta')
     .on('data', function(data) { path = data })
@@ -48,54 +43,47 @@ describe("Download", function() {
       file.on('data', function(d) { shasum.update(d) })
       file.on('end', function() {
         var sha1 = shasum.digest('hex');
-        sha1.should.eql('3f9fc7e9698596ca6ba8eb85fed1f2d7a1070995')
-        cb()
+        t.equal(sha1, '3f9fc7e9698596ca6ba8eb85fed1f2d7a1070995', msg)
       })
     })
   }
 })
 
-describe("Search", function() {
-  this.timeout(60000)
-  it("should take a database name and search term, and return the data", function(done) {
-    ncbi.search('assembly', 'Guillardia theta')
-    .on('data', function (data) {
-      data.should.eql(testData.assembly['guillardia-theta'].search)
-      done()
-    })
+
+test('Search', function(t) {
+  t.plan(2)
+  
+  ncbi.search('assembly', 'Guillardia theta')
+  .on('data', function (data) {
+    var msg = 'should take a database name and search term, and return the data'
+    t.deepEqual(data, testData.assembly['guillardia-theta'].search, msg)
   })
-  it("same as previous but searching sra instead of assembly", function(done) {
-    var results = []
-    ncbi.search('sra', 'Guillardia theta')
-    .on('data', function(data) {
-      results.push(JSON.parse(JSON.stringify(data)))
-    })
-    .on('end', function() {
-      results.should.eql(guillardiaThetaSRAData)
-      done()
-    })
+  
+  var results = []
+  ncbi.search('sra', 'Guillardia theta')
+  .on('data', function(data) { results.push(data) })
+  .on('end', function() {
+    var msg = 'same as previous but searching sra instead of assembly'
+    t.deepEqual(results, guillardiaThetaSRAData, msg)
   })
 })
 
-describe("Link", function() {
-  this.timeout(60000)
-  it("should take names for source database, destination database and a NCBI UID, and return the link", function(done) {
-    var results = []
-    ncbi.link('sra', 'bioproject', '35533')
-    .on('data', function(data) {
-      results.push(JSON.parse(JSON.stringify(data)))
-    })
-    .on('end', function() {
-      results.should.eql(testData.link['sra-bioproject']['35533'])
-      done()
-    })
+
+test('Link', function(t) {
+  t.plan(2)
+
+  var results = []
+  ncbi.link('sra', 'bioproject', '35533')
+  .on('data', function(data) { results.push(data) })
+  .on('end', function() {
+    var msg = 'should take names for source database, destination database and a NCBI UID, and return the link'
+    t.deepEqual(results, testData.link['sra-bioproject']['35533'], msg)
   })
-  it("same as previous, but doing bioproject->assembly instead of sra->assembly to try get same assembly UID as Search", function(done) {
+
+  ncbi.link('bioproject', 'assembly', '53577')
+  .on('data', function(data) {
     var results = []
-    ncbi.link('bioproject', 'assembly', '53577')
-    .on('data', function(data) {
-      data.destUID.should.eql(testData.assembly['guillardia-theta'].search.uid)
-      done()
-    })
+    var msg = 'same as previous, but doing bioproject->assembly instead of sra->assembly to try get same assembly UID as Search'
+    t.deepEqual(data.destUID, testData.assembly['guillardia-theta'].search.uid, msg)
   })
 })
