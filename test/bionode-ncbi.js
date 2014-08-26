@@ -1,5 +1,6 @@
 var fs = require('fs')
 var crypto = require('crypto')
+var async = require('async')
 var test = require('tape')
 
 var ncbi = require('../')
@@ -14,7 +15,7 @@ test('Download list', function(t) {
     ncbi.urls('assembly', 'Guillardia theta')
     .on('data', function(data) {
       var msg = 'should take a database name (assembly) and search term (Guillardia theta), and list datasets URLs'
-      t.deepEqual(data, testData.assembly['guillardia-theta']['download-list'][0], msg)
+      t.deepEqual(data, testData.assembly['guillardia-theta'].urls, msg)
     })
 
     var results = []
@@ -22,7 +23,7 @@ test('Download list', function(t) {
     .on('data', function(data) { results.push(data) })
     .on('end', function(data) {
       var msg = 'should take a database name (sra) and search term (Guillardia theta), and list datasets URLs'
-      t.deepEqual(results, testData.sra['guillardia-theta']['download-list'], msg)
+      t.deepEqual(results, testData.sra['guillardia-theta'].urls, msg)
     })
 })
 
@@ -30,20 +31,26 @@ test('Download list', function(t) {
 test('Download', function(t) {
   t.plan(2)
 
-  testDownload('should take a database name and search term, and download datasets')
-  testDownload('repeat same download to cover already downloaded branch')
-  
-  function testDownload(msg) {
+  async.eachSeries(
+    [
+      'should take a database name and search term, and download datasets',
+      'repeat same download to cover already downloaded branch'
+    ],
+    testDownload
+  )
+
+  function testDownload(msg, cb) {
     var path
     ncbi.download('assembly', 'Guillardia theta')
-    .on('data', function(data) { path = data })
+    .on('data', function(data) { path = data.path })
     .on('end', function() {
       var file = fs.ReadStream(path)
       var shasum = crypto.createHash('sha1')
       file.on('data', function(d) { shasum.update(d) })
       file.on('end', function() {
         var sha1 = shasum.digest('hex');
-        t.equal(sha1, '3f9fc7e9698596ca6ba8eb85fed1f2d7a1070995', msg)
+        t.equal(sha1, 'a2dc7b3b0ae6f40d5205c4394c2fe8bc65d52bc2', msg)
+        cb()
       })
     })
   }
@@ -52,13 +59,13 @@ test('Download', function(t) {
 
 test('Search', function(t) {
   t.plan(2)
-  
+
   ncbi.search('assembly', 'Guillardia theta')
   .on('data', function (data) {
     var msg = 'should take a database name and search term, and return the data'
     t.deepEqual(data, testData.assembly['guillardia-theta'].search, msg)
   })
-  
+
   var results = []
   ncbi.search('sra', 'Guillardia theta')
   .on('data', function(data) { results.push(data) })
