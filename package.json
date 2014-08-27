@@ -14,6 +14,8 @@
   "dependencies": {
     "JSONStream": "^0.8.4",
     "async": "^0.9.0",
+    "browserify": "git://github.com/bmpvieira/node-browserify.git#working",
+    "browserify-fs": "^1.0.0",
     "cheerio": "^0.17.0",
     "concat-stream": "~1.4.6",
     "debug": "^1.0.3",
@@ -21,7 +23,6 @@
     "docco": "^0.6.3",
     "minimist": "^1.1.0",
     "mkdirp": "^0.5.0",
-    "nested-property": "0.0.2",
     "pumpify": "^1.3.2",
     "request": "^2.37.0",
     "through2": "^0.5.1",
@@ -33,8 +34,6 @@
     "coveralls": "~2.11.1",
     "docco": "~0.6.3",
     "istanbul": "~0.3.0",
-    "mocha": "~1.20.1",
-    "mocha-lcov-reporter": "0.0.1",
     "should": "~4.0.4",
     "tap-spec": "^0.2.1",
     "tape": "^2.14.0",
@@ -54,6 +53,7 @@
   },
   "scripts": {
     "test": "node test/*.js | tap-spec && rm -rf ./503988",
+    "test-browser": "browserify test/*.js -d | testling -x 'open -a \"Google Chrome\"' | tap-spec",
     "coverage": "istanbul cover test/bionode-ncbi.js --report lcovonly -- | tap-spec && rm -rf ./coverage",
     "coveralls": "istanbul cover test/bionode-ncbi.js --report lcovonly -- | tap-spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage",
     "build-docs": "docco ./lib/bionode-ncbi.js"
