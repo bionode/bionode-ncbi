@@ -58,7 +58,7 @@ test('Download', function(t) {
 
 
 test('Search', function(t) {
-  t.plan(2)
+  t.plan(3)
 
   ncbi.search('assembly', 'Guillardia theta')
   .on('data', function (data) {
@@ -66,12 +66,20 @@ test('Search', function(t) {
     t.deepEqual(data, testData.assembly['guillardia-theta'].search, msg)
   })
 
-  var results = []
+  var results1 = []
   ncbi.search('sra', 'Guillardia theta')
-  .on('data', function(data) { results.push(data) })
+  .on('data', function(data) { results1.push(data) })
   .on('end', function() {
     var msg = 'same as previous but searching sra instead of assembly'
-    t.deepEqual(results, guillardiaThetaSRAData, msg)
+    t.deepEqual(results1, guillardiaThetaSRAData, msg)
+  })
+
+  var results2 = []
+  ncbi.search({ db: 'sra', term: 'Guillardia theta', limit: 1 })
+  .on('data', function(data) { results2.push(data) })
+  .on('end', function() {
+    var msg = 'same as previous but with a limit of '
+    t.deepEqual(results2, [guillardiaThetaSRAData[11]], msg)
   })
 })
 
