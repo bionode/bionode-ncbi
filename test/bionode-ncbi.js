@@ -58,7 +58,7 @@ test('Download', function(t) {
 
 
 test('Search', function(t) {
-  t.plan(3)
+  t.plan(5)
 
   ncbi.search('assembly', 'Guillardia theta')
   .on('data', function (data) {
@@ -78,8 +78,28 @@ test('Search', function(t) {
   ncbi.search({ db: 'sra', term: 'Guillardia theta', limit: 1 })
   .on('data', function(data) { results2.push(data) })
   .on('end', function() {
-    var msg = 'same as previous but with a limit of '
+    var msg = 'same as previous but with a limit of 1'
     t.deepEqual(results2, [guillardiaThetaSRAData[11]], msg)
+  })
+
+  var start1 = Date.now()
+  ncbi.search({ db: 'sra', term: 'human', limit: 500, throughput: 250 })
+  .on('data', function(data) {})
+  .on('end', function() {
+    var msg = 'get 500 objects fast from sra using throughput of 250 per request'
+    var seconds = (Date.now() - start1) / 1000
+    var fast = seconds < 10
+    t.ok(fast, msg)
+  })
+
+  var start2 = Date.now()
+  ncbi.search({ db: 'sra', term: 'human', limit: 500, throughput: 25 })
+  .on('data', function(data) {})
+  .on('end', function() {
+    var msg = 'get 500 objects slowly from sra using throughput of 25 per request'
+    var seconds = (Date.now() - start2) / 1000
+    var slow = seconds > 10
+    t.ok(slow, msg)
   })
 })
 
