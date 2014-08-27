@@ -41,6 +41,7 @@ Please read the [documentation](http://rawgit.com/bionode/bionode-ncbi/master/do
 ### Command line examples
 ```sh
 $ bionode-ncbi search taxonomy solenopsis
+$ bionode-ncbi search sra human --limit 10 # or just -l
 $ bionode-ncbi download assembly solenopsis invicta
 $ bionode-ncbi urls sra solenopsis invicta
 $ bionode-ncbi link assembly bioproject 244018
@@ -102,5 +103,3 @@ Check [ChooseALicense.com](http://choosealicense.com/licenses/mit) for details.
 [gitter-url]: https://gitter.im/bionode/bionode-ncbi
 [doi-url]: http://dx.doi.org/10.5281/zenodo.11315
 [doi-image]: http://img.shields.io/badge/doi-10.5281/zenodo.11315-blue.svg?style=flat
-
-[![Bitdeli Badge](http://d2weczhvl823v0.cloudfront.net/bionode/bionode-ncbi/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
