@@ -38,3 +38,12 @@ if (Object.keys(argv).length > 1) {
 var ncbiStream = options ? ncbi[command](options) : ncbi[command](arg1, arg2, arg3)
 
 ncbiStream.pipe(JSONStream.stringify(false)).pipe(process.stdout)
+
+process.stdin.setEncoding('utf8');
+
+if (!process.stdin.isTTY) {
+  process.stdin.on('data', function(data) {
+    if (data.trim() === '') { return }
+    ncbiStream.write(data.trim())
+  })
+}
