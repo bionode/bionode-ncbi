@@ -14,8 +14,6 @@
   "dependencies": {
     "JSONStream": "^0.8.4",
     "async": "^0.9.0",
-    "browserify": "git://github.com/bmpvieira/node-browserify.git#working",
-    "browserify-fs": "^1.0.0",
     "cheerio": "^0.17.0",
     "concat-stream": "~1.4.6",
     "debug": "^1.0.3",
@@ -30,16 +28,21 @@
     "xml2js": "^0.4.4"
   },
   "devDependencies": {
+    "browserify": "^5.11.0",
     "contributor": "~0.1.16",
     "coveralls": "~2.11.1",
     "docco": "~0.6.3",
     "istanbul": "~0.3.0",
-    "should": "~4.0.4",
     "tap-spec": "^0.2.1",
     "tape": "^2.14.0",
-    "testling": "^1.7.0"
+    "testling": "^1.7.0",
+    "uglify-js": "^2.4.15"
   },
   "keywords": [
+    "bio",
+    "bionode",
+    "bioinformatics",
+    "biology",
     "ncbi",
     "api",
     "streams",
@@ -56,6 +59,7 @@
     "test-browser": "browserify test/*.js -d | testling -x 'open -a \"Google Chrome\"' | tap-spec",
     "coverage": "istanbul cover test/bionode-ncbi.js --report lcovonly -- | tap-spec && rm -rf ./coverage",
     "coveralls": "istanbul cover test/bionode-ncbi.js --report lcovonly -- | tap-spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage",
+    "build-browser": "browserify -r ./index.js:bionode-ncbi | uglifyjs > bionode-ncbi.min.js",
     "build-docs": "docco ./lib/bionode-ncbi.js"
   },
   "license": "MIT",
