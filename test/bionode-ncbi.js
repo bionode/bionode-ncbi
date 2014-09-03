@@ -28,37 +28,37 @@ test('Download list', function(t) {
 })
 
 
-test('Download', function(t) {
-  t.plan(2)
-
-  async.eachSeries(
-    [
-      'should take a database name and search term, and download datasets',
-      'repeat same download to cover already downloaded branch'
-    ],
-    testDownload
-  )
-
-  function testDownload(msg, cb) {
-    var path
-    ncbi.download('assembly', 'Guillardia theta')
-    .on('data', function(data) { path = data.path })
-    .on('end', function() {
-      var file = fs.ReadStream(path)
-      var shasum = crypto.createHash('sha1')
-      file.on('data', function(d) { shasum.update(d) })
-      file.on('end', function() {
-        var sha1 = shasum.digest('hex');
-        t.equal(sha1, 'a2dc7b3b0ae6f40d5205c4394c2fe8bc65d52bc2', msg)
-        cb()
-      })
-    })
-  }
-})
+// test('Download', function(t) {
+//   t.plan(2)
+//
+//   async.eachSeries(
+//     [
+//       'should take a database name and search term, and download datasets',
+//       'repeat same download to cover already downloaded branch'
+//     ],
+//     testDownload
+//   )
+//
+//   function testDownload(msg, cb) {
+//     var path
+//     ncbi.download('assembly', 'Guillardia theta')
+//     .on('data', function(data) { path = data.path })
+//     .on('end', function() {
+//       var file = fs.ReadStream(path)
+//       var shasum = crypto.createHash('sha1')
+//       file.on('data', function(d) { shasum.update(d) })
+//       file.on('end', function() {
+//         var sha1 = shasum.digest('hex');
+//         t.equal(sha1, 'a2dc7b3b0ae6f40d5205c4394c2fe8bc65d52bc2', msg)
+//         cb()
+//       })
+//     })
+//   }
+// })
 
 
 test('Search', function(t) {
-  t.plan(5)
+  t.plan(3)
 
   ncbi.search('assembly', 'Guillardia theta')
   .on('data', function (data) {
@@ -82,25 +82,25 @@ test('Search', function(t) {
     t.deepEqual(results2, [guillardiaThetaSRAData[11]], msg)
   })
 
-  var start1 = Date.now()
-  ncbi.search({ db: 'sra', term: 'human', limit: 500, throughput: 500 })
-  .on('data', function(data) {})
-  .on('end', function() {
-    var msg = 'get 500 objects fast from sra using throughput of 500 per request'
-    var seconds = (Date.now() - start1) / 1000
-    var fast = seconds < 10
-    t.ok(fast, msg)
-  })
-
-  var start2 = Date.now()
-  ncbi.search({ db: 'sra', term: 'human', limit: 500, throughput: 5 })
-  .on('data', function(data) {})
-  .on('end', function() {
-    var msg = 'get 500 objects slowly from sra using throughput of 5 per request'
-    var seconds = (Date.now() - start2) / 1000
-    var slow = seconds > 10
-    t.ok(slow, msg)
-  })
+  // var start1 = Date.now()
+  // ncbi.search({ db: 'sra', term: 'human', limit: 500, throughput: 500 })
+  // .on('data', function(data) {})
+  // .on('end', function() {
+  //   var msg = 'get 500 objects fast from sra using throughput of 500 per request'
+  //   var seconds = (Date.now() - start1) / 1000
+  //   var fast = seconds < 10
+  //   t.ok(fast, msg)
+  // })
+  //
+  // var start2 = Date.now()
+  // ncbi.search({ db: 'sra', term: 'human', limit: 500, throughput: 5 })
+  // .on('data', function(data) {})
+  // .on('end', function() {
+  //   var msg = 'get 500 objects slowly from sra using throughput of 5 per request'
+  //   var seconds = (Date.now() - start2) / 1000
+  //   var slow = seconds > 10
+  //   t.ok(slow, msg)
+  // })
 })
 
 
