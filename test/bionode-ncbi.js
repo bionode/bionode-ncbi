@@ -79,7 +79,12 @@ test('Search', function(t) {
   .on('data', function(data) { results2.push(data) })
   .on('end', function() {
     var msg = 'same as previous but with a limit of 1'
-    t.deepEqual(results2, [guillardiaThetaSRAData[11]], msg)
+    guillardiaThetaSRAData.forEach(findMatchAndTest)
+    function findMatchAndTest(sradata) {
+      if (sradata.uid === results2[0].uid) {
+        t.deepEqual(results2, [sradata], msg)
+      }
+    }
   })
 
   var start1 = Date.now()
