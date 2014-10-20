@@ -36,6 +36,7 @@
         "rs_projects":[
           "223305"
         ],
+        "assemblytype": "haploid",
         "biosampleaccn":"SAMN00116900",
         "biosampleid":"116900",
         "biosource":{
@@ -60,7 +61,7 @@
         "submissiondate":"2012/12/05 00:00",
         "lastupdatedate":"2014/04/22 00:00",
         "submitterorganization":"JGI",
-        "refseq_category":"representative-genome",
+        "refseq_category":"representative genome",
         "anomalouslist":[
 
         ],
@@ -173,7 +174,7 @@
           },
           "assembly-level":"2",
           "assembly-status":"Scaffold",
-          "representative-status":"representative-genome",
+          "representative-status":"representative genome",
           "submitter-organization":"JGI"
         }
       },
