@@ -1,7 +1,7 @@
 {
   "name": "bionode-ncbi",
   "description": "Node.js module for working with the NCBI API (aka e-utils) using Streams.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "http://github.com/bionode/bionode-ncbi",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "async": "^0.9.0",
     "cheerio": "^0.17.0",
     "concat-stream": "~1.4.6",
-    "debug": "^1.0.3",
+    "debug": "^2.1.0",
     "docco": "^0.6.3",
     "minimist": "^1.1.0",
     "mkdirp": "^0.5.0",
