@@ -15,6 +15,11 @@ var argv = minimist(process.argv.slice(2), minimistOptions)
 var command = argv._[0]
 var arg1 = argv._[1]
 var lastArg = argv._[argv._.length - 1]
+var wantsStdin = false
+if (lastArg === '-') {
+  wantsStdin = true
+  argv._.pop()
+}
 
 if (command === 'link') {
   var arg2 = argv._[2]
@@ -40,7 +45,7 @@ var ncbiStream = options ? ncbi[command](options) : ncbi[command](arg1, arg2, ar
 
 ncbiStream.pipe(JSONStream.stringify(false)).pipe(process.stdout)
 
-if (lastArg === '-') {
+if (wantsStdin) {
   process.stdin.setEncoding('utf8');
 
   process.stdin.on('data', function(data) {
