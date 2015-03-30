@@ -130,6 +130,6 @@ test('Link', function(t) {
   .on('data', function(data) {
     var results = []
     var msg = 'same as previous, but doing bioproject->assembly instead of sra->assembly to try get same assembly UID as Search'
-    t.deepEqual(data.destUID, testData.assembly['guillardia-theta'].search.uid, msg)
+    t.deepEqual(data.destUIDs[0], testData.assembly['guillardia-theta'].search.uid, msg)
   })
 })

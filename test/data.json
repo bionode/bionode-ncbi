@@ -236,7 +236,7 @@
         {
           "srcDB" : "sra",
           "srcUID" : "35533",
-          "destUID" : "53577",
+          "destUIDs" : ["53577"],
           "destDB" : "bioproject"
         }
       ]
@@ -246,7 +246,7 @@
         {
           "srcDB" : "bioproject",
           "srcUID" : "53577",
-          "destUID" : "503988",
+          "destUIDs" : ["503988"],
           "destDB" : "assembly"
         }
       ]
