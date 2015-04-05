@@ -8,12 +8,16 @@
 # bionode-ncbi
 > Node.js module for working with the NCBI API (aka e-utils).
 
+[![NPM](https://nodei.co/npm/bionode-ncbi.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/bionode-ncbi/)
+
 [![NPM version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Coveralls Status][coveralls-image]][coveralls-url]
 [![Dependency Status][depstat-image]][depstat-url]
+[![Standard style][js-standard-style-image]][js-standard-style-url]  
 [![Gitter chat][gitter-image]][gitter-url]
-[![DOI][doi-image]][doi-url]
+[![DOI][doi-image]][doi-url]  
+[![Stories in Ready at waffle.io][waffle-image]][waffle-url]
 
 Install
 -------
@@ -92,14 +96,18 @@ bionode-ncbi is licensed under the [MIT](https://raw.github.com/bionode/bionode-
 Check [ChooseALicense.com](http://choosealicense.com/licenses/mit) for details.
 
 [npm-url]: http://npmjs.org/package/bionode-ncbi
-[npm-image]: http://img.shields.io/npm/v/bionode-ncbi.svg?style=flat
+[npm-image]: http://img.shields.io/npm/v/bionode-ncbi.svg?style=flat-square
 [travis-url]: http:////travis-ci.org/bionode/bionode-ncbi
-[travis-image]: http://img.shields.io/travis/bionode/bionode-ncbi.svg?style=flat
+[travis-image]: http://img.shields.io/travis/bionode/bionode-ncbi.svg?style=flat-square
 [coveralls-url]: http:////coveralls.io/r/bionode/bionode-ncbi
-[coveralls-image]: http://img.shields.io/coveralls/bionode/bionode-ncbi.svg?style=flat
+[coveralls-image]: http://img.shields.io/coveralls/bionode/bionode-ncbi.svg?style=flat-square
 [depstat-url]: http://david-dm.org/bionode/bionode-ncbi
-[depstat-image]: http://img.shields.io/david/bionode/bionode-ncbi.svg?style=flat
-[gitter-image]: http://img.shields.io/badge/gitter-bionode/bionode--ncbi-brightgreen.svg?style=flat
+[depstat-image]: http://img.shields.io/david/bionode/bionode-ncbi.svg?style=flat-square
+[js-standard-style-url]: https://github.com/feross/standard
+[js-standard-style-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
+[gitter-image]: http://img.shields.io/badge/gitter-bionode/bionode--ncbi-brightgreen.svg?style=flat-square
 [gitter-url]: https://gitter.im/bionode/bionode-ncbi
+[waffle-image]: https://badge.waffle.io/bionode/bionode-ncbi.png?label=ready&title=issues%20ready
+[waffle-url]: https://waffle.io/bionode/bionode-ncbi
 [doi-url]: http://dx.doi.org/10.5281/zenodo.11315
-[doi-image]: http://img.shields.io/badge/doi-10.5281/zenodo.11315-blue.svg?style=flat
+[doi-image]: http://img.shields.io/badge/doi-10.5281/zenodo.11315-blue.svg?style=flat-square

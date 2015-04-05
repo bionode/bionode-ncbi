@@ -10,27 +10,25 @@ var ncbi = require('../')
 var testData = require('./data')
 var guillardiaThetaSRAData = require('./guillardia-theta.sra')
 
-
-test('Download list', function(t) {
+test('Download list', function (t) {
   t.plan(2)
 
-    ncbi.urls('assembly', 'Guillardia theta')
-    .on('data', function(data) {
-      var msg = 'should take a database name (assembly) and search term (Guillardia theta), and list datasets URLs'
-      t.deepEqual(data, testData.assembly['guillardia-theta'].urls, msg)
-    })
+  ncbi.urls('assembly', 'Guillardia theta')
+  .on('data', function (data) {
+    var msg = 'should take a database name (assembly) and search term (Guillardia theta), and list datasets URLs'
+    t.deepEqual(data, testData.assembly['guillardia-theta'].urls, msg)
+  })
 
-    var results = []
-    ncbi.urls('sra', 'Guillardia theta')
-    .on('data', function(data) { results.push(data) })
-    .on('end', function(data) {
-      var msg = 'should take a database name (sra) and search term (Guillardia theta), and list datasets URLs'
-      t.deepEqual(results, testData.sra['guillardia-theta'].urls, msg)
-    })
+  var results = []
+  ncbi.urls('sra', 'Guillardia theta')
+  .on('data', function (data) { results.push(data) })
+  .on('end', function (data) {
+    var msg = 'should take a database name (sra) and search term (Guillardia theta), and list datasets URLs'
+    t.deepEqual(results, testData.sra['guillardia-theta'].urls, msg)
+  })
 })
 
-
-test('Download', function(t) {
+test('Download', function (t) {
   t.plan(2)
 
   async.eachSeries(
@@ -41,20 +39,20 @@ test('Download', function(t) {
     testDownload
   )
 
-  function testDownload(msg, cb) {
+  function testDownload (msg, cb) {
     var path
     ncbi.download('assembly', 'Guillardia theta')
-      .pipe(through.obj(function(obj, enc, next) {
+      .pipe(through.obj(function (obj, enc, next) {
         path = obj.path
         debug('download progress', obj)
         next()
-      }, function(done) {
+      }, function (done) {
         done()
         var file = fs.ReadStream(path)
         var shasum = crypto.createHash('sha1')
-        file.on('data', function(d) { shasum.update(d) })
-        file.on('end', function() {
-          var sha1 = shasum.digest('hex');
+        file.on('data', function (d) { shasum.update(d) })
+        file.on('end', function () {
+          var sha1 = shasum.digest('hex')
           t.equal(sha1, 'a2dc7b3b0ae6f40d5205c4394c2fe8bc65d52bc2', msg)
           cb()
         })
@@ -62,8 +60,7 @@ test('Download', function(t) {
   }
 })
 
-
-test('Search', function(t) {
+test('Search', function (t) {
   t.plan(3)
 
   ncbi.search('assembly', 'Guillardia theta')
@@ -74,19 +71,19 @@ test('Search', function(t) {
 
   var results1 = []
   ncbi.search('sra', 'Guillardia theta')
-  .on('data', function(data) { results1.push(data) })
-  .on('end', function() {
+  .on('data', function (data) { results1.push(data) })
+  .on('end', function () {
     var msg = 'same as previous but searching sra instead of assembly'
     t.deepEqual(results1, guillardiaThetaSRAData, msg)
   })
 
   var results2 = []
   ncbi.search({ db: 'sra', term: 'Guillardia theta', limit: 1 })
-  .on('data', function(data) { results2.push(data) })
-  .on('end', function() {
+  .on('data', function (data) { results2.push(data) })
+  .on('end', function () {
     var msg = 'same as previous but with a limit of 1'
     guillardiaThetaSRAData.forEach(findMatchAndTest)
-    function findMatchAndTest(sradata) {
+    function findMatchAndTest (sradata) {
       if (sradata.uid === results2[0].uid) {
         t.deepEqual(results2, [sradata], msg)
       }
@@ -115,21 +112,19 @@ test('Search', function(t) {
   // })
 })
 
-
-test('Link', function(t) {
+test('Link', function (t) {
   t.plan(2)
 
   var results = []
   ncbi.link('sra', 'bioproject', '35533')
-  .on('data', function(data) { results.push(data) })
-  .on('end', function() {
+  .on('data', function (data) { results.push(data) })
+  .on('end', function () {
     var msg = 'should take names for source database, destination database and a NCBI UID, and return the link'
     t.deepEqual(results, testData.link['sra-bioproject']['35533'], msg)
   })
 
   ncbi.link('bioproject', 'assembly', '53577')
-  .on('data', function(data) {
-    var results = []
+  .on('data', function (data) {
     var msg = 'same as previous, but doing bioproject->assembly instead of sra->assembly to try get same assembly UID as Search'
     t.deepEqual(data.destUIDs[0], testData.assembly['guillardia-theta'].search.uid, msg)
   })

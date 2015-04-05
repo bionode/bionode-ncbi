@@ -23,6 +23,7 @@
     "pumpify": "^1.3.3",
     "request": "^2.55.0",
     "split": "^0.3.3",
+    "standard": "^3.3.2",
     "through2": "^0.6.3",
     "tool-stream": "0.2.1",
     "xml2js": "^0.4.6"
@@ -55,9 +56,9 @@
     "bionode-ncbi": "cli.js"
   },
   "scripts": {
-    "test": "node test/*.js | tap-spec && rm -rf ./503988",
+    "test": "standard && dependency-check . && node test/*.js | tap-spec && rm -rf ./503988",
     "test-browser": "browserify test/*.js -d | testling -x 'open -a \"Google Chrome\"' | tap-spec",
-    "coverage": "istanbul cover test/bionode-ncbi.js --report lcovonly -- | tap-spec && rm -rf ./coverage",
+    "coverage": "standard && dependency-check . && istanbul cover test/bionode-ncbi.js --report lcovonly -- | tap-spec && rm -rf ./coverage",
     "coveralls": "istanbul cover test/bionode-ncbi.js --report lcovonly -- | tap-spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage",
     "build-browser": "browserify -r ./index.js:bionode-ncbi | uglifyjs > bionode-ncbi.min.js",
     "build-docs": "docco ./lib/bionode-ncbi.js"

@@ -25,8 +25,7 @@ if (lastArg === '-') {
 if (command === 'link') {
   var arg2 = argv._[2]
   var arg3 = argv._[3]
-}
-else {
+} else {
   var arg2 = argv._.slice(2).join(' ')
   var arg3 = null
 }
@@ -41,15 +40,14 @@ if (Object.keys(argv).length > 1) {
   }
 }
 
-
 var ncbiStream = options ? ncbi[command](options) : ncbi[command](arg1, arg2, arg3)
 
 ncbiStream.pipe(JSONStream.stringify(false)).pipe(process.stdout)
 
 if (wantsStdin) {
-  process.stdin.setEncoding('utf8');
+  process.stdin.setEncoding('utf8')
 
-  process.stdin.pipe(split()).on('data', function(data) {
+  process.stdin.pipe(split()).on('data', function (data) {
     if (data.trim() === '') { return }
     ncbiStream.write(data.trim())
   })

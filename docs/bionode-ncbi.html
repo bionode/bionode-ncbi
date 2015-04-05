@@ -26,7 +26,7 @@
 <p>Node.js module for working with the NCBI API (aka e-utils) using Streams.</p>
 <p>doi: <a href="http://dx.doi.org/10.5281/zenodo.10610">10.5281/zenodo.10610</a>
 author: <a href="http://bmpvieira.com">Bruno Vieira</a>
-email: <a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x6d;&#x61;&#105;&#108;&#x40;&#x62;&#109;&#x70;&#118;&#x69;&#101;&#105;&#x72;&#x61;&#46;&#x63;&#111;&#109;">&#x6d;&#x61;&#105;&#108;&#x40;&#x62;&#109;&#x70;&#118;&#x69;&#101;&#105;&#x72;&#x61;&#46;&#x63;&#111;&#109;</a>
+email: <a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#109;&#x61;&#105;&#x6c;&#64;&#98;&#x6d;&#x70;&#118;&#x69;&#101;&#105;&#x72;&#x61;&#x2e;&#x63;&#111;&#109;">&#109;&#x61;&#105;&#x6c;&#64;&#98;&#x6d;&#x70;&#118;&#x69;&#101;&#105;&#x72;&#x61;&#x2e;&#x63;&#111;&#109;</a>
 license: <a href="https://raw.githubusercontent.com/bionode/bionode-ncbi/master/LICENSE">MIT</a></p>
 </blockquote>
 <hr>
@@ -54,21 +54,19 @@ $ bionode-ncbi search sra human --throughput <span class="hljs-number">250</span
 $ bionode-ncbi download assembly solenopsis invicta
 $ bionode-ncbi urls sra solenopsis invicta
 $ bionode-ncbi link assembly bioproject <span class="hljs-number">244018</span>
-$ bionode-ncbi search gds solenopsis | dat import --json
+$ bionode-ncbi search gds solenopsis | dat <span class="hljs-keyword">import</span> --json
 </code></pre>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-
 <span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)
 <span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>)
 <span class="hljs-keyword">var</span> mkdirp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mkdirp'</span>)
 <span class="hljs-keyword">var</span> async = <span class="hljs-built_in">require</span>(<span class="hljs-string">'async'</span>)
 <span class="hljs-keyword">var</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">'request'</span>)
 <span class="hljs-keyword">var</span> through = <span class="hljs-built_in">require</span>(<span class="hljs-string">'through2'</span>)
-<span class="hljs-keyword">var</span> JSONStream = <span class="hljs-built_in">require</span>(<span class="hljs-string">'JSONStream'</span>)
 <span class="hljs-keyword">var</span> xml2js = <span class="hljs-built_in">require</span>(<span class="hljs-string">'xml2js'</span>).parseString
-<span class="hljs-keyword">var</span> dld = <span class="hljs-built_in">require</span>(<span class="hljs-string">'dld'</span>)
+<span class="hljs-keyword">var</span> nugget = <span class="hljs-built_in">require</span>(<span class="hljs-string">'nugget'</span>)
 <span class="hljs-keyword">var</span> tool = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tool-stream'</span>)
 <span class="hljs-keyword">var</span> debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'bionode-ncbi'</span>)
 <span class="hljs-keyword">var</span> concat = <span class="hljs-built_in">require</span>(<span class="hljs-string">'concat-stream'</span>)
@@ -89,7 +87,7 @@ $ bionode-ncbi search gds solenopsis | dat import --json
   <span class="hljs-string">'assembly'</span>: [<span class="hljs-string">'meta'</span> ]
 }
 <span class="hljs-keyword">var</span> LASTSTREAM = {
-  <span class="hljs-string">'sra'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-string">'sra'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">return</span> pumpify.obj(
       tool.ensureIsArray(<span class="hljs-string">'runs.Run'</span>),
       tool.filterObjectsArray(<span class="hljs-string">'total_bases'</span>, <span class="hljs-string">''</span>, <span class="hljs-string">'runs.Run'</span>)
@@ -145,9 +143,9 @@ fs.createReadStream(<span class="hljs-string">'searchTerms.txt'</span>)
             </div>
             
             <div class="content"><div class='highlight'><pre>
-ncbi.search = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(db, term, cb)</span> </span>{
+ncbi.search = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(db, term, cb)</span> </span>{
   <span class="hljs-keyword">var</span> opts = <span class="hljs-keyword">typeof</span> db === <span class="hljs-string">'string'</span> ? { db: db, term: term } : db
-  <span class="hljs-keyword">var</span> cb = <span class="hljs-keyword">typeof</span> term === <span class="hljs-string">'function'</span> ? term : cb
+  cb = <span class="hljs-keyword">typeof</span> term === <span class="hljs-string">'function'</span> ? term : cb
 
   <span class="hljs-keyword">var</span> xmlProperties = XMLPROPERTIES[opts.db] || through.obj()
   <span class="hljs-keyword">var</span> lastStream = LASTSTREAM[opts.db] || through.obj
@@ -166,21 +164,19 @@ ncbi.search = <span class="hljs-function"><span class="hljs-keyword">function</s
   )
 
   <span class="hljs-keyword">if</span> (opts.term) { stream.write(opts.term); stream.end() }
-  <span class="hljs-keyword">if</span> (cb) { stream.pipe(concat(cb)) }
-  <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> stream }
+  <span class="hljs-keyword">if</span> (cb) { stream.pipe(concat(cb)) } <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> stream }
 }
 
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createAPISearchUrl</span><span class="hljs-params">(db, term)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createAPISearchUrl</span> <span class="hljs-params">(db, term)</span> </span>{
   <span class="hljs-keyword">var</span> stream = through.obj(transform)
   <span class="hljs-keyword">return</span> stream
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span><span class="hljs-params">(obj, enc, next)</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> <span class="hljs-params">(obj, enc, next)</span> </span>{
     <span class="hljs-keyword">var</span> query = [
       APIROOT + <span class="hljs-string">'esearch.fcgi?'</span>,
       DEFAULTS,
       <span class="hljs-string">'db='</span> + db,
-      <span class="hljs-string">'term='</span> + <span class="hljs-built_in">encodeURI</span>(obj),
+      <span class="hljs-string">'term='</span> + <span class="hljs-built_in">encodeURI</span>(obj.toString().replace(<span class="hljs-regexp">/['"]+/g</span>, <span class="hljs-string">''</span>)),
       <span class="hljs-string">'usehistory=y'</span>
     ].join(<span class="hljs-string">'&amp;'</span>)
     debug(<span class="hljs-string">'esearch request'</span>, query)
@@ -189,14 +185,14 @@ ncbi.search = <span class="hljs-function"><span class="hljs-keyword">function</s
   }
 }
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createAPIDataURL</span><span class="hljs-params">(opts)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createAPIDataURL</span> <span class="hljs-params">(opts)</span> </span>{
   <span class="hljs-keyword">var</span> counter = <span class="hljs-number">0</span>
   <span class="hljs-keyword">var</span> throughput = opts.throughput || RETURNMAX
   <span class="hljs-keyword">if</span> (opts.limit &lt; throughput) { throughput = opts.limit }
   <span class="hljs-keyword">var</span> stream = through.obj(transform)
   <span class="hljs-keyword">return</span> stream
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span><span class="hljs-params">(obj, enc, next)</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> <span class="hljs-params">(obj, enc, next)</span> </span>{
     <span class="hljs-keyword">var</span> count = opts.limit || obj.esearchresult.count
     <span class="hljs-keyword">var</span> numRequests = <span class="hljs-built_in">Math</span>.ceil(count / throughput)
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; numRequests; i++) {
@@ -218,11 +214,11 @@ ncbi.search = <span class="hljs-function"><span class="hljs-keyword">function</s
   }
 }
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filterEmptyResults</span><span class="hljs-params">()</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filterEmptyResults</span> <span class="hljs-params">()</span> </span>{
   <span class="hljs-keyword">var</span> stream = through.obj(transform)
   <span class="hljs-keyword">return</span> stream
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span><span class="hljs-params">(obj, enc, next)</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> <span class="hljs-params">(obj, enc, next)</span> </span>{
     <span class="hljs-keyword">if</span> (obj.esummaryresult &amp;&amp; obj.esummaryresult[<span class="hljs-number">0</span>] === <span class="hljs-string">'Empty result - nothing todo'</span>) {
       <span class="hljs-keyword">return</span> next()
     }
@@ -263,7 +259,7 @@ a objects stream with unique IDs linked to the passed source db unique ID.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-ncbi.link = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(srcDB, destDB, srcUID, cb)</span> </span>{
+ncbi.link = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(srcDB, destDB, srcUID, cb)</span> </span>{
   <span class="hljs-keyword">var</span> stream = pumpify.obj(
     createAPILinkURL(srcDB, destDB),
     requestStream(<span class="hljs-literal">true</span>),
@@ -271,15 +267,15 @@ ncbi.link = <span class="hljs-function"><span class="hljs-keyword">function</spa
   )
 
   <span class="hljs-keyword">if</span> (srcUID) { stream.write(srcUID); stream.end() }
-  <span class="hljs-keyword">if</span> (cb) { stream.pipe(concat(cb)) }
-  <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> stream }
+  <span class="hljs-keyword">if</span> (cb) { stream.on(<span class="hljs-string">'data'</span>, cb) } <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> stream }
 }
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createAPILinkURL</span><span class="hljs-params">(srcDB, destDB)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createAPILinkURL</span> <span class="hljs-params">(srcDB, destDB)</span> </span>{
   <span class="hljs-keyword">var</span> stream = through.obj(transform)
+  <span class="hljs-keyword">if</span> (srcDB === <span class="hljs-string">'tax'</span>) { srcDB = <span class="hljs-string">'taxonomy'</span> }
   <span class="hljs-keyword">return</span> stream
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span><span class="hljs-params">(obj, enc, next)</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> <span class="hljs-params">(obj, enc, next)</span> </span>{
     <span class="hljs-keyword">var</span> query = [
       APIROOT + <span class="hljs-string">'elink.fcgi?'</span>,
       <span class="hljs-string">'dbfrom='</span> + srcDB,
@@ -291,11 +287,11 @@ ncbi.link = <span class="hljs-function"><span class="hljs-keyword">function</spa
   }
 }
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createLinkObj</span><span class="hljs-params">()</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createLinkObj</span> <span class="hljs-params">()</span> </span>{
   <span class="hljs-keyword">var</span> stream = through.obj(transform)
   <span class="hljs-keyword">return</span> stream
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span><span class="hljs-params">(obj, enc, next)</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> <span class="hljs-params">(obj, enc, next)</span> </span>{
     <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
     <span class="hljs-keyword">var</span> query = URL.parse(obj.url, <span class="hljs-literal">true</span>).query
     <span class="hljs-keyword">var</span> result = {
@@ -303,19 +299,22 @@ ncbi.link = <span class="hljs-function"><span class="hljs-keyword">function</spa
       destDB: query.db,
       srcUID: query.id
     }
-    xml2js(obj.body, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, data)</span> </span>{
-      <span class="hljs-keyword">if</span> (err) { self.emit(<span class="hljs-string">'error'</span>, err) }
-      <span class="hljs-keyword">if</span> (data.eLinkResult.LinkSet[<span class="hljs-number">0</span>].LinkSetDb) {
-        data.eLinkResult.LinkSet[<span class="hljs-number">0</span>].LinkSetDb.forEach(getMatch)
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMatch</span><span class="hljs-params">(link)</span> </span>{
-          <span class="hljs-keyword">if</span> (link.LinkName[<span class="hljs-number">0</span>] === query.dbfrom + <span class="hljs-string">'_'</span> + query.db) {
-            result.destUID = link.Link[<span class="hljs-number">0</span>].Id[<span class="hljs-number">0</span>]
-            self.push(result)
-          }
-        }
-      }
+    xml2js(obj.body, gotParsed)
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotParsed</span> <span class="hljs-params">(err, data)</span> </span>{
+      <span class="hljs-keyword">if</span> (err) { self.emit(<span class="hljs-string">'error'</span>, err); <span class="hljs-keyword">return</span> next() }
+      <span class="hljs-keyword">if</span> (!data.eLinkResult.LinkSet[<span class="hljs-number">0</span>].LinkSetDb) { <span class="hljs-keyword">return</span> next() }
+      data.eLinkResult.LinkSet[<span class="hljs-number">0</span>].LinkSetDb.forEach(getMatch)
+      self.push(result)
       next()
-    })
+    }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMatch</span> <span class="hljs-params">(link)</span> </span>{
+      <span class="hljs-keyword">var</span> linkName = query.dbfrom + <span class="hljs-string">'_'</span> + query.db
+      <span class="hljs-keyword">if</span> (link.LinkName[<span class="hljs-number">0</span>] !== linkName) { <span class="hljs-keyword">return</span> }
+      <span class="hljs-keyword">var</span> destUIDs = []
+      link.Link.forEach(getLink)
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLink</span> <span class="hljs-params">(link)</span> </span>{ destUIDs.push(link.Id[<span class="hljs-number">0</span>]) }
+      result.destUIDs = destUIDs
+    }
   }
 }</pre></div></div>
             
@@ -327,6 +326,48 @@ ncbi.link = <span class="hljs-function"><span class="hljs-keyword">function</spa
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <h2 id="property-link-plink-">Property link (Plink)</h2>
+<p>Similar to Link but taked the srcID from a property of the Streamed object
+and attached the result to a property with the name of the destination DB.</p>
+<pre><code>ncbi.search(<span class="hljs-string">'genome'</span>, <span class="hljs-string">'arthropoda'</span>)
+.pipe(ncbi.expand(<span class="hljs-string">'tax'</span>))
+.pipe(ncbi.plink(<span class="hljs-string">'tax'</span>, <span class="hljs-string">'sra'</span>)
+</code></pre>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+ncbi.plink = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(property, destDB)</span> </span>{
+  <span class="hljs-keyword">var</span> srcDB = property.split(<span class="hljs-string">'.'</span>).pop()
+  <span class="hljs-keyword">var</span> destProperty = destDB + <span class="hljs-string">'id'</span>
+  <span class="hljs-keyword">var</span> stream = through.obj(transform)
+  <span class="hljs-keyword">return</span> stream
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> <span class="hljs-params">(obj, enc, next)</span> </span>{
+    <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
+    <span class="hljs-keyword">var</span> id = tool.getValue(obj, property + <span class="hljs-string">'id'</span>)
+    <span class="hljs-keyword">if</span> (!id) {
+      self.push(obj)
+      <span class="hljs-keyword">return</span> next()
+    }
+    <span class="hljs-keyword">if</span> (!obj[destProperty]) { obj[destProperty] = [] }
+    ncbi.link(srcDB, destDB, id, gotData)
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotData</span> <span class="hljs-params">(data)</span> </span>{
+      <span class="hljs-keyword">if</span> (data.destUIDs) { obj[destProperty] = data.destUIDs }
+      self.push(obj)
+      next()
+    }
+  }
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <h2 id="download">Download</h2>
 <p>Takes a NCBI database string and a optional search term and downloads the datasets/sequence files.
@@ -346,80 +387,70 @@ The name of the folder where the file is saved corresponds to the UID from NCBI.
             </div>
             
             <div class="content"><div class='highlight'><pre>
-ncbi.download = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(db, term, cb)</span> </span>{
+ncbi.download = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(db, term, cb)</span> </span>{
   <span class="hljs-keyword">var</span> stream = pumpify.obj(
     ncbi.urls(db),
     download(db)
   )
   <span class="hljs-keyword">if</span> (term) { stream.write(term); stream.end() }
-  <span class="hljs-keyword">if</span> (cb) { stream.pipe(concat(cb)) }
-  <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> stream }
+  <span class="hljs-keyword">if</span> (cb) { stream.pipe(concat(cb)) } <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> stream }
 }
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">download</span><span class="hljs-params">(db)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">download</span> <span class="hljs-params">(db)</span> </span>{
   <span class="hljs-keyword">var</span> stream = through.obj(transform)
   <span class="hljs-keyword">return</span> stream
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span><span class="hljs-params">(obj, enc, next)</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> <span class="hljs-params">(obj, enc, next)</span> </span>{
     <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
-    <span class="hljs-keyword">var</span> prevTime = <span class="hljs-built_in">Date</span>.now()
-    <span class="hljs-keyword">var</span> currTime
-    <span class="hljs-keyword">var</span> chunkSizeMB = <span class="hljs-number">1</span>
-    <span class="hljs-keyword">var</span> chunkSize = chunkSizeMB * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span> <span class="hljs-comment">//bytes</span>
     <span class="hljs-keyword">var</span> folder = obj.uid + <span class="hljs-string">'/'</span>
 
-    <span class="hljs-keyword">var</span> fileName
-    <span class="hljs-keyword">var</span> url = db === <span class="hljs-string">'sra'</span> ? obj.url : obj.genomic.fna
+    <span class="hljs-keyword">var</span> extractFiles = {
+      <span class="hljs-string">'sra'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> obj.url },
+      <span class="hljs-string">'gff'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> obj.genomic.gff },
+      <span class="hljs-string">'gbff'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> obj.genomic.gbff },
+      <span class="hljs-string">'gpff'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> obj.protein.gpff },
+      <span class="hljs-string">'assembly'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> obj.genomic.fna },
+      <span class="hljs-string">'fasta'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> obj.genomic.fna },
+      <span class="hljs-string">'fna'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> obj.genomic.fna },
+      <span class="hljs-string">'faa'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> obj.protein.faa },
+      <span class="hljs-string">'repeats'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> obj.rm.out },
+      <span class="hljs-string">'md5'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> obj.md5checksums.txt }
+    }
+    <span class="hljs-keyword">var</span> url = extractFiles[db]()
 
     <span class="hljs-keyword">var</span> path = folder + url.replace(<span class="hljs-regexp">/.*\//</span>, <span class="hljs-string">''</span>)
 
     <span class="hljs-keyword">var</span> log = {
+      uid: obj.uid,
       url: url,
-      path: path,
+      path: path
     }
 
-    mkdirp(obj.uid, {mode: <span class="hljs-number">0755</span>}, gotDir)
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotDir</span><span class="hljs-params">(err)</span> </span>{
+    mkdirp(obj.uid, {mode: <span class="hljs-string">'0755'</span>}, gotDir)
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotDir</span> <span class="hljs-params">(err)</span> </span>{
       <span class="hljs-keyword">if</span> (err) { self.emit(<span class="hljs-string">'error'</span>, err) }
-      fs.exists(path, gotExists)
-      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotExists</span><span class="hljs-params">(exists)</span> </span>{
-        <span class="hljs-keyword">if</span> (!exists) {
-          debug(<span class="hljs-string">'downloading'</span>, obj.url)
-          dld(PROXY + obj.genomic.fna, folder, chunkSize)
-          .on(<span class="hljs-string">'data'</span>, logging)
-          .on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
-            log.status = <span class="hljs-string">'completed'</span>
-            log.speed = <span class="hljs-string">'NA'</span>
-            self.push(log)
-            next()
-          })
-          .on(<span class="hljs-string">'error'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err)</span> </span>{ self.emit(<span class="hljs-string">'error'</span>, err) })
-        }
-        <span class="hljs-keyword">else</span> {
+      debug(<span class="hljs-string">'downloading'</span>, url)
+      <span class="hljs-keyword">var</span> options = { dir: folder, resume: <span class="hljs-literal">true</span> }
+      <span class="hljs-keyword">var</span> dld = nugget(PROXY + url, options, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err)</span> </span>{
+        <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> self.destroy(err)
+        fs.stat(path, gotStat)
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotStat</span> <span class="hljs-params">(err, stat)</span> </span>{
+          <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> self.destroy(err)
           log.status = <span class="hljs-string">'completed'</span>
           log.speed = <span class="hljs-string">'NA'</span>
-          fs.stat(path, gotStat)
-          <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotStat</span><span class="hljs-params">(err, stat)</span> </span>{
-            <span class="hljs-keyword">if</span> (err) { self.emit(<span class="hljs-string">'error'</span>, err) }
-            log.size = <span class="hljs-built_in">Math</span>.round(stat.size / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span>) + <span class="hljs-string">' MB'</span>
-            self.push(log)
-            next()
-          }
+          log.size = <span class="hljs-built_in">Math</span>.round(stat.size / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span>) + <span class="hljs-string">' MB'</span>
+          self.push(log)
+          next()
         }
-      }
+      })
+      dld.on(<span class="hljs-string">'progress'</span>, logging)
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logging</span><span class="hljs-params">(position, size)</span> </span>{
-      <span class="hljs-keyword">var</span> progress = (position * <span class="hljs-number">100</span> / size).toFixed(<span class="hljs-number">2</span>) + <span class="hljs-string">' %'</span>
-      <span class="hljs-keyword">var</span> sizeMB = <span class="hljs-built_in">Math</span>.round(size / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span>) + <span class="hljs-string">' MB'</span>
-      currTime = <span class="hljs-built_in">Date</span>.now()
-      <span class="hljs-keyword">var</span> diffTimeSec = (currTime - prevTime) / <span class="hljs-number">1000</span>
-      prevTime = currTime
-      <span class="hljs-keyword">var</span> speed =  (chunkSizeMB / diffTimeSec).toFixed(<span class="hljs-number">2</span>) + <span class="hljs-string">' MB/s'</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logging</span> <span class="hljs-params">(data)</span> </span>{
       log.status = <span class="hljs-string">'downloading'</span>
-      log.total = sizeMB
-      log.progress = progress
-      log.speed = speed
+      log.total = data.transferred
+      log.progress = data.percentage
+      log.speed = data.speed
       self.push(log)
     }
   }
@@ -428,11 +459,11 @@ ncbi.download = <span class="hljs-function"><span class="hljs-keyword">function<
         </li>
         
         
-        <li id="section-6">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <h2 id="urls">URLs</h2>
 <p>Takes a NCBI database string and a optional search term and returns as stream of dataset/sequence files URLs.
@@ -447,110 +478,95 @@ The value of the uid property corresponds to the UID from NCBI.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-ncbi.urls = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(db, term, cb)</span> </span>{
-  <span class="hljs-keyword">var</span> searchdb = db === <span class="hljs-string">'gff'</span> ? <span class="hljs-string">'genome'</span> : db
+ncbi.urls = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(db, term, cb)</span> </span>{
+  <span class="hljs-keyword">var</span> opts = <span class="hljs-keyword">typeof</span> db === <span class="hljs-string">'string'</span> ? { db: db } : db
+  cb = <span class="hljs-keyword">typeof</span> term === <span class="hljs-string">'function'</span> ? term : cb
+  <span class="hljs-keyword">var</span> extractFiles = [<span class="hljs-string">'gff'</span>, <span class="hljs-string">'gpff'</span>, <span class="hljs-string">'fasta'</span>, <span class="hljs-string">'fna'</span>, <span class="hljs-string">'faa'</span>, <span class="hljs-string">'repeats'</span>]
+  <span class="hljs-keyword">if</span> (extractFiles.indexOf(db) !== -<span class="hljs-number">1</span>) { opts.db = <span class="hljs-string">'assembly'</span> }
+
   <span class="hljs-keyword">var</span> stream = pumpify.obj(
-    ncbi.search(searchdb),
-    createFTPURL(db)
+    ncbi.search(opts),
+    createFTPURL(opts.db)
   )
   <span class="hljs-keyword">if</span> (term) { stream.write(term); stream.end() }
-  <span class="hljs-keyword">if</span> (cb) { stream.pipe(concat(cb)) }
-  <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> stream }
+  <span class="hljs-keyword">if</span> (cb) { stream.pipe(concat(cb)) } <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> stream }
 }
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createFTPURL</span><span class="hljs-params">(db)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createFTPURL</span> <span class="hljs-params">(db)</span> </span>{
   <span class="hljs-keyword">var</span> stream = through.obj(transform)
   <span class="hljs-keyword">return</span> stream
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span><span class="hljs-params">(obj, enc, next)</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> <span class="hljs-params">(obj, enc, next)</span> </span>{
     <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
     <span class="hljs-keyword">var</span> parseURL = {
       sra: sraURL,
-      assembly: assemblyURL,
-      gff: gffURL
+      assembly: assemblyURL
     }
 
     parseURL[db]()
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sraURL</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sraURL</span> <span class="hljs-params">()</span> </span>{
       <span class="hljs-keyword">var</span> runs = obj.runs.Run
       async.eachSeries(runs, printSRAURL, next)
-      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printSRAURL</span><span class="hljs-params">(run, cb)</span> </span>{
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printSRAURL</span> <span class="hljs-params">(run, cb)</span> </span>{
         <span class="hljs-keyword">var</span> acc = run.acc
         <span class="hljs-keyword">var</span> runURL = [
           <span class="hljs-string">'http://ftp.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/'</span>,
-          acc.slice(<span class="hljs-number">0</span>,<span class="hljs-number">3</span>) + <span class="hljs-string">'/'</span>,
-          acc.slice(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>) + <span class="hljs-string">'/'</span>,
+          acc.slice(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>) + <span class="hljs-string">'/'</span>,
+          acc.slice(<span class="hljs-number">0</span>, <span class="hljs-number">6</span>) + <span class="hljs-string">'/'</span>,
           acc + <span class="hljs-string">'/'</span>,
-          acc + <span class="hljs-string">'.sra'</span>,
+          acc + <span class="hljs-string">'.sra'</span>
         ].join(<span class="hljs-string">''</span>)
         self.push({url: runURL, uid: obj.uid})
         cb()
       }
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">assemblyURL</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">assemblyURL</span> <span class="hljs-params">()</span> </span>{
       <span class="hljs-keyword">if</span> (obj.meta.FtpSites) {
         <span class="hljs-keyword">var</span> ftpPath = obj.meta.FtpSites.FtpPath
         <span class="hljs-keyword">var</span> ftpArray = <span class="hljs-built_in">Array</span>.isArray(ftpPath) ? ftpPath : [ ftpPath ]
         <span class="hljs-keyword">var</span> httpRoot = ftpArray[<span class="hljs-number">0</span>]._.replace(<span class="hljs-string">'ftp://'</span>, <span class="hljs-string">'http://'</span>) <span class="hljs-comment">// NCBI seems to return GenBank and RefSeq accessions for the same thing. We only need one.</span>
         request({ uri: PROXY + httpRoot, withCredentials: <span class="hljs-literal">false</span> }, gotFTPDir)
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotFTPDir</span><span class="hljs-params">(err, res, body)</span> </span>{
-          <span class="hljs-keyword">if</span> (err) { self.emit(<span class="hljs-string">'error'</span>, err) }
-          <span class="hljs-keyword">if</span> (!res || res.statusCode !== <span class="hljs-number">200</span>) { self.emit(<span class="hljs-string">'err'</span>, res) }
-          <span class="hljs-keyword">if</span> (!body) { <span class="hljs-keyword">return</span> next() }
-          $ = cheerio.load(body)
+      } <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> next() }
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotFTPDir</span> <span class="hljs-params">(err, res, body)</span> </span>{
+        <span class="hljs-keyword">if</span> (err) { self.emit(<span class="hljs-string">'error'</span>, err) }
+        <span class="hljs-keyword">if</span> (!res || res.statusCode !== <span class="hljs-number">200</span>) { self.emit(<span class="hljs-string">'err'</span>, res) }
+        <span class="hljs-keyword">if</span> (!body) { <span class="hljs-keyword">return</span> next() }
+        <span class="hljs-keyword">var</span> $ = cheerio.load(body)
 
-          <span class="hljs-keyword">var</span> urls = { uid: obj.uid }
+        <span class="hljs-keyword">var</span> urls = { uid: obj.uid }
 
-          $(<span class="hljs-string">'a'</span>).map(attachToResult)
-          <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attachToResult</span><span class="hljs-params">(i, a)</span> </span>{
-            <span class="hljs-keyword">var</span> href = a.attribs.href
-            <span class="hljs-keyword">var</span> base = path.basename(href)
-            <span class="hljs-keyword">var</span> fileNameProperties = base.replace(<span class="hljs-regexp">/.*\//</span>, <span class="hljs-string">''</span>).split(<span class="hljs-string">'_'</span>)
-            <span class="hljs-keyword">var</span> fileNameExtensions = fileNameProperties[fileNameProperties.length-<span class="hljs-number">1</span>].split(<span class="hljs-string">'.'</span>)
-            <span class="hljs-keyword">var</span> fileType = fileNameExtensions[<span class="hljs-number">0</span>]
-            <span class="hljs-keyword">var</span> fileFormat = fileNameExtensions[<span class="hljs-number">1</span>] || <span class="hljs-string">'dir'</span>
-            <span class="hljs-keyword">if</span> (!urls[fileType]) { urls[fileType] = {} }
-            urls[fileType][fileFormat] = httpRoot + <span class="hljs-string">'/'</span> + href
-          }
-          self.push(urls)
-          next()
+        $(<span class="hljs-string">'a'</span>).map(attachToResult)
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attachToResult</span> <span class="hljs-params">(i, a)</span> </span>{
+          <span class="hljs-keyword">var</span> href = a.attribs.href
+          <span class="hljs-keyword">var</span> base = path.basename(href)
+          <span class="hljs-keyword">var</span> fileNameProperties = base.replace(<span class="hljs-regexp">/.*\//</span>, <span class="hljs-string">''</span>).split(<span class="hljs-string">'_'</span>)
+          <span class="hljs-keyword">var</span> fileNameExtensions = fileNameProperties[fileNameProperties.length - <span class="hljs-number">1</span>].split(<span class="hljs-string">'.'</span>)
+          <span class="hljs-keyword">var</span> fileType = fileNameExtensions[<span class="hljs-number">0</span>]
+          <span class="hljs-keyword">var</span> fileFormat = fileNameExtensions[<span class="hljs-number">1</span>] || <span class="hljs-string">'dir'</span>
+          <span class="hljs-keyword">if</span> (!urls[fileType]) { urls[fileType] = {} }
+          urls[fileType][fileFormat] = httpRoot + <span class="hljs-string">'/'</span> + href
         }
-      }
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gffURL</span><span class="hljs-params">()</span> </span>{
-      ncbi.search(<span class="hljs-string">'assembly'</span>, obj.assembly_name).on(<span class="hljs-string">'data'</span>, createURL)
-      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createURL</span><span class="hljs-params">(obj)</span> </span>{
-        debug(<span class="hljs-string">'gffURL result'</span>, obj)
-        <span class="hljs-keyword">var</span> gffURL
-        <span class="hljs-keyword">var</span> ftpPath = obj.meta.FtpSites.FtpPath
-        <span class="hljs-keyword">var</span> ftpArray = <span class="hljs-built_in">Array</span>.isArray(ftpPath) ? ftpPath : [ ftpPath ]
-        ftpArray.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(ftp)</span> </span>{
-          <span class="hljs-keyword">if</span> (ftp.type === <span class="hljs-string">'RefSeq'</span>) {
-            gffURL = ftp._.replace(<span class="hljs-string">'ftp://'</span>, <span class="hljs-string">'http://'</span>) + <span class="hljs-string">'GFF/ref_'</span> + obj.assemblyname + <span class="hljs-string">'_top_level.gff3.gz'</span>
-          }
-        })
-        <span class="hljs-keyword">if</span> (gffURL) { self.push({url: gffURL, uid: obj.uid}) }
+        self.push(urls)
+        next()
       }
     }
   }
 }
 
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">requestStream</span><span class="hljs-params">(returnURL)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">requestStream</span> <span class="hljs-params">(returnURL)</span> </span>{
   <span class="hljs-keyword">var</span> stream = through.obj(transform)
   <span class="hljs-keyword">return</span> stream
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span><span class="hljs-params">(obj, enc, next)</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> <span class="hljs-params">(obj, enc, next)</span> </span>{
     <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
     get()
     self.tries = <span class="hljs-number">1</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span> <span class="hljs-params">()</span> </span>{
       <span class="hljs-keyword">if</span> (self.tries &gt; <span class="hljs-number">20</span>) { <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'tries'</span> + self.tries + obj) }
       request({ uri: obj, json: <span class="hljs-literal">true</span>, timeout: <span class="hljs-number">5000</span>, withCredentials: <span class="hljs-literal">false</span> }, gotData)
-      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotData</span><span class="hljs-params">(err, res, body)</span> </span>{
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotData</span> <span class="hljs-params">(err, res, body)</span> </span>{
         <span class="hljs-keyword">if</span> (err || !res) { self.tries++; <span class="hljs-keyword">return</span> get() }
         debug(<span class="hljs-string">'request response'</span>, res.statusCode)
         debug(<span class="hljs-string">'request results'</span>, body)
@@ -561,6 +577,78 @@ ncbi.urls = <span class="hljs-function"><span class="hljs-keyword">function</spa
         self.push(result)
         next()
       }
+    }
+  }
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <h2 id="expand">Expand</h2>
+<p>Takes a property (e.g., biosample) and optional destination property
+(e.g., sample) and looks for a field named property+id (biosampleid)
+in the Streamed object. Then it will do a ncbi.search for that id and save
+the result under Streamed object.property.</p>
+<pre><code>ncbi.search(<span class="hljs-string">'genome'</span>, <span class="hljs-string">'arthropoda'</span>).pipe(ncbi.expand(<span class="hljs-string">'assembly'</span>))
+</code></pre>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+ncbi.expand = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(property, destProperty)</span> </span>{
+  destProperty = destProperty || property
+  <span class="hljs-keyword">var</span> db = property.split(<span class="hljs-string">'.'</span>).pop()
+  <span class="hljs-keyword">if</span> (db === <span class="hljs-string">'tax'</span>) { db = <span class="hljs-string">'taxonomy'</span> }
+
+  <span class="hljs-keyword">var</span> stream = through.obj(transform)
+  <span class="hljs-keyword">return</span> stream
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> <span class="hljs-params">(obj, enc, next)</span> </span>{
+    <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
+    <span class="hljs-keyword">var</span> ids = tool.getValue(obj, property + <span class="hljs-string">'id'</span>)
+    <span class="hljs-keyword">if</span> (!ids) {
+      self.push(obj)
+      <span class="hljs-keyword">return</span> next()
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Taxonomy doesn’t work just with ID number</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (db === <span class="hljs-string">'taxonomy'</span>) { ids = ids + <span class="hljs-string">'[uid]'</span> }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(ids)) {
+      async.map(ids, search, gotData)
+    } <span class="hljs-keyword">else</span> {
+      search(ids, gotData)
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">search</span> <span class="hljs-params">(term, cb)</span> </span>{
+      <span class="hljs-keyword">var</span> stream = ncbi.search(db)
+      stream.write(term)
+      stream.on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{ cb(<span class="hljs-literal">null</span>, data) })
+      stream.on(<span class="hljs-string">'end'</span>, next)
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotData</span> <span class="hljs-params">(err, data)</span> </span>{
+      <span class="hljs-keyword">if</span> (err) { <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(err) }
+      obj[destProperty] = data
+      self.push(obj)
+      next()
     }
   }
 }</pre></div></div>
