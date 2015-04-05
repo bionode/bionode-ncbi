@@ -2,8 +2,6 @@ var fs = require('fs')
 var crypto = require('crypto')
 var async = require('async')
 var test = require('tape')
-var through = require('through2')
-var debug = require('debug')('bionode-ncbi-tests')
 
 var ncbi = require('../')
 
@@ -42,21 +40,18 @@ test('Download', function (t) {
   function testDownload (msg, cb) {
     var path
     ncbi.download('assembly', 'Guillardia theta')
-      .pipe(through.obj(function (obj, enc, next) {
-        path = obj.path
-        debug('download progress', obj)
-        next()
-      }, function (done) {
-        done()
-        var file = fs.ReadStream(path)
-        var shasum = crypto.createHash('sha1')
-        file.on('data', function (d) { shasum.update(d) })
-        file.on('end', function () {
-          var sha1 = shasum.digest('hex')
-          t.equal(sha1, 'a2dc7b3b0ae6f40d5205c4394c2fe8bc65d52bc2', msg)
-          cb()
-        })
-      }))
+    .on('data', function (data) { path = data.path })
+    .on('end', function () {
+      var file = fs.ReadStream(path)
+      var shasum = crypto.createHash('sha1')
+      file.on('data', function (d) { shasum.update(d) })
+      file.on('end', function () {
+        var sha1 = shasum.digest('hex')
+        var hash = 'a2dc7b3b0ae6f40d5205c4394c2fe8bc65d52bc2'
+        t.equal(sha1, hash, msg)
+        cb()
+      })
+    })
   }
 })
 
