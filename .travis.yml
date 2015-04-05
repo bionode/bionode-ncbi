@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "0.10"
+  - "0.12"
 after_script:
   - npm run coveralls
 notifications:
@@ -9,3 +9,9 @@ notifications:
       - "chat.freenode.net#bionode"
     template:
       - "%{message} %{repository}#%{build_number}: %{commit_message} (%{branch} - %{commit} : %{author})"
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/bc08fdd81e88a4b24fed
+    on_success: change
+    on_failure: always
+    on_start: false
