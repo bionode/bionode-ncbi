@@ -64,7 +64,7 @@ test('Download', function(t) {
 
 
 test('Search', function(t) {
-  t.plan(5)
+  t.plan(3)
 
   ncbi.search('assembly', 'Guillardia theta')
   .on('data', function (data) {
@@ -93,25 +93,26 @@ test('Search', function(t) {
     }
   })
 
-  var start1 = Date.now()
-  ncbi.search({ db: 'sra', term: 'human', limit: 500, throughput: 500 })
-  .on('data', function(data) {})
-  .on('end', function() {
-    var msg = 'get 500 objects fast from sra using throughput of 500 per request'
-    var seconds = (Date.now() - start1) / 1000
-    var fast = seconds < 10
-    t.ok(fast, msg)
-  })
-
-  var start2 = Date.now()
-  ncbi.search({ db: 'sra', term: 'human', limit: 500, throughput: 5 })
-  .on('data', function(data) {})
-  .on('end', function() {
-    var msg = 'get 500 objects slowly from sra using throughput of 5 per request'
-    var seconds = (Date.now() - start2) / 1000
-    var slow = seconds > 10
-    t.ok(slow, msg)
-  })
+  // These tests fail randomly on Travis because of network speed
+  // var start1 = Date.now()
+  // ncbi.search({ db: 'sra', term: 'human', limit: 500, throughput: 500 })
+  // .on('data', function(data) {})
+  // .on('end', function() {
+  //   var msg = 'get 500 objects fast from sra using throughput of 500 per request'
+  //   var seconds = (Date.now() - start1) / 1000
+  //   var fast = seconds < 10
+  //   t.ok(fast, msg)
+  // })
+  //
+  // var start2 = Date.now()
+  // ncbi.search({ db: 'sra', term: 'human', limit: 500, throughput: 5 })
+  // .on('data', function(data) {})
+  // .on('end', function() {
+  //   var msg = 'get 500 objects slowly from sra using throughput of 5 per request'
+  //   var seconds = (Date.now() - start2) / 1000
+  //   var slow = seconds > 10
+  //   t.ok(slow, msg)
+  // })
 })
 
 
