@@ -15,7 +15,7 @@ var minimistOptions = {
 var argv = minimist(process.argv.slice(2), minimistOptions)
 
 if (argv.help || argv._.length === 0) {
-  console.log("Please check the documentation at http://doc.bionode.io")
+  console.log('Please check the documentation at http://doc.bionode.io')
   process.exit()
 }
 
