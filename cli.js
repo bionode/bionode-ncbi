@@ -7,11 +7,17 @@ var ncbi = require('./')
 var minimistOptions = {
   alias: {
     limit: 'l',
-    throughput: 't'
+    throughput: 't',
+    help: 'h'
   }
 }
 
 var argv = minimist(process.argv.slice(2), minimistOptions)
+
+if (argv.help || argv._.length === 0) {
+  console.log("Please check the documentation at http://doc.bionode.io")
+  process.exit()
+}
 
 var command = argv._[0]
 var arg1 = argv._[1]
