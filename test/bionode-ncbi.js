@@ -94,7 +94,9 @@ test('Search', function (t) {
 test('Search', function (t) {
   var results3 = []
   var stream = ncbi.search({ db: 'sra', term: 'Guillardia theta', limit: 1 })
-  stream.on('data', function (data) { results3.push(data) })
+  stream.on('data', function (data) {
+    results3.push(data)
+  })
   stream.on('end', function () {
     var msg = 'same as previous but with a limit of 1'
     guillardiaThetaSRAData.forEach(findMatchAndTest)
