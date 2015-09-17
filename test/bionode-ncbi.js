@@ -1,6 +1,7 @@
 var fs = require('fs')
 var crypto = require('crypto')
 var test = require('tape')
+var nock = require('nock')
 
 var ncbi = require('../')
 
@@ -129,4 +130,25 @@ test('Link', function (t) {
     t.deepEqual(results[0].destUIDs[0], testData.assembly['guillardia-theta'].search.uid, msg)
     setTimeout(t.end, 2000)
   })
+})
+
+test('Error Handling', function (t) {
+  var base = 'http://eutils.ncbi.nlm.nih.gov',
+    path = '/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia_theta&usehistory=y',
+    results = [],
+    msg = 'Should detect invalid return object and throw an error stating so, showing request URL'
+
+  nock(base)
+    .get(path)
+    .reply(200, {esearchresult: {webenv: 'Fake Results'}})
+
+  var stream = ncbi.search('assembly', 'Guillardia_theta')
+  stream.on('data', function (data) { results.push(data) })
+  stream.on('error', function (err) {
+    t.equal(err.message, testData.error.message, msg)
+  })
+  stream.on('end', function () {
+    t.fail(msg)
+  })
+  setTimeout(t.end, 2000)
 })
