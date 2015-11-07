@@ -7,6 +7,7 @@ var ncbi = require('../')
 
 var testData = require('./data')
 var guillardiaThetaSRAData = require('./guillardia-theta.sra')
+var efetchTestData = require('./p53-nucest')
 
 test('Download list', function (t) {
   var msg = 'should take a database name (assembly) and search term (Guillardia theta), and list datasets URLs'
@@ -132,6 +133,17 @@ test('Link', function (t) {
   })
 })
 
+test('Fetch', function (t) {
+  var results = []
+  var stream = ncbi.fetch('nucest', 'p53')
+  stream.on('data', function (data) { results.push(data) })
+  stream.on('end', function () {
+    var msg = 'Should retrieve the FASTA sequence from the nucest database that match the search term \'p53\''
+    t.deepEqual(results, efetchTestData, msg)
+    setTimeout(t.end, 2000)
+  })
+})
+
 test('Error Handling', function (t) {
   var base = 'http://eutils.ncbi.nlm.nih.gov',
     path = '/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia_theta&usehistory=y',
@@ -152,3 +164,4 @@ test('Error Handling', function (t) {
   })
   setTimeout(t.end, 2000)
 })
+
