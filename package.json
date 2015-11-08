@@ -69,18 +69,31 @@
   "license": "MIT",
   "contributors": [
     {
+      "name": "Filip Tér",
+      "email": null,
+      "url": "https://github.com/terfn",
+      "contributions": 7,
+      "additions": 444,
+      "deletions": 195,
+      "hireable": null
+    },
+    {
       "name": "Bruno Vieira",
       "email": "mail@bmpvieira.com",
       "url": "https://github.com/bmpvieira",
-      "contributions": 10,
-      "hireable": false
+      "contributions": 110,
+      "additions": 4818,
+      "deletions": 1929,
+      "hireable": null
     },
     {
-      "name": "Max Ogden",
-      "email": "max+ogden@maxogden.com",
+      "name": "=^._.^=",
+      "email": null,
       "url": "https://github.com/maxogden",
-      "contributions": 1,
-      "hireable": false
+      "contributions": 7,
+      "additions": 84,
+      "deletions": 61,
+      "hireable": null
     }
   ]
 }
