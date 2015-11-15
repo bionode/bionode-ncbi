@@ -12,7 +12,18 @@ var minimistOptions = {
   }
 }
 
-var argv = minimist(process.argv.slice(2), minimistOptions)
+var jsonPattern = /\{(.+?)\}/,
+  args = process.argv.slice(2).join(' '),
+  options = {},
+  match = args.match(jsonPattern)
+
+if (match) {
+  var jsonLine = match[0].replace(/\'/g, '\"'),
+    options = JSON.parse(jsonLine),
+    args = args.replace(match[0], 'obj')
+}
+
+var argv = minimist(args.split(' '), minimistOptions)
 
 if (argv.help || argv._.length === 0) {
   console.log('Please check the documentation at http://doc.bionode.io')
@@ -36,17 +47,17 @@ if (command === 'link') {
   var arg3 = null
 }
 
-var options
 if (Object.keys(argv).length > 1) {
-  options = {
-    limit: argv.limit,
-    throughput: argv.throughput,
-    db: arg1,
-    term: arg2
+  options.limit = argv.limit
+  options.throughput = argv.throughput
+
+  if (arg1 !== 'obj') {
+    options.db = arg1
+    options.term = arg2
   }
 }
 
-var ncbiStream = options ? ncbi[command](options) : ncbi[command](arg1, arg2, arg3)
+var ncbiStream = Object.keys(options).length ? ncbi[command](options) : ncbi[command](arg1, arg2, arg3)
 
 ncbiStream.pipe(JSONStream.stringify(false)).pipe(process.stdout)
 
