@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var minimist = require('minimist')
 var JSONStream = require('JSONStream')
-var split = require('split')
+var split = require('split2')
 var ncbi = require('./')
 
 var minimistOptions = {
@@ -67,6 +67,9 @@ if (wantsStdin) {
   process.stdin.pipe(split()).on('data', function (data) {
     if (data.trim() === '') { return }
     ncbiStream.write(data.trim())
+  })
+  process.stdin.on('end', function () {
+    ncbiStream.end()
   })
 }
 
