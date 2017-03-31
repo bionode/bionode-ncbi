@@ -3,6 +3,9 @@ var minimist = require('minimist')
 var JSONStream = require('JSONStream')
 var split = require('split2')
 var ncbi = require('./')
+var insight = require('./lib/anonymous-tracking')
+
+insight.track('ncbi', 'cli')
 
 var minimistOptions = {
   alias: {
@@ -62,6 +65,7 @@ var ncbiStream = Object.keys(options).length ? ncbi[command](options) : ncbi[com
 ncbiStream.pipe(JSONStream.stringify(false)).pipe(process.stdout)
 
 if (wantsStdin) {
+  insight.track('ncbi', 'stdin')
   process.stdin.setEncoding('utf8')
 
   process.stdin.pipe(split()).on('data', function (data) {
