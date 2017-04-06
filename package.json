@@ -30,18 +30,18 @@
     "xml2js": "^0.4.6"
   },
   "devDependencies": {
-    "standard": "^3.3.2",
-    "dependency-check": "^2.3.1",
     "browserify": "^9.0.7",
     "contributor": "~0.1.25",
     "coveralls": "~2.11.2",
+    "dependency-check": "^2.3.1",
     "docco": "~0.7.0",
     "istanbul": "~0.3.13",
+    "standard": "^3.3.2",
     "tap-spec": "^3.0.0",
     "tape": "^4.0.0",
+    "tape-nock": "^1.5.2",
     "testling": "^1.7.1",
-    "uglify-js": "^2.4.19",
-    "nock": "2.11.0"
+    "uglify-js": "^2.4.19"
   },
   "keywords": [
     "bio",
