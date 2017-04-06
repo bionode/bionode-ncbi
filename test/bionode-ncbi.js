@@ -46,7 +46,7 @@ test('Download', function (t) {
     file.on('data', function (d) { shasum.update(d) })
     file.on('end', function () {
       var sha1 = shasum.digest('hex')
-      var hash = 'a2dc7b3b0ae6f40d5205c4394c2fe8bc65d52bc2'
+      var hash = testData['sra-sha1']
       t.equal(sha1, hash, msg)
       setTimeout(t.end, 2000)
     })
@@ -64,7 +64,7 @@ test('Download', function (t) {
     file.on('data', function (d) { shasum.update(d) })
     file.on('end', function () {
       var sha1 = shasum.digest('hex')
-      var hash = 'a2dc7b3b0ae6f40d5205c4394c2fe8bc65d52bc2'
+      var hash = testData['sra-sha1']
       t.equal(sha1, hash, msg)
       setTimeout(t.end, 2000)
     })

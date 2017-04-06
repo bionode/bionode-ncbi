@@ -1,71 +1,70 @@
 {
   "assembly": {
     "guillardia-theta": {
-      "search": {
-        "uid":"503988",
-        "rsuid":"1011608",
-        "gbuid":"503988",
-        "assemblyaccession":"GCF_000315625.1",
-        "lastmajorreleaseaccession":"GCF_000315625.1",
-        "chainid":"315625",
-        "assemblyname":"Guith1",
-        "ucscname":"",
-        "ensemblname":"",
-        "taxid":"905079",
-        "organism":"Guillardia theta CCMP2712 (cryptomonads)",
-        "speciestaxid":"55529",
-        "speciesname":"Guillardia theta",
-        "assemblytype":"haploid",
-        "assemblyclass":"haploid",
-        "assemblystatus":"Scaffold",
-        "wgs":"AEIE01",
-        "gb_bioprojects":[
+      "search":{
+        "uid": "503988",
+        "rsuid": "1011608",
+        "gbuid": "503988",
+        "assemblyaccession": "GCF_000315625.1",
+        "lastmajorreleaseaccession": "GCF_000315625.1",
+        "chainid": "315625",
+        "assemblyname": "Guith1",
+        "ucscname": "",
+        "ensemblname": "",
+        "taxid": "905079",
+        "organism": "Guillardia theta CCMP2712 (cryptomonads)",
+        "speciestaxid": "55529",
+        "speciesname": "Guillardia theta",
+        "assemblytype": "haploid",
+        "assemblyclass": "haploid",
+        "assemblystatus": "Scaffold",
+        "wgs": "AEIE01",
+        "gb_bioprojects": [
           {
-            "bioprojectaccn":"PRJNA53577",
-            "bioprojectid":53577
+            "bioprojectaccn": "PRJNA53577",
+            "bioprojectid": 53577
           }
         ],
-        "gb_projects":[
+        "gb_projects": [
           "53577"
         ],
-        "rs_bioprojects":[
+        "rs_bioprojects": [
           {
-            "bioprojectaccn":"PRJNA223305",
-            "bioprojectid":223305
+            "bioprojectaccn": "PRJNA223305",
+            "bioprojectid": 223305
           }
         ],
-        "rs_projects":[
+        "rs_projects": [
           "223305"
         ],
-        "biosampleaccn":"SAMN00116900",
-        "biosampleid":"116900",
-        "biosource":{
-          "infraspecieslist":[
+        "biosampleaccn": "SAMN00116900",
+        "biosampleid": "116900",
+        "biosource": {
+          "infraspecieslist": [
             {
-              "sub_type":"strain",
-              "sub_value":"CCMP2712"
+              "sub_type": "strain",
+              "sub_value": "CCMP2712"
             }
           ],
-          "sex":"",
-          "isolate":""
+          "sex": "",
+          "isolate": ""
         },
-        "coverage":"0",
-        "partialgenomerepresentation":"false",
-        "primary":"1011598",
-        "assemblydescription":"",
-        "releaselevel":"Major",
-        "asmreleasedate":"2012/12/06 00:00",
-        "seqreleasedate":"2012/12/05 00:00",
-        "asmupdatedate":"2014/04/22 00:00",
-        "ncbireleasedate":"2012/12/06 00:00",
-        "submissiondate":"2012/12/05 00:00",
-        "lastupdatedate":"2014/04/22 00:00",
-        "submitterorganization":"JGI",
-        "refseq_category":"representative genome",
-        "anomalouslist":[
-
-        ],
-        "propertylist":[
+        "coverage": "23.66",
+        "partialgenomerepresentation": "false",
+        "primary": "1011598",
+        "assemblydescription": "",
+        "releaselevel": "Major",
+        "asmreleasedate_genbank": "2012/12/06 00:00",
+        "asmreleasedate_refseq": "2014/04/22 00:00",
+        "seqreleasedate": "2012/12/05 00:00",
+        "asmupdatedate": "2014/04/22 00:00",
+        "submissiondate": "2012/12/05 00:00",
+        "lastupdatedate": "2014/04/22 00:00",
+        "submitterorganization": "JGI",
+        "refseq_category": "representative genome",
+        "anomalouslist": [],
+        "exclfromrefseq": [],
+        "propertylist": [
           "full-genome-representation",
           "latest",
           "latest_genbank",
@@ -73,101 +72,115 @@
           "representative",
           "wgs"
         ],
-        "synonym":{
-          "genbank":"GCA_000315625.1",
-          "refseq":"GCF_000315625.1",
-          "similarity":"identical"
+        "fromtype": "",
+        "synonym": {
+          "genbank": "GCA_000315625.1",
+          "refseq": "GCF_000315625.1",
+          "similarity": "identical"
         },
-        "sortorder":"2C50003156259898",
-        "meta":{
-          "Stats":{
-            "Stat":[
+        "ftppath_genbank": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/315/625/GCA_000315625.1_Guith1",
+        "ftppath_refseq": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1",
+        "ftppath_assembly_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_assembly_report.txt",
+        "ftppath_stats_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_assembly_stats.txt",
+        "ftppath_regions_rpt": "",
+        "sortorder": "2C50003156259898",
+        "meta": {
+          "Stats": {
+            "Stat": [
               {
-                "category":"alt_loci_count",
-                "sequence_tag":"all",
-                "_":"0"
+                "_": "0",
+                "category": "alt_loci_count",
+                "sequence_tag": "all"
               },
               {
-                "category":"chromosome_count",
-                "sequence_tag":"all",
-                "_":"0"
+                "_": "0",
+                "category": "chromosome_count",
+                "sequence_tag": "all"
               },
               {
-                "category":"contig_count",
-                "sequence_tag":"all",
-                "_":"5126"
+                "_": "5126",
+                "category": "contig_count",
+                "sequence_tag": "all"
               },
               {
-                "category":"contig_l50",
-                "sequence_tag":"all",
-                "_":"587"
+                "_": "587",
+                "category": "contig_l50",
+                "sequence_tag": "all"
               },
               {
-                "category":"contig_n50",
-                "sequence_tag":"all",
-                "_":"40445"
+                "_": "40445",
+                "category": "contig_n50",
+                "sequence_tag": "all"
               },
               {
-                "category":"non_chromosome_replicon_count",
-                "sequence_tag":"all",
-                "_":"0"
+                "_": "0",
+                "category": "non_chromosome_replicon_count",
+                "sequence_tag": "all"
               },
               {
-                "category":"replicon_count",
-                "sequence_tag":"all",
-                "_":"0"
+                "_": "0",
+                "category": "replicon_count",
+                "sequence_tag": "all"
               },
               {
-                "category":"scaffold_count",
-                "sequence_tag":"all",
-                "_":"669"
+                "_": "669",
+                "category": "scaffold_count",
+                "sequence_tag": "all"
               },
               {
-                "category":"scaffold_count",
-                "sequence_tag":"placed",
-                "_":"0"
+                "_": "0",
+                "category": "scaffold_count",
+                "sequence_tag": "placed"
               },
               {
-                "category":"scaffold_count",
-                "sequence_tag":"unlocalized",
-                "_":"0"
+                "_": "0",
+                "category": "scaffold_count",
+                "sequence_tag": "unlocalized"
               },
               {
-                "category":"scaffold_count",
-                "sequence_tag":"unplaced",
-                "_":"669"
+                "_": "669",
+                "category": "scaffold_count",
+                "sequence_tag": "unplaced"
               },
               {
-                "category":"scaffold_l50",
-                "sequence_tag":"all",
-                "_":"52"
+                "_": "52",
+                "category": "scaffold_l50",
+                "sequence_tag": "all"
               },
               {
-                "category":"scaffold_n50",
-                "sequence_tag":"all",
-                "_":"545808"
+                "_": "545808",
+                "category": "scaffold_n50",
+                "sequence_tag": "all"
               },
               {
-                "category":"total_length",
-                "sequence_tag":"all",
-                "_":"87145349"
+                "_": "87145349",
+                "category": "total_length",
+                "sequence_tag": "all"
               },
               {
-                "category":"ungapped_length",
-                "sequence_tag":"all",
-                "_":"83457412"
+                "_": "83457412",
+                "category": "ungapped_length",
+                "sequence_tag": "all"
               }
             ]
           },
           "FtpSites": {
             "FtpPath": [
               {
-                "type": "GenBank",
-                "_": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1"
+                "_": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_assembly_report.txt",
+                "type": "Assembly_rpt"
               },
               {
-                "type": "RefSeq",
-                "_": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF_000315625.1_Guith1"
+                "_": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/315/625/GCA_000315625.1_Guith1",
+                "type": "GenBank"
+              },
+              {
+                "_": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1",
+                "type": "RefSeq"
+              },
+              {
+                "_": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_assembly_stats.txt",
+                "type": "Stats_rpt"
               }
             ]
           },
@@ -178,40 +191,53 @@
         }
       },
       "urls": {
-        "uid" : "503988",
-        "stats" : {
-          "txt" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_assembly_stats.txt"
+        "uid": "503988",
+        "assembly_structure": {
+          "dir": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_assembly_structure/"
         },
-        "protein" : {
-          "gpff" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_protein.gpff.gz",
-          "faa" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_protein.faa.gz"
+        "assembly_report": {
+          "txt": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_assembly_report.txt"
         },
-        "rm" : {
-          "out" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_rm.out.gz",
-          "run" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_rm.run"
+        "assembly_stats": {
+          "txt": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_assembly_stats.txt"
         },
-        "report" : {
-          "txt" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_assembly_report.txt"
+        "cds_from_genomic": {
+          "fna": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_cds_from_genomic.fna.gz"
         },
-        "structure" : {
-          "dir" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_assembly_structure/"
+        "feature_table": {
+          "txt": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_feature_table.txt.gz"
         },
-        "md5checksums" : {
-          "txt" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/md5checksums.txt"
+        "genomic": {
+          "fna": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_genomic.fna.gz",
+          "gbff": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_genomic.gbff.gz",
+          "gff": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_genomic.gff.gz"
         },
-        "genomic" : {
-          "gbff" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_genomic.gbff.gz",
-          "gff" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_genomic.gff.gz",
-          "fna" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_genomic.fna.gz"
+        "protein": {
+          "faa": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_protein.faa.gz",
+          "gpff": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_protein.gpff.gz"
         },
-        "README" : {
-          "txt" : "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/README.txt"
+        "rm": {
+          "out": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_rm.out.gz",
+          "run": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_rm.run"
         },
-        "table": {
-          "txt": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_feature_table.txt.gz"
+        "rna": {
+          "fna": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_rna.fna.gz",
+          "gbff": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_rna.gbff.gz"
         },
-        "wgsmaster": {
-          "gbff": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000315625.1_Guith1/GCA_000315625.1_Guith1_wgsmaster.gbff.gz"
+        "rna_from_genomic": {
+          "fna": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_rna_from_genomic.fna.gz"
+        },
+        "README": {
+          "txt": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/README.txt"
+        },
+        "annotation_hashes": {
+          "txt": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/annotation_hashes.txt"
+        },
+        "assembly_status": {
+          "txt": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/assembly_status.txt"
+        },
+        "md5checksums": {
+          "txt": "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/md5checksums.txt"
         }
       }
     }
@@ -259,5 +285,6 @@
   },
   "error" : {
     "message" : "NCBI returned invalid results, this could be a temporary issue with NCBI servers.\nRequest URL: http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia_theta&usehistory=y"
-  }
+  },
+  "sra-sha1": "3a4f794df353dbf2681b912262900c661d69ae63"
 }
