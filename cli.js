@@ -15,15 +15,15 @@ var minimistOptions = {
   }
 }
 
-var jsonPattern = /\{(.+?)\}/,
-  args = process.argv.slice(2).join(' '),
-  options = {},
-  match = args.match(jsonPattern)
+var jsonPattern = /\{(.+?)\}/
+var args = process.argv.slice(2).join(' ')
+var options = {}
+var match = args.match(jsonPattern)
 
 if (match) {
-  var jsonLine = match[0].replace(/\'/g, '\"'),
-    options = JSON.parse(jsonLine),
-    args = args.replace(match[0], 'obj')
+  var jsonLine = match[0].replace(/'/g, '"')
+  options = JSON.parse(jsonLine)
+  args = args.replace(match[0], 'obj')
 }
 
 var argv = minimist(args.split(' '), minimistOptions)
@@ -46,8 +46,8 @@ if (command === 'link') {
   var arg2 = argv._[2]
   var arg3 = argv._[3]
 } else {
-  var arg2 = argv._.slice(2).join(' ')
-  var arg3 = null
+  arg2 = argv._.slice(2).join(' ')
+  arg3 = null
 }
 
 if (Object.keys(argv).length > 1) {

@@ -145,10 +145,10 @@ test('Fetch', function (t) {
 })
 
 test('Error Handling', function (t) {
-  var base = 'http://eutils.ncbi.nlm.nih.gov',
-    path = '/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia_theta&usehistory=y',
-    results = [],
-    msg = 'Should detect invalid return object and throw an error stating so, showing request URL'
+  var base = 'http://eutils.ncbi.nlm.nih.gov'
+  var path = '/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia_theta&usehistory=y'
+  var results = []
+  var msg = 'Should detect invalid return object and throw an error stating so, showing request URL'
 
   nock(base)
     .get(path)
@@ -164,4 +164,3 @@ test('Error Handling', function (t) {
   })
   setTimeout(t.end, 2000)
 })
-
