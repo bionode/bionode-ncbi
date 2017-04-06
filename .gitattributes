@@ -1,0 +1,11 @@
+test/fixtures/Download[[:space:]]list[[:space:]]for[[:space:]]assembly_.json filter=lfs diff=lfs merge=lfs -text
+test/fixtures/Download[[:space:]]list[[:space:]]for[[:space:]]sra_.json filter=lfs diff=lfs merge=lfs -text
+test/fixtures/Download[[:space:]]unless[[:space:]]file[[:space:]]exists_.json filter=lfs diff=lfs merge=lfs -text
+test/fixtures/Download_.json filter=lfs diff=lfs merge=lfs -text
+test/fixtures/Fetch_.json filter=lfs diff=lfs merge=lfs -text
+test/fixtures/Link[[:space:]]bioproject[[:space:]]to[[:space:]]assembly_.json filter=lfs diff=lfs merge=lfs -text
+test/fixtures/Link[[:space:]]sra[[:space:]]to[[:space:]]bioproject_.json filter=lfs diff=lfs merge=lfs -text
+test/fixtures/Search[[:space:]]assembly_.json filter=lfs diff=lfs merge=lfs -text
+test/fixtures/Search[[:space:]]sra[[:space:]]with[[:space:]]limit[[:space:]]to[[:space:]]one_.json filter=lfs diff=lfs merge=lfs -text
+test/fixtures/Search[[:space:]]sra_.json filter=lfs diff=lfs merge=lfs -text
+503988/GCF_000315625.1_Guith1_genomic.fna.gz filter=lfs diff=lfs merge=lfs -text

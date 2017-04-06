@@ -2,3 +2,5 @@ node_modules
 .DS_Store
 coverage
 tmp
+503988
+test/fixtures
