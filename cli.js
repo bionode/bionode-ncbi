@@ -42,9 +42,10 @@ if (lastArg === '-') {
   argv._.pop()
 }
 
+var arg2, arg3
 if (command === 'link') {
-  var arg2 = argv._[2]
-  var arg3 = argv._[3]
+  arg2 = argv._[2]
+  arg3 = argv._[3]
 } else {
   arg2 = argv._.slice(2).join(' ')
   arg3 = null
