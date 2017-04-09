@@ -1,7 +1,9 @@
 var fs = require('fs')
 var crypto = require('crypto')
-var test = require('tape')
-var nock = require('nock')
+var tape = require('tape')
+var tapeNock = require('tape-nock')
+var test = tapeNock(tape)
+var nock = test.nock
 
 var ncbi = require('../')
 
@@ -9,7 +11,7 @@ var testData = require('./data')
 var guillardiaThetaSRAData = require('./guillardia-theta.sra')
 var efetchTestData = require('./p53-nucest')
 
-test('Download list', function (t) {
+test('Download list for assembly', function (t) {
   var msg = 'should take a database name (assembly) and search term (Guillardia theta), and list datasets URLs'
   var db = 'assembly'
   var expResult = [testData.assembly['guillardia-theta'].urls]
@@ -22,7 +24,7 @@ test('Download list', function (t) {
   })
 })
 
-test('Download list', function (t) {
+test('Download list for sra', function (t) {
   var msg = 'should take a database name (sra) and search term (Guillardia theta), and list datasets URLs'
   var db = 'sra'
   var expResult = testData.sra['guillardia-theta'].urls
@@ -46,14 +48,14 @@ test('Download', function (t) {
     file.on('data', function (d) { shasum.update(d) })
     file.on('end', function () {
       var sha1 = shasum.digest('hex')
-      var hash = 'a2dc7b3b0ae6f40d5205c4394c2fe8bc65d52bc2'
+      var hash = testData['sra-sha1']
       t.equal(sha1, hash, msg)
       setTimeout(t.end, 2000)
     })
   })
 })
 
-test('Download', function (t) {
+test('Download unless file exists', function (t) {
   var msg = 'repeat same download to cover already downloaded branch'
   var path = ''
   var stream = ncbi.download('assembly', 'Guillardia theta')
@@ -64,14 +66,14 @@ test('Download', function (t) {
     file.on('data', function (d) { shasum.update(d) })
     file.on('end', function () {
       var sha1 = shasum.digest('hex')
-      var hash = 'a2dc7b3b0ae6f40d5205c4394c2fe8bc65d52bc2'
+      var hash = testData['sra-sha1']
       t.equal(sha1, hash, msg)
       setTimeout(t.end, 2000)
     })
   })
 })
 
-test('Search', function (t) {
+test('Search assembly', function (t) {
   var results1 = []
   var stream = ncbi.search('assembly', 'Guillardia theta')
   stream.on('data', function (data) { results1.push(data) })
@@ -82,7 +84,7 @@ test('Search', function (t) {
   })
 })
 
-test('Search', function (t) {
+test('Search sra', function (t) {
   var results2 = []
   var stream = ncbi.search('sra', 'Guillardia theta')
   stream.on('data', function (data) { results2.push(data) })
@@ -93,7 +95,7 @@ test('Search', function (t) {
   })
 })
 
-test('Search', function (t) {
+test('Search sra with limit to one', function (t) {
   var results3 = []
   var stream = ncbi.search({ db: 'sra', term: 'Guillardia theta', limit: 1 })
   stream.on('data', function (data) {
@@ -111,7 +113,7 @@ test('Search', function (t) {
   })
 })
 
-test('Link', function (t) {
+test('Link sra to bioproject', function (t) {
   var results = []
   var stream = ncbi.link('sra', 'bioproject', '35533')
   stream.on('data', function (data) { results.push(data) })
@@ -122,7 +124,7 @@ test('Link', function (t) {
   })
 })
 
-test('Link', function (t) {
+test('Link bioproject to assembly', function (t) {
   var results = []
   var stream = ncbi.link('bioproject', 'assembly', '53577')
   stream.on('data', function (data) { results.push(data) })
@@ -145,10 +147,10 @@ test('Fetch', function (t) {
 })
 
 test('Error Handling', function (t) {
-  var base = 'http://eutils.ncbi.nlm.nih.gov',
-    path = '/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia_theta&usehistory=y',
-    results = [],
-    msg = 'Should detect invalid return object and throw an error stating so, showing request URL'
+  var base = 'http://eutils.ncbi.nlm.nih.gov'
+  var path = '/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia_theta&usehistory=y'
+  var results = []
+  var msg = 'Should detect invalid return object and throw an error stating so, showing request URL'
 
   nock(base)
     .get(path)
@@ -164,4 +166,3 @@ test('Error Handling', function (t) {
   })
   setTimeout(t.end, 2000)
 })
-

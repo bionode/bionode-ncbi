@@ -1,6 +1,15 @@
 language: node_js
 node_js:
-  - "0.12"
+  - "7"
+before_install:
+  - mkdir -p $HOME/bin
+  - wget https://github.com/github/git-lfs/releases/download/v1.1.2/git-lfs-linux-amd64-1.1.2.tar.gz
+  - tar xvfz git-lfs-linux-amd64-1.1.2.tar.gz
+  - mv git-lfs-1.1.2/git-lfs $HOME/bin/git-lfs
+  - export PATH=$PATH:$HOME/bin/
+before_script:
+  - git lfs pull
+  - git lfs pull
 after_script:
   - npm run coveralls
 notifications:
@@ -15,4 +24,4 @@ notifications:
     on_success: change
     on_failure: always
     on_start: false
-env: DEBUG="*"
+env: DEBUG=""
