@@ -26,7 +26,7 @@
 <p>Node.js module for working with the NCBI API (aka e-utils) using Streams.</p>
 <p>doi: <a href="http://dx.doi.org/10.5281/zenodo.10610">10.5281/zenodo.10610</a>
 author: <a href="http://bmpvieira.com">Bruno Vieira</a>
-email: <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#109;&#x61;&#x69;&#x6c;&#x40;&#98;&#109;&#112;&#118;&#x69;&#101;&#105;&#x72;&#x61;&#x2e;&#x63;&#x6f;&#109;">&#109;&#x61;&#x69;&#x6c;&#x40;&#98;&#109;&#112;&#118;&#x69;&#101;&#105;&#x72;&#x61;&#x2e;&#x63;&#x6f;&#109;</a>
+email: <a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x6d;&#97;&#x69;&#108;&#x40;&#x62;&#109;&#x70;&#118;&#105;&#101;&#105;&#x72;&#97;&#46;&#99;&#111;&#109;">&#x6d;&#97;&#x69;&#108;&#x40;&#x62;&#109;&#x70;&#118;&#105;&#101;&#105;&#x72;&#97;&#46;&#99;&#111;&#109;</a>
 license: <a href="https://raw.githubusercontent.com/bionode/bionode-ncbi/master/LICENSE">MIT</a></p>
 </blockquote>
 <hr>
@@ -47,11 +47,11 @@ license: <a href="https://raw.githubusercontent.com/bionode/bionode-ncbi/master/
 Examples:</p>
 <pre><code>$ npm install -g bionode-ncbi
 
-# bionode-ncbi [command] [arguments] --limit (-l) --throughput (-t)
+# bionode-ncbi [command] [arguments] --limit (-l) --throughput (-t) --pretty (-p)
 $ bionode-ncbi search taxonomy solenopsis
 $ bionode-ncbi search sra human --limit 500 # only return 500 items
 $ bionode-ncbi search sra human --throughput 250 # fetch 250 items per API request
-$ bionode-ncbi download assembly solenopsis invicta
+$ bionode-ncbi download assembly solenopsis invicta --pretty # returns a simple progress bar to stdout
 $ bionode-ncbi urls sra solenopsis invicta
 $ bionode-ncbi link assembly bioproject 244018
 $ bionode-ncbi search gds solenopsis | dat import --json
@@ -74,6 +74,7 @@ $ bionode-ncbi search gds solenopsis | dat import --json
 <span class="hljs-keyword">var</span> URL = <span class="hljs-built_in">require</span>(<span class="hljs-string">'url'</span>)
 <span class="hljs-keyword">var</span> cheerio = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cheerio'</span>)
 <span class="hljs-keyword">var</span> fasta = <span class="hljs-built_in">require</span>(<span class="hljs-string">'bionode-fasta'</span>)
+<span class="hljs-keyword">var</span> insight = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./anonymous-tracking'</span>)
 
 <span class="hljs-keyword">var</span> ncbi = exports
 
@@ -85,7 +86,7 @@ $ bionode-ncbi search gds solenopsis | dat import --json
 <span class="hljs-keyword">var</span> XMLPROPERTIES = {
   <span class="hljs-string">'sra'</span>: [<span class="hljs-string">'expxml'</span>, <span class="hljs-string">'runs'</span>],
   <span class="hljs-string">'biosample'</span>: [<span class="hljs-string">'sampledata'</span>],
-  <span class="hljs-string">'assembly'</span>: [<span class="hljs-string">'meta'</span> ]
+  <span class="hljs-string">'assembly'</span>: [<span class="hljs-string">'meta'</span>]
 }
 <span class="hljs-keyword">var</span> LASTSTREAM = {
   <span class="hljs-string">'sra'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
@@ -122,11 +123,11 @@ $ bionode-ncbi search gds solenopsis | dat import --json
      updatedate: '2012/11/28' }
 =&gt; [...]
 </code></pre><p>Arguments can be passed as an object instead:</p>
-<pre><code>ncbi.search({ db: <span class="hljs-string">'sra'</span>, term: <span class="hljs-string">'solenopsis'</span> })
+<pre><code>ncbi.search({ <span class="hljs-attr">db</span>: <span class="hljs-string">'sra'</span>, <span class="hljs-attr">term</span>: <span class="hljs-string">'solenopsis'</span> })
 .on(<span class="hljs-string">'data'</span>, <span class="hljs-built_in">console</span>.log)
 </code></pre><p>Advanced options can be passed using the previous syntax:</p>
 <pre><code><span class="hljs-keyword">var</span> options = {
-  db: <span class="hljs-string">'assembly'</span>, <span class="hljs-comment">// database to search</span>
+  <span class="hljs-attr">db</span>: <span class="hljs-string">'assembly'</span>, <span class="hljs-comment">// database to search</span>
   term: <span class="hljs-string">'human'</span>,  <span class="hljs-comment">// optional term for search</span>
   limit: <span class="hljs-number">500</span>,     <span class="hljs-comment">// optional limit of NCBI results</span>
   throughput: <span class="hljs-number">100</span> <span class="hljs-comment">// optional number of items per request</span>
@@ -145,7 +146,8 @@ fs.createReadStream(<span class="hljs-string">'searchTerms.txt'</span>)
             
             <div class="content"><div class='highlight'><pre>
 ncbi.search = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">db, term, cb</span>) </span>{
-  <span class="hljs-keyword">var</span> opts = <span class="hljs-keyword">typeof</span> db === <span class="hljs-string">'string'</span> ? { db: db, term: term } : db
+  insight.track(<span class="hljs-string">'ncbi'</span>, <span class="hljs-string">'search'</span>)
+  <span class="hljs-keyword">var</span> opts = <span class="hljs-keyword">typeof</span> db === <span class="hljs-string">'string'</span> ? { <span class="hljs-attr">db</span>: db, <span class="hljs-attr">term</span>: term } : db
   cb = <span class="hljs-keyword">typeof</span> term === <span class="hljs-string">'function'</span> ? term : cb
 
   <span class="hljs-keyword">var</span> stream = pumpify.obj(
@@ -187,9 +189,9 @@ ncbi.search = <span class="hljs-function"><span class="hljs-keyword">function</s
 
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> (<span class="hljs-params">obj, enc, next</span>) </span>{
     <span class="hljs-keyword">var</span> esearchRes = obj.body.esearchresult
-    <span class="hljs-keyword">if</span> (esearchRes === <span class="hljs-literal">undefined</span>
-        || esearchRes.webenv === <span class="hljs-literal">undefined</span>
-        || esearchRes.count === <span class="hljs-literal">undefined</span>) {
+    <span class="hljs-keyword">if</span> (esearchRes === <span class="hljs-literal">undefined</span> ||
+        esearchRes.webenv === <span class="hljs-literal">undefined</span> ||
+        esearchRes.count === <span class="hljs-literal">undefined</span>) {
       <span class="hljs-keyword">var</span> msg = <span class="hljs-string">'NCBI returned invalid results, this could be a temporary'</span> +
                 <span class="hljs-string">' issue with NCBI servers.\nRequest URL: '</span> + obj.url
       <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'error'</span>, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(msg))
@@ -289,6 +291,7 @@ a objects stream with unique IDs linked to the passed source db unique ID.</p>
             
             <div class="content"><div class='highlight'><pre>
 ncbi.link = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">srcDB, destDB, srcUID, cb</span>) </span>{
+  insight.track(<span class="hljs-string">'ncbi'</span>, <span class="hljs-string">'link'</span>)
   <span class="hljs-keyword">var</span> stream = pumpify.obj(
     createAPILinkURL(srcDB, destDB),
     requestStream(<span class="hljs-literal">true</span>),
@@ -324,9 +327,9 @@ ncbi.link = <span class="hljs-function"><span class="hljs-keyword">function</spa
     <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
     <span class="hljs-keyword">var</span> query = URL.parse(obj.url, <span class="hljs-literal">true</span>).query
     <span class="hljs-keyword">var</span> result = {
-      srcDB: query.dbfrom,
-      destDB: query.db,
-      srcUID: query.id
+      <span class="hljs-attr">srcDB</span>: query.dbfrom,
+      <span class="hljs-attr">destDB</span>: query.db,
+      <span class="hljs-attr">srcUID</span>: query.id
     }
     xml2js(obj.body, gotParsed)
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotParsed</span> (<span class="hljs-params">err, data</span>) </span>{
@@ -367,6 +370,7 @@ and attached the result to a property with the name of the destination DB.</p>
             
             <div class="content"><div class='highlight'><pre>
 ncbi.plink = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">property, destDB</span>) </span>{
+  insight.track(<span class="hljs-string">'ncbi'</span>, <span class="hljs-string">'plink'</span>)
   <span class="hljs-keyword">var</span> srcDB = property.split(<span class="hljs-string">'.'</span>).pop()
   <span class="hljs-keyword">var</span> destProperty = destDB + <span class="hljs-string">'id'</span>
   <span class="hljs-keyword">var</span> stream = through.obj(transform)
@@ -417,10 +421,13 @@ The name of the folder where the file is saved corresponds to the UID from NCBI.
             
             <div class="content"><div class='highlight'><pre>
 ncbi.download = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">db, term, cb</span>) </span>{
+  insight.track(<span class="hljs-string">'ncbi'</span>, <span class="hljs-string">'download'</span>)
+
   <span class="hljs-keyword">var</span> stream = pumpify.obj(
     ncbi.urls(db),
     download(db)
   )
+
   <span class="hljs-keyword">if</span> (term) { stream.write(term); stream.end() }
   <span class="hljs-keyword">if</span> (cb) { stream.pipe(concat(cb)) } <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> stream }
 }
@@ -444,22 +451,43 @@ ncbi.download = <span class="hljs-function"><span class="hljs-keyword">function<
       <span class="hljs-string">'faa'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> obj.protein.faa },
       <span class="hljs-string">'repeats'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> obj.rm.out },
       <span class="hljs-string">'md5'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> obj.md5checksums.txt }
-    }
-    <span class="hljs-keyword">var</span> url = extractFiles[db]()
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>added opts.db definition here since it is a local variable in ncbi.urls</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> opts = <span class="hljs-keyword">typeof</span> db === <span class="hljs-string">'string'</span> ? { <span class="hljs-attr">db</span>: db } : db
+
+    <span class="hljs-keyword">var</span> url = extractFiles[opts.db]()
 
     <span class="hljs-keyword">var</span> path = folder + url.replace(<span class="hljs-regexp">/.*\//</span>, <span class="hljs-string">''</span>)
 
     <span class="hljs-keyword">var</span> log = {
-      uid: obj.uid,
-      url: url,
-      path: path
+      <span class="hljs-attr">uid</span>: obj.uid,
+      <span class="hljs-attr">url</span>: url,
+      <span class="hljs-attr">path</span>: path
     }
 
-    mkdirp(obj.uid, {mode: <span class="hljs-string">'0755'</span>}, gotDir)
+    mkdirp(obj.uid, {<span class="hljs-attr">mode</span>: <span class="hljs-string">'0755'</span>}, gotDir)
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotDir</span> (<span class="hljs-params">err</span>) </span>{
       <span class="hljs-keyword">if</span> (err) { self.emit(<span class="hljs-string">'error'</span>, err) }
       debug(<span class="hljs-string">'downloading'</span>, url)
-      <span class="hljs-keyword">var</span> options = { dir: folder, resume: <span class="hljs-literal">true</span> }
+      <span class="hljs-keyword">var</span> options
+      <span class="hljs-keyword">if</span> (opts.pretty === <span class="hljs-literal">true</span>) {
+        options = { <span class="hljs-attr">dir</span>: folder, <span class="hljs-attr">resume</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">quiet</span>: <span class="hljs-literal">false</span> }
+      } <span class="hljs-keyword">else</span> {
+        options = { <span class="hljs-attr">dir</span>: folder, <span class="hljs-attr">resume</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">quiet</span>: <span class="hljs-literal">true</span> }
+      }
       <span class="hljs-keyword">var</span> dld = nugget(PROXY + url, options, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
         <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> self.destroy(err)
         fs.stat(path, gotStat)
@@ -469,10 +497,13 @@ ncbi.download = <span class="hljs-function"><span class="hljs-keyword">function<
           log.speed = <span class="hljs-string">'NA'</span>
           log.size = <span class="hljs-built_in">Math</span>.round(stat.size / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span>) + <span class="hljs-string">' MB'</span>
           self.push(log)
+          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'\nFile saved at '</span> + path)
           next()
         }
       })
-      dld.on(<span class="hljs-string">'progress'</span>, logging)
+      <span class="hljs-keyword">if</span> (opts.pretty !== <span class="hljs-literal">true</span>) {
+        dld.on(<span class="hljs-string">'progress'</span>, logging)
+      }
     }
 
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logging</span> (<span class="hljs-params">data</span>) </span>{
@@ -488,11 +519,11 @@ ncbi.download = <span class="hljs-function"><span class="hljs-keyword">function<
         </li>
         
         
-        <li id="section-7">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <h2 id="urls">URLs</h2>
 <p>Takes a NCBI database string and a optional search term and returns as stream of dataset/sequence files URLs.
@@ -508,10 +539,11 @@ The value of the uid property corresponds to the UID from NCBI.</p>
             
             <div class="content"><div class='highlight'><pre>
 ncbi.urls = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">db, term, cb</span>) </span>{
-  <span class="hljs-keyword">var</span> opts = <span class="hljs-keyword">typeof</span> db === <span class="hljs-string">'string'</span> ? { db: db } : db
+  insight.track(<span class="hljs-string">'ncbi'</span>, <span class="hljs-string">'urls'</span>)
+  <span class="hljs-keyword">var</span> opts = <span class="hljs-keyword">typeof</span> db === <span class="hljs-string">'string'</span> ? { <span class="hljs-attr">db</span>: db } : db
   cb = <span class="hljs-keyword">typeof</span> term === <span class="hljs-string">'function'</span> ? term : cb
   <span class="hljs-keyword">var</span> extractFiles = [<span class="hljs-string">'gff'</span>, <span class="hljs-string">'gpff'</span>, <span class="hljs-string">'fasta'</span>, <span class="hljs-string">'fna'</span>, <span class="hljs-string">'faa'</span>, <span class="hljs-string">'repeats'</span>]
-  <span class="hljs-keyword">if</span> (extractFiles.indexOf(db) !== -<span class="hljs-number">1</span>) { opts.db = <span class="hljs-string">'assembly'</span> }
+  <span class="hljs-keyword">if</span> (extractFiles.indexOf(db) !== <span class="hljs-number">-1</span>) { opts.db = <span class="hljs-string">'assembly'</span> }
 
   <span class="hljs-keyword">var</span> stream = pumpify.obj(
     ncbi.search(opts),
@@ -528,8 +560,8 @@ ncbi.urls = <span class="hljs-function"><span class="hljs-keyword">function</spa
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transform</span> (<span class="hljs-params">obj, enc, next</span>) </span>{
     <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
     <span class="hljs-keyword">var</span> parseURL = {
-      sra: sraURL,
-      assembly: assemblyURL
+      <span class="hljs-attr">sra</span>: sraURL,
+      <span class="hljs-attr">assembly</span>: assemblyURL
     }
 
     parseURL[db]()
@@ -546,7 +578,7 @@ ncbi.urls = <span class="hljs-function"><span class="hljs-keyword">function</spa
           acc + <span class="hljs-string">'/'</span>,
           acc + <span class="hljs-string">'.sra'</span>
         ].join(<span class="hljs-string">''</span>)
-        self.push({url: runURL, uid: obj.uid})
+        self.push({<span class="hljs-attr">url</span>: runURL, <span class="hljs-attr">uid</span>: obj.uid})
         cb()
       }
     }
@@ -554,9 +586,25 @@ ncbi.urls = <span class="hljs-function"><span class="hljs-keyword">function</spa
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">assemblyURL</span> (<span class="hljs-params"></span>) </span>{
       <span class="hljs-keyword">if</span> (obj.meta.FtpSites) {
         <span class="hljs-keyword">var</span> ftpPath = obj.meta.FtpSites.FtpPath
-        <span class="hljs-keyword">var</span> ftpArray = <span class="hljs-built_in">Array</span>.isArray(ftpPath) ? ftpPath : [ ftpPath ]
-        <span class="hljs-keyword">var</span> httpRoot = ftpArray[<span class="hljs-number">0</span>]._.replace(<span class="hljs-string">'ftp://'</span>, <span class="hljs-string">'http://'</span>) <span class="hljs-comment">// NCBI seems to return GenBank and RefSeq accessions for the same thing. We only need one.</span>
-        request({ uri: PROXY + httpRoot, withCredentials: <span class="hljs-literal">false</span> }, gotFTPDir)
+        <span class="hljs-keyword">var</span> ftpArray = <span class="hljs-built_in">Array</span>.isArray(ftpPath) ? ftpPath : [ ftpPath ]</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>NCBI seems to return GenBank and RefSeq accessions for the same thing. We only need one.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> httpRoot = ftpArray[<span class="hljs-number">0</span>]._
+          .replace(<span class="hljs-string">'ftp://'</span>, <span class="hljs-string">'http://'</span>)
+          .split(<span class="hljs-string">'/'</span>).slice(<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>).join(<span class="hljs-string">'/'</span>)
+        request({ <span class="hljs-attr">uri</span>: PROXY + httpRoot, <span class="hljs-attr">withCredentials</span>: <span class="hljs-literal">false</span> }, gotFTPDir)
       } <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> next() }
       <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotFTPDir</span> (<span class="hljs-params">err, res, body</span>) </span>{
         <span class="hljs-keyword">if</span> (err) { self.emit(<span class="hljs-string">'error'</span>, err) }
@@ -564,14 +612,15 @@ ncbi.urls = <span class="hljs-function"><span class="hljs-keyword">function</spa
         <span class="hljs-keyword">if</span> (!body) { <span class="hljs-keyword">return</span> next() }
         <span class="hljs-keyword">var</span> $ = cheerio.load(body)
 
-        <span class="hljs-keyword">var</span> urls = { uid: obj.uid }
+        <span class="hljs-keyword">var</span> urls = { <span class="hljs-attr">uid</span>: obj.uid }
 
         $(<span class="hljs-string">'a'</span>).map(attachToResult)
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attachToResult</span> (<span class="hljs-params">i, a</span>) </span>{
           <span class="hljs-keyword">var</span> href = a.attribs.href
           <span class="hljs-keyword">var</span> base = path.basename(href)
-          <span class="hljs-keyword">var</span> fileNameProperties = base.replace(<span class="hljs-regexp">/.*\//</span>, <span class="hljs-string">''</span>).split(<span class="hljs-string">'_'</span>)
-          <span class="hljs-keyword">var</span> fileNameExtensions = fileNameProperties[fileNameProperties.length - <span class="hljs-number">1</span>].split(<span class="hljs-string">'.'</span>)
+          <span class="hljs-keyword">var</span> basename = path.basename(httpRoot)
+          <span class="hljs-keyword">var</span> fileNameProperties = base.replace(<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'.*'</span> + basename + <span class="hljs-string">'_'</span>), <span class="hljs-string">''</span>)
+          <span class="hljs-keyword">var</span> fileNameExtensions = fileNameProperties.split(<span class="hljs-string">'.'</span>)
           <span class="hljs-keyword">var</span> fileType = fileNameExtensions[<span class="hljs-number">0</span>]
           <span class="hljs-keyword">var</span> fileFormat = fileNameExtensions[<span class="hljs-number">1</span>] || <span class="hljs-string">'dir'</span>
           <span class="hljs-keyword">if</span> (!urls[fileType]) { urls[fileType] = {} }
@@ -596,22 +645,22 @@ ncbi.urls = <span class="hljs-function"><span class="hljs-keyword">function</spa
     self.tries = <span class="hljs-number">1</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span> (<span class="hljs-params"></span>) </span>{
       <span class="hljs-keyword">if</span> (self.tries &gt; <span class="hljs-number">20</span>) { <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'try '</span> + self.tries + obj) }
-      request({ uri: obj, json: <span class="hljs-literal">true</span>, timeout: timeout, withCredentials: <span class="hljs-literal">false</span> }, gotData)
+      request({ <span class="hljs-attr">uri</span>: obj, <span class="hljs-attr">json</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">timeout</span>: timeout, <span class="hljs-attr">withCredentials</span>: <span class="hljs-literal">false</span> }, gotData)
       <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gotData</span> (<span class="hljs-params">err, res, body</span>) </span>{
-        <span class="hljs-keyword">if</span> (err
-        || !res
-        || res.statusCode !== <span class="hljs-number">200</span>
-        || !body
-        || (body.esearchresult &amp;&amp; body.esearchresult.ERROR)
-        || (body.esummaryresult &amp;&amp; body.esummaryresult[<span class="hljs-number">0</span>] === <span class="hljs-string">'Unable to obtain query #1'</span>)
-        || body.error
+        <span class="hljs-keyword">if</span> (err ||
+          !res ||
+          res.statusCode !== <span class="hljs-number">200</span> ||
+          !body ||
+          (body.esearchresult &amp;&amp; body.esearchresult.ERROR) ||
+          (body.esummaryresult &amp;&amp; body.esummaryresult[<span class="hljs-number">0</span>] === <span class="hljs-string">'Unable to obtain query #1'</span>) ||
+          body.error
         ) {
           self.tries++
           <span class="hljs-keyword">return</span> setTimeout(get, interval)
         }
         debug(<span class="hljs-string">'request response'</span>, res.statusCode)
         debug(<span class="hljs-string">'request results'</span>, body)
-        <span class="hljs-keyword">var</span> result = returnURL ? {url: obj, body: body} : body
+        <span class="hljs-keyword">var</span> result = returnURL ? {<span class="hljs-attr">url</span>: obj, <span class="hljs-attr">body</span>: body} : body
         self.push(result)
         setTimeout(next, interval)
       }
@@ -622,11 +671,11 @@ ncbi.urls = <span class="hljs-function"><span class="hljs-keyword">function</spa
         </li>
         
         
-        <li id="section-8">
+        <li id="section-10">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <h2 id="expand">Expand</h2>
 <p>Takes a property (e.g., biosample) and optional destination property
@@ -639,6 +688,7 @@ the result under Streamed object.property.</p>
             
             <div class="content"><div class='highlight'><pre>
 ncbi.expand = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">property, destProperty</span>) </span>{
+  insight.track(<span class="hljs-string">'ncbi'</span>, <span class="hljs-string">'expand'</span>)
   destProperty = destProperty || property
   <span class="hljs-keyword">var</span> db = property.split(<span class="hljs-string">'.'</span>).pop()
   <span class="hljs-keyword">if</span> (db === <span class="hljs-string">'tax'</span>) { db = <span class="hljs-string">'taxonomy'</span> }
@@ -657,11 +707,11 @@ ncbi.expand = <span class="hljs-function"><span class="hljs-keyword">function</s
         </li>
         
         
-        <li id="section-9">
+        <li id="section-11">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-9">&#182;</a>
+                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>Taxonomy doesn’t work just with ID number</p>
 
@@ -694,11 +744,11 @@ ncbi.expand = <span class="hljs-function"><span class="hljs-keyword">function</s
         </li>
         
         
-        <li id="section-10">
+        <li id="section-12">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <h2 id="fetch">Fetch</h2>
 <p>Allows retrieval of records from NCBI databases. Takes the database name and a search term,
@@ -714,19 +764,19 @@ for genes. These parameters should be passed as an object.</p>
            ...
 </code></pre><p>With advanced optional parameters:</p>
 <pre><code> <span class="hljs-keyword">var</span> opts = {
-   db: <span class="hljs-string">'nucest'</span>,
-   term: <span class="hljs-string">'guillardia_theta'</span>,
-   strand: <span class="hljs-number">1</span>,
-   complexity: <span class="hljs-number">4</span>,
-   seq_start: <span class="hljs-number">1</span>,
-   seq_stop: <span class="hljs-number">50</span>
+   <span class="hljs-attr">db</span>: <span class="hljs-string">'nucest'</span>,
+   <span class="hljs-attr">term</span>: <span class="hljs-string">'guillardia_theta'</span>,
+   <span class="hljs-attr">strand</span>: <span class="hljs-number">1</span>,
+   <span class="hljs-attr">complexity</span>: <span class="hljs-number">4</span>,
+   <span class="hljs-attr">seq_start</span>: <span class="hljs-number">1</span>,
+   <span class="hljs-attr">seq_stop</span>: <span class="hljs-number">50</span>
  }
 
  ncbi.fetch(opts)
- =&gt; { id: <span class="hljs-string">'gi|557436392|gb|HE992975.1|HE992975:1-50 HE992975 Guillardia theta CCMP 327 Guillardia theta cDNA clone sg-p_014_h06, mRNA sequence'</span>,
-      seq: <span class="hljs-string">'GAAGGCGATTCCAATGGTGCGAGCGAGGCAGCGAACAGACGCAGCGGGGA'</span> }
-    { id: <span class="hljs-string">'gi|557436391|gb|HE992974.1|HE992974:1-50 HE992974 Guillardia theta CCMP 327 Guillardia theta cDNA clone sg-p_014_h05, mRNA sequence'</span>,
-      seq: <span class="hljs-string">'GTCGCGGTTGGCATGGCTGAGGAGAATCCGATCCCTCGGCTAGACGCCTG'</span> }
+ =&gt; { <span class="hljs-attr">id</span>: <span class="hljs-string">'gi|557436392|gb|HE992975.1|HE992975:1-50 HE992975 Guillardia theta CCMP 327 Guillardia theta cDNA clone sg-p_014_h06, mRNA sequence'</span>,
+      <span class="hljs-attr">seq</span>: <span class="hljs-string">'GAAGGCGATTCCAATGGTGCGAGCGAGGCAGCGAACAGACGCAGCGGGGA'</span> }
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">'gi|557436391|gb|HE992974.1|HE992974:1-50 HE992974 Guillardia theta CCMP 327 Guillardia theta cDNA clone sg-p_014_h05, mRNA sequence'</span>,
+      <span class="hljs-attr">seq</span>: <span class="hljs-string">'GTCGCGGTTGGCATGGCTGAGGAGAATCCGATCCCTCGGCTAGACGCCTG'</span> }
  =&gt; [...]
 </code></pre><p>For some databases there are multiple return types. A default one will be chosen
 automatically, however it is possible to specify this via the rettype option.</p>
@@ -737,35 +787,36 @@ automatically, however it is possible to specify this via the rettype option.</p
             
             <div class="content"><div class='highlight'><pre>
 ncbi.fetch = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">db, term, cb</span>) </span>{
-  <span class="hljs-keyword">var</span> opts = <span class="hljs-keyword">typeof</span> db === <span class="hljs-string">'string'</span> ? { db: db, term: term } : db
+  insight.track(<span class="hljs-string">'ncbi'</span>, <span class="hljs-string">'fetch'</span>)
+  <span class="hljs-keyword">var</span> opts = <span class="hljs-keyword">typeof</span> db === <span class="hljs-string">'string'</span> ? { <span class="hljs-attr">db</span>: db, <span class="hljs-attr">term</span>: term } : db
   cb = <span class="hljs-keyword">typeof</span> term === <span class="hljs-string">'function'</span> ? term : cb
 
   <span class="hljs-keyword">var</span> rettypes = {
-    bioproject: <span class="hljs-string">'xml'</span>,
-    biosample: <span class="hljs-string">'full'</span>,
-    biosystems: <span class="hljs-string">'xml'</span>,
-    gds: <span class="hljs-string">'summary'</span>,
-    gene: <span class="hljs-string">''</span>,
-    homologene: <span class="hljs-string">'fasta'</span>,
-    mesh: <span class="hljs-string">'full'</span>,
-    nlmcatalog: <span class="hljs-string">'xml'</span>,
-    nuccore: <span class="hljs-string">'fasta'</span>,
-    nucest: <span class="hljs-string">'fasta'</span>,
-    nucgss: <span class="hljs-string">'fasta'</span>,
-    protein: <span class="hljs-string">'fasta'</span>,
-    popset: <span class="hljs-string">'fasta'</span>,
-    pmc: <span class="hljs-string">''</span>,
-    pubmed: <span class="hljs-string">''</span>,
-    snp: <span class="hljs-string">'fasta'</span>,
-    sra: <span class="hljs-string">'full'</span>,
-    taxonomy: <span class="hljs-string">''</span>
+    <span class="hljs-attr">bioproject</span>: <span class="hljs-string">'xml'</span>,
+    <span class="hljs-attr">biosample</span>: <span class="hljs-string">'full'</span>,
+    <span class="hljs-attr">biosystems</span>: <span class="hljs-string">'xml'</span>,
+    <span class="hljs-attr">gds</span>: <span class="hljs-string">'summary'</span>,
+    <span class="hljs-attr">gene</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attr">homologene</span>: <span class="hljs-string">'fasta'</span>,
+    <span class="hljs-attr">mesh</span>: <span class="hljs-string">'full'</span>,
+    <span class="hljs-attr">nlmcatalog</span>: <span class="hljs-string">'xml'</span>,
+    <span class="hljs-attr">nuccore</span>: <span class="hljs-string">'fasta'</span>,
+    <span class="hljs-attr">nucest</span>: <span class="hljs-string">'fasta'</span>,
+    <span class="hljs-attr">nucgss</span>: <span class="hljs-string">'fasta'</span>,
+    <span class="hljs-attr">protein</span>: <span class="hljs-string">'fasta'</span>,
+    <span class="hljs-attr">popset</span>: <span class="hljs-string">'fasta'</span>,
+    <span class="hljs-attr">pmc</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attr">pubmed</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attr">snp</span>: <span class="hljs-string">'fasta'</span>,
+    <span class="hljs-attr">sra</span>: <span class="hljs-string">'full'</span>,
+    <span class="hljs-attr">taxonomy</span>: <span class="hljs-string">''</span>
   }
 
   <span class="hljs-keyword">var</span> retmodes = {
-    fasta: <span class="hljs-string">'fasta'</span>,
+    <span class="hljs-attr">fasta</span>: <span class="hljs-string">'fasta'</span>,
     <span class="hljs-string">'native'</span>: <span class="hljs-string">'xml'</span>,
-    full: <span class="hljs-string">'xml'</span>,
-    xml: <span class="hljs-string">'xml'</span>,
+    <span class="hljs-attr">full</span>: <span class="hljs-string">'xml'</span>,
+    <span class="hljs-attr">xml</span>: <span class="hljs-string">'xml'</span>,
     <span class="hljs-string">''</span>: <span class="hljs-string">'xml'</span>,
     <span class="hljs-string">'asn.1'</span>: <span class="hljs-string">'asn.1'</span>
   }
@@ -795,7 +846,7 @@ ncbi.fetch = <span class="hljs-function"><span class="hljs-keyword">function</sp
     }
   }
 
-  <span class="hljs-keyword">return</span> extraOptsLine.slice(<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>)
+  <span class="hljs-keyword">return</span> extraOptsLine.slice(<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>)
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createAPIFetchUrl</span> (<span class="hljs-params">opts, extraOpts</span>) </span>{
@@ -851,7 +902,7 @@ ncbi.fetch = <span class="hljs-function"><span class="hljs-keyword">function</sp
         self.push(chunk.body)
         cb()
       } <span class="hljs-keyword">else</span> {
-        self.push({result: chunk.body})
+        self.push({<span class="hljs-attr">result</span>: chunk.body})
         cb()
       }
     }
