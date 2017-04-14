@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "7"
+env:
+  - NOCK_BACK_MODE=wild
 after_script:
   - npm run coveralls
 notifications:
