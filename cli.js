@@ -11,6 +11,7 @@ var minimistOptions = {
   alias: {
     limit: 'l',
     throughput: 't',
+    pretty: 'p',
     help: 'h'
   }
 }
@@ -54,6 +55,7 @@ if (command === 'link') {
 if (Object.keys(argv).length > 1) {
   options.limit = argv.limit
   options.throughput = argv.throughput
+  options.pretty = argv.pretty
 
   if (arg1 !== 'obj') {
     options.db = arg1
