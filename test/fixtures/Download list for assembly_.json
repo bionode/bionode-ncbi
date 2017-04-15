@@ -1,3 +1,403 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b831880d810ad0ce5bf9772b35bd35f90521539a1acb5558089bef0e33d6f4ee
-size 21069
+[
+    {
+        "scope": "http://eutils.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia%20theta&usehistory=y",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&amp;retmode=json&amp;version=2.0&amp;db=assembly&amp;term=Guillardia%20theta&amp;usehistory=y\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:52:56 GMT",
+            "Server",
+            "Apache",
+            "Referrer-Policy",
+            "origin-when-cross-origin",
+            "Location",
+            "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia%20theta&usehistory=y",
+            "Content-Length",
+            "361",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://eutils.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia%20theta&usehistory=y",
+        "body": "",
+        "status": 200,
+        "response": {
+            "header": {
+                "type": "esearch",
+                "version": "0.3"
+            },
+            "esearchresult": {
+                "count": "1",
+                "retmax": "1",
+                "retstart": "0",
+                "querykey": "1",
+                "webenv": "NCID_1_450997136_130.14.18.34_9001_1492246377_971583876_0MetA0_S_MegaStore_F_1",
+                "idlist": [
+                    "503988"
+                ],
+                "translationset": [
+                    {
+                        "from": "Guillardia theta",
+                        "to": "\"Guillardia theta\"[Organism]"
+                    }
+                ],
+                "translationstack": [
+                    {
+                        "term": "\"Guillardia theta\"[Organism]",
+                        "field": "Organism",
+                        "count": "1",
+                        "explode": "Y"
+                    },
+                    "GROUP"
+                ],
+                "querytranslation": "\"Guillardia theta\"[Organism]"
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:52:57 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Content-Security-Policy",
+            "upgrade-insecure-requests",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "private",
+            "NCBI-PHID",
+            "990C504F8F1DF34100000000002B002A",
+            "NCBI-SID",
+            "990C504F8F1DF691_0043SID",
+            "Content-Type",
+            "application/json; charset=UTF-8",
+            "Set-Cookie",
+            "ncbi_sid=990C504F8F1DF691_0043SID; domain=.nih.gov; path=/; expires=Sun, 15 Apr 2018 08:52:57 GMT",
+            "Vary",
+            "Accept-Encoding",
+            "X-UA-Compatible",
+            "IE=Edge",
+            "X-XSS-Protection",
+            "1; mode=block",
+            "Connection",
+            "close",
+            "Transfer-Encoding",
+            "chunked"
+        ]
+    },
+    {
+        "scope": "http://eutils.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia%20theta&usehistory=y",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&amp;retmode=json&amp;version=2.0&amp;db=assembly&amp;term=Guillardia%20theta&amp;usehistory=y\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:52:57 GMT",
+            "Server",
+            "Apache",
+            "Referrer-Policy",
+            "origin-when-cross-origin",
+            "Location",
+            "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia%20theta&usehistory=y",
+            "Content-Length",
+            "361",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://eutils.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia%20theta&usehistory=y",
+        "body": "",
+        "status": 200,
+        "response": {
+            "header": {
+                "type": "esearch",
+                "version": "0.3"
+            },
+            "esearchresult": {
+                "count": "1",
+                "retmax": "1",
+                "retstart": "0",
+                "querykey": "1",
+                "webenv": "NCID_1_166928607_130.14.22.215_9001_1492246378_1263680741_0MetA0_S_MegaStore_F_1",
+                "idlist": [
+                    "503988"
+                ],
+                "translationset": [
+                    {
+                        "from": "Guillardia theta",
+                        "to": "\"Guillardia theta\"[Organism]"
+                    }
+                ],
+                "translationstack": [
+                    {
+                        "term": "\"Guillardia theta\"[Organism]",
+                        "field": "Organism",
+                        "count": "1",
+                        "explode": "Y"
+                    },
+                    "GROUP"
+                ],
+                "querytranslation": "\"Guillardia theta\"[Organism]"
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:52:58 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Content-Security-Policy",
+            "upgrade-insecure-requests",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "private",
+            "NCBI-PHID",
+            "03EDB59C8F1DEED10000000000550052",
+            "NCBI-SID",
+            "03EDB59C8F1DF6A1_0085SID",
+            "Content-Type",
+            "application/json; charset=UTF-8",
+            "Set-Cookie",
+            "ncbi_sid=03EDB59C8F1DF6A1_0085SID; domain=.nih.gov; path=/; expires=Sun, 15 Apr 2018 08:52:58 GMT",
+            "Vary",
+            "Accept-Encoding",
+            "X-UA-Compatible",
+            "IE=Edge",
+            "X-XSS-Protection",
+            "1; mode=block",
+            "Connection",
+            "close",
+            "Transfer-Encoding",
+            "chunked"
+        ]
+    },
+    {
+        "scope": "http://eutils.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/entrez/eutils/esummary.fcgi?&retmode=json&version=2.0&db=assembly&id=503988&usehistory=y",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?&amp;retmode=json&amp;version=2.0&amp;db=assembly&amp;id=503988&amp;usehistory=y\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:52:58 GMT",
+            "Server",
+            "Apache",
+            "Referrer-Policy",
+            "origin-when-cross-origin",
+            "Location",
+            "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?&retmode=json&version=2.0&db=assembly&id=503988&usehistory=y",
+            "Content-Length",
+            "348",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://eutils.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/entrez/eutils/esummary.fcgi?&retmode=json&version=2.0&db=assembly&id=503988&usehistory=y",
+        "body": "",
+        "status": 200,
+        "response": {
+            "header": {
+                "type": "esummary",
+                "version": "0.3"
+            },
+            "result": {
+                "503988": {
+                    "uid": "503988",
+                    "rsuid": "1011608",
+                    "gbuid": "503988",
+                    "assemblyaccession": "GCF_000315625.1",
+                    "lastmajorreleaseaccession": "GCF_000315625.1",
+                    "chainid": "315625",
+                    "assemblyname": "Guith1",
+                    "ucscname": "",
+                    "ensemblname": "",
+                    "taxid": "905079",
+                    "organism": "Guillardia theta CCMP2712 (cryptomonads)",
+                    "speciestaxid": "55529",
+                    "speciesname": "Guillardia theta",
+                    "assemblytype": "haploid",
+                    "assemblyclass": "haploid",
+                    "assemblystatus": "Scaffold",
+                    "wgs": "AEIE01",
+                    "gb_bioprojects": [
+                        {
+                            "bioprojectaccn": "PRJNA53577",
+                            "bioprojectid": 53577
+                        }
+                    ],
+                    "gb_projects": [
+                        "53577"
+                    ],
+                    "rs_bioprojects": [
+                        {
+                            "bioprojectaccn": "PRJNA223305",
+                            "bioprojectid": 223305
+                        }
+                    ],
+                    "rs_projects": [
+                        "223305"
+                    ],
+                    "biosampleaccn": "SAMN00116900",
+                    "biosampleid": "116900",
+                    "biosource": {
+                        "infraspecieslist": [
+                            {
+                                "sub_type": "strain",
+                                "sub_value": "CCMP2712"
+                            }
+                        ],
+                        "sex": "",
+                        "isolate": ""
+                    },
+                    "coverage": "23.66",
+                    "partialgenomerepresentation": "false",
+                    "primary": "1011598",
+                    "assemblydescription": "",
+                    "releaselevel": "Major",
+                    "asmreleasedate_genbank": "2012/12/06 00:00",
+                    "asmreleasedate_refseq": "2014/04/22 00:00",
+                    "seqreleasedate": "2012/12/05 00:00",
+                    "asmupdatedate": "2014/04/22 00:00",
+                    "submissiondate": "2012/12/05 00:00",
+                    "lastupdatedate": "2014/04/22 00:00",
+                    "submitterorganization": "JGI",
+                    "refseq_category": "representative genome",
+                    "anomalouslist": [],
+                    "exclfromrefseq": [],
+                    "propertylist": [
+                        "full-genome-representation",
+                        "latest",
+                        "latest_genbank",
+                        "latest_refseq",
+                        "representative",
+                        "wgs"
+                    ],
+                    "fromtype": "",
+                    "synonym": {
+                        "genbank": "GCA_000315625.1",
+                        "refseq": "GCF_000315625.1",
+                        "similarity": "identical"
+                    },
+                    "ftppath_genbank": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/315/625/GCA_000315625.1_Guith1",
+                    "ftppath_refseq": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1",
+                    "ftppath_assembly_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_assembly_report.txt",
+                    "ftppath_stats_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_assembly_stats.txt",
+                    "ftppath_regions_rpt": "",
+                    "sortorder": "2C50003156259898",
+                    "meta": " &lt;Stats&gt; &lt;Stat category=\"alt_loci_count\" sequence_tag=\"all\"&gt;0&lt;/Stat&gt; &lt;Stat category=\"chromosome_count\" sequence_tag=\"all\"&gt;0&lt;/Stat&gt; &lt;Stat category=\"contig_count\" sequence_tag=\"all\"&gt;5126&lt;/Stat&gt; &lt;Stat category=\"contig_l50\" sequence_tag=\"all\"&gt;587&lt;/Stat&gt; &lt;Stat category=\"contig_n50\" sequence_tag=\"all\"&gt;40445&lt;/Stat&gt; &lt;Stat category=\"non_chromosome_replicon_count\" sequence_tag=\"all\"&gt;0&lt;/Stat&gt; &lt;Stat category=\"replicon_count\" sequence_tag=\"all\"&gt;0&lt;/Stat&gt; &lt;Stat category=\"scaffold_count\" sequence_tag=\"all\"&gt;669&lt;/Stat&gt; &lt;Stat category=\"scaffold_count\" sequence_tag=\"placed\"&gt;0&lt;/Stat&gt; &lt;Stat category=\"scaffold_count\" sequence_tag=\"unlocalized\"&gt;0&lt;/Stat&gt; &lt;Stat category=\"scaffold_count\" sequence_tag=\"unplaced\"&gt;669&lt;/Stat&gt; &lt;Stat category=\"scaffold_l50\" sequence_tag=\"all\"&gt;52&lt;/Stat&gt; &lt;Stat category=\"scaffold_n50\" sequence_tag=\"all\"&gt;545808&lt;/Stat&gt; &lt;Stat category=\"total_length\" sequence_tag=\"all\"&gt;87145349&lt;/Stat&gt; &lt;Stat category=\"ungapped_length\" sequence_tag=\"all\"&gt;83457412&lt;/Stat&gt; &lt;/Stats&gt; &lt;FtpSites&gt;   &lt;FtpPath type=\"Assembly_rpt\"&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_assembly_report.txt&lt;/FtpPath&gt;   &lt;FtpPath type=\"GenBank\"&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/315/625/GCA_000315625.1_Guith1&lt;/FtpPath&gt;   &lt;FtpPath type=\"RefSeq\"&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1&lt;/FtpPath&gt;   &lt;FtpPath type=\"Stats_rpt\"&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1/GCF_000315625.1_Guith1_assembly_stats.txt&lt;/FtpPath&gt; &lt;/FtpSites&gt; &lt;assembly-level&gt;2&lt;/assembly-level&gt; &lt;assembly-status&gt;Scaffold&lt;/assembly-status&gt; &lt;representative-status&gt;representative genome&lt;/representative-status&gt; &lt;submitter-organization&gt;JGI&lt;/submitter-organization&gt;    "
+                },
+                "uids": [
+                    "503988"
+                ]
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:52:59 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Content-Security-Policy",
+            "upgrade-insecure-requests",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "private",
+            "NCBI-PHID",
+            "03ED5CEB8F1DD63100000000004D003D",
+            "NCBI-SID",
+            "03ED5CEB8F1DF6B1_0077SID",
+            "Content-Type",
+            "application/json; charset=UTF-8",
+            "Set-Cookie",
+            "ncbi_sid=03ED5CEB8F1DF6B1_0077SID; domain=.nih.gov; path=/; expires=Sun, 15 Apr 2018 08:52:59 GMT",
+            "Vary",
+            "Accept-Encoding",
+            "X-UA-Compatible",
+            "IE=Edge",
+            "X-XSS-Protection",
+            "1; mode=block",
+            "Connection",
+            "close",
+            "Transfer-Encoding",
+            "chunked"
+        ]
+    },
+    {
+        "scope": "http://ftp.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:52:59 GMT",
+            "Server",
+            "Apache",
+            "Location",
+            "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1",
+            "Cache-Control",
+            "max-age=31536000",
+            "Expires",
+            "Sun, 15 Apr 2018 08:52:59 GMT",
+            "Content-Length",
+            "287",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://ftp.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1",
+        "body": "",
+        "status": 200,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<html>\n <head>\n  <title>Index of /genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1</title>\n </head>\n <body>\n<h1>Index of /genomes/all/GCF/000/315/625/GCF_000315625.1_Guith1</h1>\n<pre>Name                    Last modified      Size  <hr><a href=\"GCF_000315625.1_Guith1_assembly_structure/\">GCF_000315625.1_Guit..&gt;</a> 20-Sep-2016 10:07    -   \n<a href=\"GCF_000315625.1_Guith1_assembly_report.txt\">GCF_000315625.1_Guit..&gt;</a> 13-Oct-2016 11:49   64K  \n<a href=\"GCF_000315625.1_Guith1_assembly_stats.txt\">GCF_000315625.1_Guit..&gt;</a> 13-Oct-2016 11:49  4.5K  \n<a href=\"GCF_000315625.1_Guith1_cds_from_genomic.fna.gz\">GCF_000315625.1_Guit..&gt;</a> 17-Jun-2016 03:33   11M  \n<a href=\"GCF_000315625.1_Guith1_feature_table.txt.gz\">GCF_000315625.1_Guit..&gt;</a> 17-Jun-2015 09:19  1.2M  \n<a href=\"GCF_000315625.1_Guith1_genomic.fna.gz\">GCF_000315625.1_Guit..&gt;</a> 17-Jun-2016 03:33   25M  \n<a href=\"GCF_000315625.1_Guith1_genomic.gbff.gz\">GCF_000315625.1_Guit..&gt;</a> 17-Jun-2016 03:33   44M  \n<a href=\"GCF_000315625.1_Guith1_genomic.gff.gz\">GCF_000315625.1_Guit..&gt;</a> 17-Jun-2016 03:33  4.9M  \n<a href=\"GCF_000315625.1_Guith1_protein.faa.gz\">GCF_000315625.1_Guit..&gt;</a> 08-Aug-2014 00:23  6.0M  \n<a href=\"GCF_000315625.1_Guith1_protein.gpff.gz\">GCF_000315625.1_Guit..&gt;</a> 17-Jun-2016 03:33  9.8M  \n<a href=\"GCF_000315625.1_Guith1_rm.out.gz\">GCF_000315625.1_Guit..&gt;</a> 17-Jun-2016 03:33  2.5M  \n<a href=\"GCF_000315625.1_Guith1_rm.run\">GCF_000315625.1_Guit..&gt;</a> 17-Jun-2016 03:33  873   \n<a href=\"GCF_000315625.1_Guith1_rna.fna.gz\">GCF_000315625.1_Guit..&gt;</a> 17-Jun-2016 03:33  9.2M  \n<a href=\"GCF_000315625.1_Guith1_rna.gbff.gz\">GCF_000315625.1_Guit..&gt;</a> 17-Jun-2015 09:19   24M  \n<a href=\"GCF_000315625.1_Guith1_rna_from_genomic.fna.gz\">GCF_000315625.1_Guit..&gt;</a> 17-Jun-2016 03:33   11M  \n<a href=\"README.txt\">README.txt</a>              24-Jan-2017 14:12   23K  \n<a href=\"annotation_hashes.txt\">annotation_hashes.txt</a>   17-Jun-2016 03:33  410   \n<a href=\"assembly_status.txt\">assembly_status.txt</a>     14-Apr-2017 02:04   14   \n<a href=\"md5checksums.txt\">md5checksums.txt</a>        17-Jun-2016 03:33  1.4K  \n<hr></pre>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:53:00 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Cache-Control",
+            "max-age=31536000",
+            "Expires",
+            "Sun, 15 Apr 2018 08:53:00 GMT",
+            "Content-Length",
+            "2241",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html;charset=ISO-8859-1"
+        ]
+    }
+]

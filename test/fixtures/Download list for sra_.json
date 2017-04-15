@@ -1,3 +1,420 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d7ea0abfafe2baa4f641c5bd21121ec5cef94639a158e56ce9d9a2201090a9a8
-size 36261
+[
+    {
+        "scope": "http://eutils.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=sra&term=Guillardia%20theta&usehistory=y",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&amp;retmode=json&amp;version=2.0&amp;db=sra&amp;term=Guillardia%20theta&amp;usehistory=y\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:53:02 GMT",
+            "Server",
+            "Apache",
+            "Referrer-Policy",
+            "origin-when-cross-origin",
+            "Location",
+            "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=sra&term=Guillardia%20theta&usehistory=y",
+            "Content-Length",
+            "356",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://eutils.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=sra&term=Guillardia%20theta&usehistory=y",
+        "body": "",
+        "status": 200,
+        "response": {
+            "header": {
+                "type": "esearch",
+                "version": "0.3"
+            },
+            "esearchresult": {
+                "count": "13",
+                "retmax": "13",
+                "retstart": "0",
+                "querykey": "1",
+                "webenv": "NCID_1_166929287_130.14.22.215_9001_1492246383_1591505543_0MetA0_S_MegaStore_F_1",
+                "idlist": [
+                    "785981",
+                    "333627",
+                    "35533",
+                    "35532",
+                    "35531",
+                    "35530",
+                    "35529",
+                    "35528",
+                    "35527",
+                    "35526",
+                    "35525",
+                    "35524",
+                    "35523"
+                ],
+                "translationset": [
+                    {
+                        "from": "Guillardia theta",
+                        "to": "\"Guillardia theta\"[Organism] OR Guillardia theta[All Fields]"
+                    }
+                ],
+                "translationstack": [
+                    {
+                        "term": "\"Guillardia theta\"[Organism]",
+                        "field": "Organism",
+                        "count": "13",
+                        "explode": "Y"
+                    },
+                    {
+                        "term": "Guillardia theta[All Fields]",
+                        "field": "All Fields",
+                        "count": "13",
+                        "explode": "N"
+                    },
+                    "OR",
+                    "GROUP"
+                ],
+                "querytranslation": "\"Guillardia theta\"[Organism] OR Guillardia theta[All Fields]"
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:53:03 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Content-Security-Policy",
+            "upgrade-insecure-requests",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "private",
+            "NCBI-PHID",
+            "990DBB708F1DF6D10000000000000001",
+            "NCBI-SID",
+            "990DBB708F1DF6F1_0001SID",
+            "Content-Type",
+            "application/json; charset=UTF-8",
+            "Set-Cookie",
+            "ncbi_sid=990DBB708F1DF6F1_0001SID; domain=.nih.gov; path=/; expires=Sun, 15 Apr 2018 08:53:03 GMT",
+            "Vary",
+            "Accept-Encoding",
+            "X-UA-Compatible",
+            "IE=Edge",
+            "X-XSS-Protection",
+            "1; mode=block",
+            "Connection",
+            "close",
+            "Transfer-Encoding",
+            "chunked"
+        ]
+    },
+    {
+        "scope": "http://eutils.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=sra&term=Guillardia%20theta&query_key=1&WebEnv=NCID_1_166929287_130.14.22.215_9001_1492246383_1591505543_0MetA0_S_MegaStore_F_1&retmax=50&retstart=0",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&amp;retmode=json&amp;version=2.0&amp;db=sra&amp;term=Guillardia%20theta&amp;query_key=1&amp;WebEnv=NCID_1_166929287_130.14.22.215_9001_1492246383_1591505543_0MetA0_S_MegaStore_F_1&amp;retmax=50&amp;retstart=0\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:53:03 GMT",
+            "Server",
+            "Apache",
+            "Referrer-Policy",
+            "origin-when-cross-origin",
+            "Location",
+            "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=sra&term=Guillardia%20theta&query_key=1&WebEnv=NCID_1_166929287_130.14.22.215_9001_1492246383_1591505543_0MetA0_S_MegaStore_F_1&retmax=50&retstart=0",
+            "Content-Length",
+            "476",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://eutils.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=sra&term=Guillardia%20theta&query_key=1&WebEnv=NCID_1_166929287_130.14.22.215_9001_1492246383_1591505543_0MetA0_S_MegaStore_F_1&retmax=50&retstart=0",
+        "body": "",
+        "status": 200,
+        "response": {
+            "header": {
+                "type": "esearch",
+                "version": "0.3"
+            },
+            "esearchresult": {
+                "count": "13",
+                "retmax": "13",
+                "retstart": "0",
+                "idlist": [
+                    "785981",
+                    "333627",
+                    "35533",
+                    "35532",
+                    "35531",
+                    "35530",
+                    "35529",
+                    "35528",
+                    "35527",
+                    "35526",
+                    "35525",
+                    "35524",
+                    "35523"
+                ],
+                "translationset": [
+                    {
+                        "from": "Guillardia theta",
+                        "to": "\"Guillardia theta\"[Organism] OR Guillardia theta[All Fields]"
+                    }
+                ],
+                "translationstack": [
+                    "GROUP",
+                    {
+                        "term": "\"Guillardia theta\"[Organism]",
+                        "field": "Organism",
+                        "count": "13",
+                        "explode": "Y"
+                    },
+                    {
+                        "term": "Guillardia theta[All Fields]",
+                        "field": "All Fields",
+                        "count": "13",
+                        "explode": "N"
+                    },
+                    "OR",
+                    "GROUP",
+                    "AND"
+                ],
+                "querytranslation": "(#1) AND (\"Guillardia theta\"[Organism] OR Guillardia theta[All Fields])"
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:53:04 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Content-Security-Policy",
+            "upgrade-insecure-requests",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "private",
+            "NCBI-PHID",
+            "990C46348F1DF0510000000000590055",
+            "NCBI-SID",
+            "990C46348F1DF701_0089SID",
+            "Content-Type",
+            "application/json; charset=UTF-8",
+            "Set-Cookie",
+            "ncbi_sid=990C46348F1DF701_0089SID; domain=.nih.gov; path=/; expires=Sun, 15 Apr 2018 08:53:04 GMT",
+            "Vary",
+            "Accept-Encoding",
+            "X-UA-Compatible",
+            "IE=Edge",
+            "X-XSS-Protection",
+            "1; mode=block",
+            "Connection",
+            "close",
+            "Transfer-Encoding",
+            "chunked"
+        ]
+    },
+    {
+        "scope": "http://eutils.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/entrez/eutils/esummary.fcgi?&retmode=json&version=2.0&db=sra&id=785981,333627,35533,35532,35531,35530,35529,35528,35527,35526,35525,35524,35523&usehistory=y",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?&amp;retmode=json&amp;version=2.0&amp;db=sra&amp;id=785981,333627,35533,35532,35531,35530,35529,35528,35527,35526,35525,35524,35523&amp;usehistory=y\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:53:05 GMT",
+            "Server",
+            "Apache",
+            "Referrer-Policy",
+            "origin-when-cross-origin",
+            "Location",
+            "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?&retmode=json&version=2.0&db=sra&id=785981,333627,35533,35532,35531,35530,35529,35528,35527,35526,35525,35524,35523&usehistory=y",
+            "Content-Length",
+            "416",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://eutils.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/entrez/eutils/esummary.fcgi?&retmode=json&version=2.0&db=sra&id=785981,333627,35533,35532,35531,35530,35529,35528,35527,35526,35525,35524,35523&usehistory=y",
+        "body": "",
+        "status": 200,
+        "response": {
+            "header": {
+                "type": "esummary",
+                "version": "0.3"
+            },
+            "result": {
+                "35523": {
+                    "uid": "35523",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.&lt;/Title&gt;&lt;Platform instrument_model=\"454 GS FLX\"&gt;LS454&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"19695\" total_bases=\"5631540\" total_size=\"13923541\" load_done=\"true\" static_data_available=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA025478\" center_name=\"JGI\" contact_name=\"Sam Pitluck\" lab_name=\"PGF\"/&gt;&lt;Experiment acc=\"SRX029662\" ver=\"1\" status=\"public\" name=\"454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.\"/&gt;&lt;Study acc=\"SRP004020\" name=\"Guillardia theta CCMP2712\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS118433\" name=\"\"/&gt;&lt;Instrument LS454=\"454 GS FLX\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME&gt;FTZB&lt;/LIBRARY_NAME&gt;&lt;LIBRARY_STRATEGY&gt;WGS&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;GENOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;SINGLE/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP004020&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN00116900&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR070672\" total_spots=\"19695\" total_bases=\"5631540\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2011/10/29",
+                    "updatedate": "2010/10/29"
+                },
+                "35524": {
+                    "uid": "35524",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.&lt;/Title&gt;&lt;Platform instrument_model=\"454 GS FLX\"&gt;LS454&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"204588\" total_bases=\"58208970\" total_size=\"146515335\" load_done=\"true\" static_data_available=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA025478\" center_name=\"JGI\" contact_name=\"Sam Pitluck\" lab_name=\"PGF\"/&gt;&lt;Experiment acc=\"SRX029663\" ver=\"1\" status=\"public\" name=\"454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.\"/&gt;&lt;Study acc=\"SRP004020\" name=\"Guillardia theta CCMP2712\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS118433\" name=\"\"/&gt;&lt;Instrument LS454=\"454 GS FLX\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME&gt;FTZB&lt;/LIBRARY_NAME&gt;&lt;LIBRARY_STRATEGY&gt;WGS&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;GENOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;SINGLE/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP004020&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN00116900&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR070673\" total_spots=\"204588\" total_bases=\"58208970\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2011/10/29",
+                    "updatedate": "2010/10/29"
+                },
+                "35525": {
+                    "uid": "35525",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.&lt;/Title&gt;&lt;Platform instrument_model=\"454 GS FLX\"&gt;LS454&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"295457\" total_bases=\"85081326\" total_size=\"216274455\" load_done=\"true\" static_data_available=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA025478\" center_name=\"JGI\" contact_name=\"Sam Pitluck\" lab_name=\"PGF\"/&gt;&lt;Experiment acc=\"SRX029664\" ver=\"1\" status=\"public\" name=\"454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.\"/&gt;&lt;Study acc=\"SRP004020\" name=\"Guillardia theta CCMP2712\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS118433\" name=\"\"/&gt;&lt;Instrument LS454=\"454 GS FLX\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME&gt;FTZB&lt;/LIBRARY_NAME&gt;&lt;LIBRARY_STRATEGY&gt;WGS&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;GENOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;SINGLE/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP004020&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN00116900&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR070674\" total_spots=\"295457\" total_bases=\"85081326\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2011/10/29",
+                    "updatedate": "2010/10/29"
+                },
+                "35526": {
+                    "uid": "35526",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.&lt;/Title&gt;&lt;Platform instrument_model=\"454 GS FLX\"&gt;LS454&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"11355\" total_bases=\"2962463\" total_size=\"7479863\" load_done=\"true\" static_data_available=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA025478\" center_name=\"JGI\" contact_name=\"Sam Pitluck\" lab_name=\"PGF\"/&gt;&lt;Experiment acc=\"SRX029665\" ver=\"1\" status=\"public\" name=\"454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.\"/&gt;&lt;Study acc=\"SRP004020\" name=\"Guillardia theta CCMP2712\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS118433\" name=\"\"/&gt;&lt;Instrument LS454=\"454 GS FLX\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME&gt;FTZC&lt;/LIBRARY_NAME&gt;&lt;LIBRARY_STRATEGY&gt;WGS&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;GENOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;SINGLE/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP004020&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN00116900&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR070675\" total_spots=\"11355\" total_bases=\"2962463\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2011/10/29",
+                    "updatedate": "2010/10/29"
+                },
+                "35527": {
+                    "uid": "35527",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.&lt;/Title&gt;&lt;Platform instrument_model=\"454 GS FLX\"&gt;LS454&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"286676\" total_bases=\"72084130\" total_size=\"191124885\" load_done=\"true\" static_data_available=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA025478\" center_name=\"JGI\" contact_name=\"Sam Pitluck\" lab_name=\"PGF\"/&gt;&lt;Experiment acc=\"SRX029666\" ver=\"1\" status=\"public\" name=\"454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.\"/&gt;&lt;Study acc=\"SRP004020\" name=\"Guillardia theta CCMP2712\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS118433\" name=\"\"/&gt;&lt;Instrument LS454=\"454 GS FLX\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME&gt;FTZC&lt;/LIBRARY_NAME&gt;&lt;LIBRARY_STRATEGY&gt;WGS&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;GENOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;SINGLE/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP004020&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN00116900&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR070676\" total_spots=\"286676\" total_bases=\"72084130\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2011/10/29",
+                    "updatedate": "2010/10/29"
+                },
+                "35528": {
+                    "uid": "35528",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.&lt;/Title&gt;&lt;Platform instrument_model=\"454 GS FLX\"&gt;LS454&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"971916\" total_bases=\"513131403\" total_size=\"1174625556\" load_done=\"true\" static_data_available=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA025478\" center_name=\"JGI\" contact_name=\"Sam Pitluck\" lab_name=\"PGF\"/&gt;&lt;Experiment acc=\"SRX029667\" ver=\"1\" status=\"public\" name=\"454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.\"/&gt;&lt;Study acc=\"SRP004020\" name=\"Guillardia theta CCMP2712\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS118433\" name=\"\"/&gt;&lt;Instrument LS454=\"454 GS FLX\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME&gt;GGAN&lt;/LIBRARY_NAME&gt;&lt;LIBRARY_STRATEGY&gt;WGS&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;GENOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;SINGLE/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP004020&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN00116900&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR070677\" total_spots=\"971916\" total_bases=\"513131403\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2011/10/29",
+                    "updatedate": "2010/10/29"
+                },
+                "35529": {
+                    "uid": "35529",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.&lt;/Title&gt;&lt;Platform instrument_model=\"454 GS FLX\"&gt;LS454&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"1131540\" total_bases=\"588220300\" total_size=\"1327676112\" load_done=\"true\" static_data_available=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA025478\" center_name=\"JGI\" contact_name=\"Sam Pitluck\" lab_name=\"PGF\"/&gt;&lt;Experiment acc=\"SRX029668\" ver=\"1\" status=\"public\" name=\"454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.\"/&gt;&lt;Study acc=\"SRP004020\" name=\"Guillardia theta CCMP2712\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS118433\" name=\"\"/&gt;&lt;Instrument LS454=\"454 GS FLX\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME&gt;GGAN&lt;/LIBRARY_NAME&gt;&lt;LIBRARY_STRATEGY&gt;WGS&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;GENOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;SINGLE/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP004020&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN00116900&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR070678\" total_spots=\"1131540\" total_bases=\"588220300\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2011/10/29",
+                    "updatedate": "2010/10/29"
+                },
+                "35530": {
+                    "uid": "35530",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.&lt;/Title&gt;&lt;Platform instrument_model=\"454 GS FLX\"&gt;LS454&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"875108\" total_bases=\"467593710\" total_size=\"1055151585\" load_done=\"true\" static_data_available=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA025478\" center_name=\"JGI\" contact_name=\"Sam Pitluck\" lab_name=\"PGF\"/&gt;&lt;Experiment acc=\"SRX029669\" ver=\"1\" status=\"public\" name=\"454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.\"/&gt;&lt;Study acc=\"SRP004020\" name=\"Guillardia theta CCMP2712\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS118433\" name=\"\"/&gt;&lt;Instrument LS454=\"454 GS FLX\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME&gt;GGAN&lt;/LIBRARY_NAME&gt;&lt;LIBRARY_STRATEGY&gt;WGS&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;GENOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;SINGLE/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP004020&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN00116900&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR070679\" total_spots=\"875108\" total_bases=\"467593710\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2011/10/29",
+                    "updatedate": "2010/10/29"
+                },
+                "35531": {
+                    "uid": "35531",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.&lt;/Title&gt;&lt;Platform instrument_model=\"454 GS FLX\"&gt;LS454&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"1277503\" total_bases=\"657634727\" total_size=\"1479299694\" load_done=\"true\" static_data_available=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA025478\" center_name=\"JGI\" contact_name=\"Sam Pitluck\" lab_name=\"PGF\"/&gt;&lt;Experiment acc=\"SRX029670\" ver=\"1\" status=\"public\" name=\"454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.\"/&gt;&lt;Study acc=\"SRP004020\" name=\"Guillardia theta CCMP2712\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS118433\" name=\"\"/&gt;&lt;Instrument LS454=\"454 GS FLX\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME&gt;GGAN&lt;/LIBRARY_NAME&gt;&lt;LIBRARY_STRATEGY&gt;WGS&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;GENOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;SINGLE/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP004020&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN00116900&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR070680\" total_spots=\"1277503\" total_bases=\"657634727\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2011/10/29",
+                    "updatedate": "2010/10/29"
+                },
+                "35532": {
+                    "uid": "35532",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.&lt;/Title&gt;&lt;Platform instrument_model=\"454 GS FLX\"&gt;LS454&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"873145\" total_bases=\"341989978\" total_size=\"860077955\" load_done=\"true\" static_data_available=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA025478\" center_name=\"JGI\" contact_name=\"Sam Pitluck\" lab_name=\"PGF\"/&gt;&lt;Experiment acc=\"SRX029671\" ver=\"1\" status=\"public\" name=\"454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.\"/&gt;&lt;Study acc=\"SRP004020\" name=\"Guillardia theta CCMP2712\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS118433\" name=\"\"/&gt;&lt;Instrument LS454=\"454 GS FLX\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME&gt;GPNF&lt;/LIBRARY_NAME&gt;&lt;LIBRARY_STRATEGY&gt;WGS&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;GENOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;SINGLE/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP004020&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN00116900&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR070681\" total_spots=\"873145\" total_bases=\"341989978\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2011/10/29",
+                    "updatedate": "2010/10/29"
+                },
+                "35533": {
+                    "uid": "35533",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.&lt;/Title&gt;&lt;Platform instrument_model=\"454 GS FLX\"&gt;LS454&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"853766\" total_bases=\"335390762\" total_size=\"847553880\" load_done=\"true\" static_data_available=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA025478\" center_name=\"JGI\" contact_name=\"Sam Pitluck\" lab_name=\"PGF\"/&gt;&lt;Experiment acc=\"SRX029672\" ver=\"1\" status=\"public\" name=\"454 sequencing of Guillardia theta CCMP2712 random whole genome shotgun library.\"/&gt;&lt;Study acc=\"SRP004020\" name=\"Guillardia theta CCMP2712\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS118433\" name=\"\"/&gt;&lt;Instrument LS454=\"454 GS FLX\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME&gt;GPNF&lt;/LIBRARY_NAME&gt;&lt;LIBRARY_STRATEGY&gt;WGS&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;GENOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;SINGLE/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP004020&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN00116900&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR070682\" total_spots=\"853766\" total_bases=\"335390762\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2011/10/29",
+                    "updatedate": "2010/10/29"
+                },
+                "333627": {
+                    "uid": "333627",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;Guillardia theta CCMP2712 Transcriptome&lt;/Title&gt;&lt;Platform instrument_model=\"Illumina HiSeq 2000\"&gt;ILLUMINA&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"182747799\" total_bases=\"36549559800\" total_size=\"22708555668\" load_done=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA067334\" center_name=\"Dalhousie University\" contact_name=\"Naoko Tanifuji\" lab_name=\"John Archibald\"/&gt;&lt;Experiment acc=\"SRX242847\" ver=\"1\" status=\"public\" name=\"Guillardia theta CCMP2712 Transcriptome\"/&gt;&lt;Study acc=\"SRP018737\" name=\"Guillardia theta CCMP2712Transcriptome or Gene expression\"/&gt;&lt;Organism taxid=\"905079\" ScientificName=\"Guillardia theta CCMP2712\"/&gt;&lt;Sample acc=\"SRS396737\" name=\"\"/&gt;&lt;Instrument ILLUMINA=\"Illumina HiSeq 2000\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_NAME/&gt;&lt;LIBRARY_STRATEGY&gt;RNA-Seq&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;TRANSCRIPTOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;cDNA&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;PAIRED NOMINAL_LENGTH=\"300\"/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP018737&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN01923029&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR747855\" total_spots=\"182747799\" total_bases=\"36549559800\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2014/02/19",
+                    "updatedate": "2013/02/20"
+                },
+                "785981": {
+                    "uid": "785981",
+                    "expxml": "  &lt;Summary&gt;&lt;Title&gt;Whole transcriptome sequencing of Guillardia theta CCMP 2712 - MMETSP0046_2&lt;/Title&gt;&lt;Platform instrument_model=\"Illumina HiSeq 2000\"&gt;ILLUMINA&lt;/Platform&gt;&lt;Statistics total_runs=\"1\" total_spots=\"21079444\" total_bases=\"4215888800\" total_size=\"2837480854\" load_done=\"true\" cluster_name=\"public\"/&gt;&lt;/Summary&gt;&lt;Submitter acc=\"SRA166613\" center_name=\"NCGR\" contact_name=\"Kelly Schilling\" lab_name=\"\"/&gt;&lt;Experiment acc=\"SRX549023\" ver=\"1\" status=\"public\" name=\"Whole transcriptome sequencing of Guillardia theta CCMP 2712 - MMETSP0046_2\"/&gt;&lt;Study acc=\"SRP042159\" name=\"Marine Microbial Eukaryote Transcriptome Sequencing Project\"/&gt;&lt;Organism taxid=\"55529\" ScientificName=\"Guillardia theta\"/&gt;&lt;Sample acc=\"SRS616861\" name=\"\"/&gt;&lt;Instrument ILLUMINA=\"Illumina HiSeq 2000\"/&gt;&lt;Library_descriptor&gt;&lt;LIBRARY_STRATEGY&gt;RNA-Seq&lt;/LIBRARY_STRATEGY&gt;&lt;LIBRARY_SOURCE&gt;TRANSCRIPTOMIC&lt;/LIBRARY_SOURCE&gt;&lt;LIBRARY_SELECTION&gt;RANDOM PCR&lt;/LIBRARY_SELECTION&gt;&lt;LIBRARY_LAYOUT&gt;                 &lt;PAIRED/&gt;               &lt;/LIBRARY_LAYOUT&gt;&lt;/Library_descriptor&gt;&lt;Bioproject&gt;SRP042159&lt;/Bioproject&gt;&lt;Biosample&gt;SAMN02740393&lt;/Biosample&gt;  ",
+                    "runs": "  &lt;Run acc=\"SRR1294409\" total_spots=\"21079444\" total_bases=\"4215888800\" load_done=\"true\" is_public=\"true\" cluster_name=\"public\" static_data_available=\"true\"/&gt;  ",
+                    "extlinks": "    ",
+                    "createdate": "2015/07/22",
+                    "updatedate": "2014/05/21"
+                },
+                "uids": [
+                    "785981",
+                    "333627",
+                    "35533",
+                    "35532",
+                    "35531",
+                    "35530",
+                    "35529",
+                    "35528",
+                    "35527",
+                    "35526",
+                    "35525",
+                    "35524",
+                    "35523"
+                ]
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 08:53:06 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Content-Security-Policy",
+            "upgrade-insecure-requests",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "private",
+            "NCBI-PHID",
+            "03EE4C468F1DCB610000000000580046",
+            "NCBI-SID",
+            "03EE4C468F1DF721_0088SID",
+            "Content-Type",
+            "application/json; charset=UTF-8",
+            "Set-Cookie",
+            "ncbi_sid=03EE4C468F1DF721_0088SID; domain=.nih.gov; path=/; expires=Sun, 15 Apr 2018 08:53:06 GMT",
+            "Vary",
+            "Accept-Encoding",
+            "X-UA-Compatible",
+            "IE=Edge",
+            "X-XSS-Protection",
+            "1; mode=block",
+            "Connection",
+            "close",
+            "Transfer-Encoding",
+            "chunked"
+        ]
+    }
+]
