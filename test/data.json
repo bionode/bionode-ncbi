@@ -286,5 +286,5 @@
   "error" : {
     "message" : "NCBI returned invalid results, this could be a temporary issue with NCBI servers.\nRequest URL: http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=Guillardia_theta&usehistory=y"
   },
-  "sra-sha1": "3a4f794df353dbf2681b912262900c661d69ae63"
+  "sra-sha1": "0b38d7bb2ee9cbfb575a07ff5e2c243a3f129d8d"
 }
