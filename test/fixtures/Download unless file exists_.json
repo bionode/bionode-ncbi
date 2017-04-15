@@ -1,0 +1,441 @@
+[
+    {
+        "scope": "http://eutils.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=ASM1036v1&usehistory=y",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&amp;retmode=json&amp;version=2.0&amp;db=assembly&amp;term=ASM1036v1&amp;usehistory=y\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 10:14:43 GMT",
+            "Server",
+            "Apache",
+            "Referrer-Policy",
+            "origin-when-cross-origin",
+            "Location",
+            "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=ASM1036v1&usehistory=y",
+            "Content-Length",
+            "352",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://eutils.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=ASM1036v1&usehistory=y",
+        "body": "",
+        "status": 200,
+        "response": {
+            "header": {
+                "type": "esearch",
+                "version": "0.3"
+            },
+            "esearchresult": {
+                "count": "1",
+                "retmax": "1",
+                "retstart": "0",
+                "querykey": "1",
+                "webenv": "NCID_1_167600140_130.14.22.215_9001_1492251284_851112112_0MetA0_S_MegaStore_F_1",
+                "idlist": [
+                    "31868"
+                ],
+                "translationset": [],
+                "translationstack": [
+                    {
+                        "term": "ASM1036v1[All Fields]",
+                        "field": "All Fields",
+                        "count": "1",
+                        "explode": "N"
+                    },
+                    "GROUP"
+                ],
+                "querytranslation": "ASM1036v1[All Fields]"
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 10:14:44 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Content-Security-Policy",
+            "upgrade-insecure-requests",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "private",
+            "NCBI-PHID",
+            "990DAD0B8F1F264100000000002C001F",
+            "NCBI-SID",
+            "990DAD0B8F1F2941_0044SID",
+            "Content-Type",
+            "application/json; charset=UTF-8",
+            "Set-Cookie",
+            "ncbi_sid=990DAD0B8F1F2941_0044SID; domain=.nih.gov; path=/; expires=Sun, 15 Apr 2018 10:14:44 GMT",
+            "Vary",
+            "Accept-Encoding",
+            "X-UA-Compatible",
+            "IE=Edge",
+            "X-XSS-Protection",
+            "1; mode=block",
+            "Connection",
+            "close",
+            "Transfer-Encoding",
+            "chunked"
+        ]
+    },
+    {
+        "scope": "http://eutils.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=ASM1036v1&usehistory=y",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&amp;retmode=json&amp;version=2.0&amp;db=assembly&amp;term=ASM1036v1&amp;usehistory=y\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 10:14:44 GMT",
+            "Server",
+            "Apache",
+            "Referrer-Policy",
+            "origin-when-cross-origin",
+            "Location",
+            "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=ASM1036v1&usehistory=y",
+            "Content-Length",
+            "352",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://eutils.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/entrez/eutils/esearch.fcgi?&retmode=json&version=2.0&db=assembly&term=ASM1036v1&usehistory=y",
+        "body": "",
+        "status": 200,
+        "response": {
+            "header": {
+                "type": "esearch",
+                "version": "0.3"
+            },
+            "esearchresult": {
+                "count": "1",
+                "retmax": "1",
+                "retstart": "0",
+                "querykey": "1",
+                "webenv": "NCID_1_167600265_130.14.22.215_9001_1492251285_118637418_0MetA0_S_MegaStore_F_1",
+                "idlist": [
+                    "31868"
+                ],
+                "translationset": [],
+                "translationstack": [
+                    {
+                        "term": "ASM1036v1[All Fields]",
+                        "field": "All Fields",
+                        "count": "1",
+                        "explode": "N"
+                    },
+                    "GROUP"
+                ],
+                "querytranslation": "ASM1036v1[All Fields]"
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 10:14:45 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Content-Security-Policy",
+            "upgrade-insecure-requests",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "private",
+            "NCBI-PHID",
+            "03EEE23E8F1F2691000000000026001B",
+            "NCBI-SID",
+            "03EEE23E8F1F2951_0038SID",
+            "Content-Type",
+            "application/json; charset=UTF-8",
+            "Set-Cookie",
+            "ncbi_sid=03EEE23E8F1F2951_0038SID; domain=.nih.gov; path=/; expires=Sun, 15 Apr 2018 10:14:45 GMT",
+            "Vary",
+            "Accept-Encoding",
+            "X-UA-Compatible",
+            "IE=Edge",
+            "X-XSS-Protection",
+            "1; mode=block",
+            "Connection",
+            "close",
+            "Transfer-Encoding",
+            "chunked"
+        ]
+    },
+    {
+        "scope": "http://eutils.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/entrez/eutils/esummary.fcgi?&retmode=json&version=2.0&db=assembly&id=31868&usehistory=y",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?&amp;retmode=json&amp;version=2.0&amp;db=assembly&amp;id=31868&amp;usehistory=y\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 10:14:45 GMT",
+            "Server",
+            "Apache",
+            "Referrer-Policy",
+            "origin-when-cross-origin",
+            "Location",
+            "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?&retmode=json&version=2.0&db=assembly&id=31868&usehistory=y",
+            "Content-Length",
+            "347",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://eutils.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/entrez/eutils/esummary.fcgi?&retmode=json&version=2.0&db=assembly&id=31868&usehistory=y",
+        "body": "",
+        "status": 200,
+        "response": {
+            "header": {
+                "type": "esummary",
+                "version": "0.3"
+            },
+            "result": {
+                "31868": {
+                    "uid": "31868",
+                    "rsuid": "31868",
+                    "gbuid": "11168",
+                    "assemblyaccession": "GCF_000010365.1",
+                    "lastmajorreleaseaccession": "GCF_000010365.1",
+                    "chainid": "10365",
+                    "assemblyname": "ASM1036v1",
+                    "ucscname": "",
+                    "ensemblname": "",
+                    "taxid": "387662",
+                    "organism": "Candidatus Carsonella ruddii PV (g-proteobacteria)",
+                    "speciestaxid": "114186",
+                    "speciesname": "Candidatus Carsonella ruddii",
+                    "assemblytype": "haploid",
+                    "assemblyclass": "haploid",
+                    "assemblystatus": "Complete Genome",
+                    "wgs": "",
+                    "gb_bioprojects": [
+                        {
+                            "bioprojectaccn": "PRJNA17977",
+                            "bioprojectid": 17977
+                        }
+                    ],
+                    "gb_projects": [
+                        "17977"
+                    ],
+                    "rs_bioprojects": [],
+                    "rs_projects": [],
+                    "biosampleaccn": "SAMD00061085",
+                    "biosampleid": "5831888",
+                    "biosource": {
+                        "infraspecieslist": [
+                            {
+                                "sub_type": "strain",
+                                "sub_value": "PV"
+                            }
+                        ],
+                        "sex": "",
+                        "isolate": ""
+                    },
+                    "coverage": "0",
+                    "partialgenomerepresentation": "false",
+                    "primary": "31858",
+                    "assemblydescription": "",
+                    "releaselevel": "Major",
+                    "asmreleasedate_genbank": "2010/05/12 00:00",
+                    "asmreleasedate_refseq": "2010/05/13 00:00",
+                    "seqreleasedate": "2006/10/16 00:00",
+                    "asmupdatedate": "2015/10/15 00:00",
+                    "submissiondate": "2006/10/16 00:00",
+                    "lastupdatedate": "2015/10/15 00:00",
+                    "submitterorganization": "Kitasato Institute for Life Sciences",
+                    "refseq_category": "na",
+                    "anomalouslist": [],
+                    "exclfromrefseq": [],
+                    "propertylist": [
+                        "full-genome-representation",
+                        "has-chromosome",
+                        "latest",
+                        "latest_genbank",
+                        "suppressed_refseq"
+                    ],
+                    "fromtype": "",
+                    "synonym": {
+                        "genbank": "GCA_000010365.1",
+                        "refseq": "GCF_000010365.1",
+                        "similarity": "identical"
+                    },
+                    "ftppath_genbank": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/010/365/GCA_000010365.1_ASM1036v1",
+                    "ftppath_refseq": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1",
+                    "ftppath_assembly_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1/GCF_000010365.1_ASM1036v1_assembly_report.txt",
+                    "ftppath_stats_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1/GCF_000010365.1_ASM1036v1_assembly_stats.txt",
+                    "ftppath_regions_rpt": "",
+                    "sortorder": "5C10000103659898",
+                    "meta": " &lt;Stats&gt; &lt;Stat category=\"alt_loci_count\" sequence_tag=\"all\"&gt;0&lt;/Stat&gt; &lt;Stat category=\"chromosome_count\" sequence_tag=\"all\"&gt;1&lt;/Stat&gt; &lt;Stat category=\"contig_count\" sequence_tag=\"all\"&gt;1&lt;/Stat&gt; &lt;Stat category=\"contig_l50\" sequence_tag=\"all\"&gt;1&lt;/Stat&gt; &lt;Stat category=\"contig_n50\" sequence_tag=\"all\"&gt;159662&lt;/Stat&gt; &lt;Stat category=\"non_chromosome_replicon_count\" sequence_tag=\"all\"&gt;0&lt;/Stat&gt; &lt;Stat category=\"replicon_count\" sequence_tag=\"all\"&gt;1&lt;/Stat&gt; &lt;Stat category=\"scaffold_count\" sequence_tag=\"all\"&gt;1&lt;/Stat&gt; &lt;Stat category=\"scaffold_count\" sequence_tag=\"placed\"&gt;1&lt;/Stat&gt; &lt;Stat category=\"scaffold_count\" sequence_tag=\"unlocalized\"&gt;0&lt;/Stat&gt; &lt;Stat category=\"scaffold_count\" sequence_tag=\"unplaced\"&gt;0&lt;/Stat&gt; &lt;Stat category=\"scaffold_l50\" sequence_tag=\"all\"&gt;1&lt;/Stat&gt; &lt;Stat category=\"scaffold_n50\" sequence_tag=\"all\"&gt;159662&lt;/Stat&gt; &lt;Stat category=\"total_length\" sequence_tag=\"all\"&gt;159662&lt;/Stat&gt; &lt;Stat category=\"ungapped_length\" sequence_tag=\"all\"&gt;159662&lt;/Stat&gt; &lt;/Stats&gt; &lt;FtpSites&gt;   &lt;FtpPath type=\"Assembly_rpt\"&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1/GCF_000010365.1_ASM1036v1_assembly_report.txt&lt;/FtpPath&gt;   &lt;FtpPath type=\"GenBank\"&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/010/365/GCA_000010365.1_ASM1036v1&lt;/FtpPath&gt;   &lt;FtpPath type=\"RefSeq\"&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1&lt;/FtpPath&gt;   &lt;FtpPath type=\"Stats_rpt\"&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1/GCF_000010365.1_ASM1036v1_assembly_stats.txt&lt;/FtpPath&gt; &lt;/FtpSites&gt; &lt;assembly-level&gt;5&lt;/assembly-level&gt; &lt;assembly-status&gt;Complete Genome&lt;/assembly-status&gt; &lt;representative-status&gt;na&lt;/representative-status&gt; &lt;submitter-organization&gt;Kitasato Institute for Life Sciences&lt;/submitter-organization&gt;    "
+                },
+                "uids": [
+                    "31868"
+                ]
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 10:14:46 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Content-Security-Policy",
+            "upgrade-insecure-requests",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "private",
+            "NCBI-PHID",
+            "990C2FCC8F1F2051000000000013000B",
+            "NCBI-SID",
+            "990C2FCC8F1F2961_0019SID",
+            "Content-Type",
+            "application/json; charset=UTF-8",
+            "Set-Cookie",
+            "ncbi_sid=990C2FCC8F1F2961_0019SID; domain=.nih.gov; path=/; expires=Sun, 15 Apr 2018 10:14:46 GMT",
+            "Vary",
+            "Accept-Encoding",
+            "X-UA-Compatible",
+            "IE=Edge",
+            "X-XSS-Protection",
+            "1; mode=block",
+            "Connection",
+            "close",
+            "Transfer-Encoding",
+            "chunked"
+        ]
+    },
+    {
+        "scope": "http://ftp.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 10:14:47 GMT",
+            "Server",
+            "Apache",
+            "Location",
+            "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1",
+            "Cache-Control",
+            "max-age=31536000",
+            "Expires",
+            "Sun, 15 Apr 2018 10:14:47 GMT",
+            "Content-Length",
+            "290",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://ftp.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1",
+        "body": "",
+        "status": 200,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<html>\n <head>\n  <title>Index of /genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1</title>\n </head>\n <body>\n<h1>Index of /genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1</h1>\n<pre>Name                    Last modified      Size  <hr><a href=\"GCF_000010365.1_ASM1036v1_assembly_report.txt\">GCF_000010365.1_ASM1..&gt;</a> 13-Oct-2016 11:31  1.1K  \n<a href=\"GCF_000010365.1_ASM1036v1_assembly_stats.txt\">GCF_000010365.1_ASM1..&gt;</a> 13-Oct-2016 11:31  3.5K  \n<a href=\"GCF_000010365.1_ASM1036v1_feature_table.txt.gz\">GCF_000010365.1_ASM1..&gt;</a> 04-Sep-2015 22:38  7.9K  \n<a href=\"GCF_000010365.1_ASM1036v1_genomic.fna.gz\">GCF_000010365.1_ASM1..&gt;</a> 21-Mar-2015 01:16   41K  \n<a href=\"GCF_000010365.1_ASM1036v1_genomic.gbff.gz\">GCF_000010365.1_ASM1..&gt;</a> 04-Sep-2015 22:38  101K  \n<a href=\"GCF_000010365.1_ASM1036v1_genomic.gff.gz\">GCF_000010365.1_ASM1..&gt;</a> 04-Sep-2015 22:38   12K  \n<a href=\"GCF_000010365.1_ASM1036v1_protein.faa.gz\">GCF_000010365.1_ASM1..&gt;</a> 04-Sep-2015 22:38   29K  \n<a href=\"GCF_000010365.1_ASM1036v1_protein.gpff.gz\">GCF_000010365.1_ASM1..&gt;</a> 04-Sep-2015 22:38   42K  \n<a href=\"README.txt\">README.txt</a>              24-Jan-2017 14:12   23K  \n<a href=\"assembly_status.txt\">assembly_status.txt</a>     14-Apr-2017 01:26   18   \n<a href=\"md5checksums.txt\">md5checksums.txt</a>        04-Sep-2015 22:38  470   \n<hr></pre>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 10:14:48 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Cache-Control",
+            "max-age=31536000",
+            "Expires",
+            "Sun, 15 Apr 2018 10:14:48 GMT",
+            "Content-Length",
+            "1447",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html;charset=ISO-8859-1"
+        ]
+    },
+    {
+        "scope": "http://ftp.ncbi.nlm.nih.gov:80",
+        "method": "GET",
+        "path": "/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1/GCF_000010365.1_ASM1036v1_genomic.fna.gz",
+        "body": "",
+        "status": 301,
+        "response": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>301 Moved Permanently</title>\n</head><body>\n<h1>Moved Permanently</h1>\n<p>The document has moved <a href=\"https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1/GCF_000010365.1_ASM1036v1_genomic.fna.gz\">here</a>.</p>\n</body></html>\n",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 10:14:48 GMT",
+            "Server",
+            "Apache",
+            "Location",
+            "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1/GCF_000010365.1_ASM1036v1_genomic.fna.gz",
+            "Cache-Control",
+            "max-age=31536000",
+            "Expires",
+            "Sun, 15 Apr 2018 10:14:48 GMT",
+            "Content-Length",
+            "331",
+            "Connection",
+            "close",
+            "Content-Type",
+            "text/html; charset=iso-8859-1"
+        ]
+    },
+    {
+        "scope": "https://ftp.ncbi.nlm.nih.gov:443",
+        "method": "GET",
+        "path": "/genomes/all/GCF/000/010/365/GCF_000010365.1_ASM1036v1/GCF_000010365.1_ASM1036v1_genomic.fna.gz",
+        "body": "",
+        "status": 200,
+        "response": "",
+        "rawHeaders": [
+            "Date",
+            "Sat, 15 Apr 2017 10:14:49 GMT",
+            "Server",
+            "Apache",
+            "Strict-Transport-Security",
+            "max-age=31536000; includeSubDomains; preload",
+            "Last-Modified",
+            "Sat, 21 Mar 2015 05:16:09 GMT",
+            "Accept-Ranges",
+            "bytes",
+            "Content-Length",
+            "42224",
+            "Cache-Control",
+            "max-age=31536000",
+            "Expires",
+            "Sun, 15 Apr 2018 10:14:49 GMT",
+            "Connection",
+            "close",
+            "Content-Type",
+            "application/x-gzip"
+        ]
+    }
+]

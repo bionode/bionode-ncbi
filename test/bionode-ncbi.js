@@ -1,5 +1,5 @@
-// var fs = require('fs')
-// var crypto = require('crypto')
+var fs = require('fs')
+var crypto = require('crypto')
 var tape = require('tape')
 var tapeNock = require('tape-nock')
 var test = tapeNock(tape)
@@ -37,41 +37,41 @@ test('Download list for sra', function (t) {
   })
 })
 
-// test('Download', function (t) {
-//   var msg = 'should take a database name and search term, and download'
-//   var path = ''
-//   var stream = ncbi.download('assembly', 'Guillardia theta')
-//   stream.on('data', function (data) { path = data.path })
-//   stream.on('end', function () {
-//     var file = fs.createReadStream(path)
-//     var shasum = crypto.createHash('sha1')
-//     file.on('data', function (d) { shasum.update(d) })
-//     file.on('end', function () {
-//       var sha1 = shasum.digest('hex')
-//       var hash = testData['sra-sha1']
-//       t.equal(sha1, hash, msg)
-//       setTimeout(t.end, 2000)
-//     })
-//   })
-// })
+test('Download', function (t) {
+  var msg = 'should take a database name and search term, and download'
+  var path = ''
+  var stream = ncbi.download('assembly', 'ASM1036v1')
+  stream.on('data', function (data) { path = data.path })
+  stream.on('end', function () {
+    var file = fs.createReadStream(path)
+    var shasum = crypto.createHash('sha1')
+    file.on('data', function (d) { shasum.update(d) })
+    file.on('end', function () {
+      var sha1 = shasum.digest('hex')
+      var hash = testData['sra-sha1']
+      t.equal(sha1, hash, msg)
+      setTimeout(t.end, 2000)
+    })
+  })
+})
 
-// test('Download unless file exists', function (t) {
-//   var msg = 'repeat same download to cover already downloaded branch'
-//   var path = ''
-//   var stream = ncbi.download('assembly', 'Guillardia theta')
-//   stream.on('data', function (data) { path = data.path })
-//   stream.on('end', function () {
-//     var file = fs.createReadStream(path)
-//     var shasum = crypto.createHash('sha1')
-//     file.on('data', function (d) { shasum.update(d) })
-//     file.on('end', function () {
-//       var sha1 = shasum.digest('hex')
-//       var hash = testData['sra-sha1']
-//       t.equal(sha1, hash, msg)
-//       setTimeout(t.end, 2000)
-//     })
-//   })
-// })
+test('Download unless file exists', function (t) {
+  var msg = 'repeat same download to cover already downloaded branch'
+  var path = ''
+  var stream = ncbi.download('assembly', 'ASM1036v1')
+  stream.on('data', function (data) { path = data.path })
+  stream.on('end', function () {
+    var file = fs.createReadStream(path)
+    var shasum = crypto.createHash('sha1')
+    file.on('data', function (d) { shasum.update(d) })
+    file.on('end', function () {
+      var sha1 = shasum.digest('hex')
+      var hash = testData['sra-sha1']
+      t.equal(sha1, hash, msg)
+      setTimeout(t.end, 2000)
+    })
+  })
+})
 
 test('Search assembly', function (t) {
   var results1 = []
