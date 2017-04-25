@@ -68,33 +68,4 @@
     "build-docs": "docco ./lib/bionode-ncbi.js"
   },
   "license": "MIT",
-  "contributors": [
-    {
-      "name": "Filip Tér",
-      "email": null,
-      "url": "https://github.com/terfn",
-      "contributions": 7,
-      "additions": 444,
-      "deletions": 195,
-      "hireable": null
-    },
-    {
-      "name": "Bruno Vieira",
-      "email": "mail@bmpvieira.com",
-      "url": "https://github.com/bmpvieira",
-      "contributions": 110,
-      "additions": 4818,
-      "deletions": 1929,
-      "hireable": null
-    },
-    {
-      "name": "=^._.^=",
-      "email": null,
-      "url": "https://github.com/maxogden",
-      "contributions": 7,
-      "additions": 84,
-      "deletions": 61,
-      "hireable": null
-    }
-  ]
 }
