@@ -60,10 +60,10 @@
     "bionode-ncbi": "cli.js"
   },
   "scripts": {
-    "test": "standard && dependency-check . && node test/*.js | tap-spec",
+    "test": "standard && dependency-check . && tape test/**/*.js | tap-spec",
     "test-browser": "browserify test/*.js -d | testling -x 'open -a \"Google Chrome\"' | tap-spec",
-    "coverage": "standard && dependency-check . && istanbul cover test/bionode-ncbi.js --report lcovonly -- | tap-spec && rm -rf ./coverage",
-    "coveralls": "istanbul cover test/bionode-ncbi.js --report lcovonly -- | tap-spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage",
+    "coverage": "standard && dependency-check . && istanbul cover tape test/**/*.js --report lcovonly -- | tap-spec && rm -rf ./coverage",
+    "coveralls": "istanbul cover tape test/**/*.js --report lcovonly -- | tap-spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage",
     "build-browser": "browserify -r ./index.js:bionode-ncbi | uglifyjs > bionode-ncbi.min.js",
     "build-docs": "docco ./lib/bionode-ncbi.js"
   },
