@@ -6,6 +6,7 @@
   <a href="http://bionode.io/">bionode.io</a>
 </p>
 
+
 # bionode-ncbi
 
 > Node.js module to get data from the NCBI API (aka e-utils)
@@ -43,6 +44,8 @@ Or, if you want to use it as a JavaScript library, you need to install it in you
 ```bash
 npm i bionode-ncbi # 'i' can be used as shorcut to 'install'
 ```
+
+
 ## Documentation
 
 Check our documentation at [doc.bionode.io](http://doc.bionode.io) or do:
@@ -51,8 +54,11 @@ Check our documentation at [doc.bionode.io](http://doc.bionode.io) or do:
 bionode-ncbi --help
 ```
 
+
 ## Contributing
+
 We welcome all kinds of contributions at all levels of experience, please read the [CONTRIBUTING.md](CONTRIBUTING.md) to get started!
+
 
 ## Communication channels
 
@@ -65,6 +71,7 @@ Don't be shy! Come talk to us :smiley:
 
 
 ## Acknowledgements
+
 We would like to thank all the people and institutions listed below!
 
 * [graphs/contributors](https://github.com/bionode/bionode-ncbi/graphs/contributors)
