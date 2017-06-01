@@ -16,7 +16,7 @@
 [![Dependencies](http://img.shields.io/david/bionode/bionode-ncbi.svg?style=flat-square)](http://david-dm.org/bionode/bionode-ncbi)
 [![npm](https://img.shields.io/npm/dt/bionode-ncbi.svg?style=flat-square)](https://www.npmjs.com/package/bionode-ncbi)
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/bionode/bionode-ncbi)
-[![Cite](http://img.shields.io/badge/doi-10.5281/zenodo.11315-blue.svg?style=flat-square)](http://dx.doi.org/10.5281/zenodo.11315)
+
 
 ## Install
 
