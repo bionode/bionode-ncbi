@@ -16,7 +16,7 @@
 [![Coveralls](https://img.shields.io/coveralls/bionode/bionode-ncbi.svg?style=flat-square)](http://coveralls.io/r/bionode/bionode-ncbi)
 [![Dependencies](http://img.shields.io/david/bionode/bionode-ncbi.svg?style=flat-square)](http://david-dm.org/bionode/bionode-ncbi)
 [![npm](https://img.shields.io/npm/dt/bionode-ncbi.svg?style=flat-square)](https://www.npmjs.com/package/bionode-ncbi)
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/bionode/bionode-ncbi)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/bionode/bionode)
 
 
 ## Install
@@ -65,7 +65,7 @@ We welcome all kinds of contributions at all levels of experience, please read t
 Don't be shy! Come talk to us :smiley:
 
 * **Email** [mail@bionode.io](mailto:mail@bionode.io)
-* **Chat room** [http://gitter.im/bionode/bionode-ncbi](http://gitter.im/bionode/bionode-ncbi)
+* **Chat room** [http://gitter.im/bionode/bionode](http://gitter.im/bionode/bionode)
 * **IRC** #bionode on Freenode
 * **Twitter** [@bionode](http://twitter.com/@bionode)
 
