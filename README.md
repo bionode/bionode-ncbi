@@ -42,7 +42,7 @@ npm install bionode-ncbi -g
 Or, if you want to use it as a JavaScript library, you need to install it in your local project folder inside the `node_modules` directory by doing the same command **without** `-g`.
 
 ```bash
-npm i bionode-ncbi # 'i' can be used as shorcut to 'install'
+npm i bionode-ncbi # 'i' can be used as shortcut to 'install'
 ```
 
 
