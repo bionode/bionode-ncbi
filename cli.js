@@ -3,6 +3,8 @@ var JSONStream = require('JSONStream')
 var split = require('split2')
 var ncbi = require('./')
 var insight = require('./lib/anonymous-tracking')
+var validDbs = require('./lib/valid-dbs')
+
 var argv = require('yargs')
 .strict()
 .demandCommand(1)
@@ -75,26 +77,8 @@ bionode-ncbi plink tax sra -s --pretty`
 .boolean('pretty')
 .describe('pretty', 'Print human readable output instead of NDJSON')
 .choices('dlsource', ['assembly', 'sra'])
-.choices('db', [
-  'gquery', 'assembly', 'bioproject', 'biosample', 'biosystems', 'books',
-  'clinvar', 'clone', 'cdd', 'gap', 'dbvar', 'nucest', 'gene', 'genome', 'gds',
-  'geoprofiles', 'nucgss', 'gtr', 'homologene', 'medgen', 'mesh', 'ncbisearch',
-  'nlmcatalog', 'nuccore', 'omim', 'pmc', 'popset', 'probe', 'protein',
-  'proteinclusters', 'pcassay', 'pccompound', 'pcsubstance', 'pubmed',
-  'pubmedhealth', 'snp', 'sparcle', 'sra', 'structure', 'taxonomy', 'toolkit',
-  'toolkitall', 'toolkitbook', 'toolkitbookgh', 'unigene'
-])
-.example('databases available',
-`gquery (All Databases), assembly, bioproject, biosample, biosystems, \
-books, clinvar, clone, cdd (Conserved Domains), gap (dbGaP), dbvar, \
-nucest (EST), gene, genome, gds (GEO DataSets), geoprofiles (GEO Profiles), \
-nucgss (GSS), gtr (GTR), homologene, medgen, mesh, \
-ncbisearch (NCBI Web Site), nlmcatalog, nuccore (Nucleotide), omim, pmc, \
-popset, probe, protein, proteinclusters, pcassay (PubChem BioAssay), \
-pccompound (PubChem Compound), pcsubstance (PubChem Substance), \
-pubmed, pubmedhealth, snp, sparcle, sra, structure, \
-taxonomy, toolkit, toolkitall, toolkitbook, toolkitbookgh, unigene`
-)
+.choices('db', Object.keys(validDbs.dbs))
+.example('databases available', validDbs.printDbs())
 .example(`DEBUG mode: export DEBUG='*'`)
 .argv
 
@@ -102,36 +86,45 @@ if (argv.dlsource) { argv.db = argv.dlsource }
 
 insight.track('ncbi', 'cli')
 
-var ncbiStream = ncbi[argv._[0]](argv)
+try {
+  var ncbiStream = ncbi[argv._[0]](argv)
 
-var jsonStream
-if (argv.pretty) {
-  jsonStream = JSONStream.stringify(false, null, null, 2)
-} else {
-  jsonStream = JSONStream.stringify(false)
-}
+  var jsonStream
+  if (argv.pretty) {
+    jsonStream = JSONStream.stringify(false, null, null, 2)
+  } else {
+    jsonStream = JSONStream.stringify(false)
+  }
 
-ncbiStream.pipe(jsonStream).pipe(process.stdout)
+  ncbiStream.pipe(jsonStream).pipe(process.stdout)
 
-if (argv.stdin) {
-  insight.track('ncbi', 'stdin')
-  process.stdin.setEncoding('utf8')
+  if (argv.stdin) {
+    insight.track('ncbi', 'stdin')
+    process.stdin.setEncoding('utf8')
 
-  process.stdin
-  .pipe(split())
-  .pipe(JSONStream.parse())
-  .pipe(ncbiStream)
+    process.stdin
+    .pipe(split())
+    .pipe(JSONStream.parse())
+    .pipe(ncbiStream)
 
-  process.stdin.on('end', function () {
-    ncbiStream.end()
+    process.stdin.on('end', function () {
+      ncbiStream.end()
+    })
+  }
+
+  process.stdout.on('error', function (err) {
+    if (err.code === 'EPIPE') { process.exit(0) }
   })
+
+  ncbiStream.on('error', function (error) {
+    console.error(error.message)
+    process.exit()
+  })
+} catch (err) {
+  if (err instanceof validDbs.InvalidDbError) {
+    console.error(err.message)
+    console.log('Run "bionode-ncbi --help" to check the available dbs')
+  } else {
+    console.error(err)
+  }
 }
-
-process.stdout.on('error', function (err) {
-  if (err.code === 'EPIPE') { process.exit(0) }
-})
-
-ncbiStream.on('error', function (error) {
-  console.error(error.message)
-  process.exit()
-})
